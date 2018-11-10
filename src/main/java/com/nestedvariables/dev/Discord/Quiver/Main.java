@@ -52,6 +52,7 @@ public class Main {
         // End of Music Event Listeners
         // Moderation Event Listeners
         jda.addEventListener(new Ban());
+        jda.addEventListener(new Clear());
         jda.addEventListener(new Kick());
         jda.addEventListener(new Mute());
         jda.addEventListener(new Softban());
