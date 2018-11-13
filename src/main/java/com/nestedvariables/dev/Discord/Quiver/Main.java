@@ -4,6 +4,7 @@ import javax.security.auth.login.LoginException;
 
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
 import com.nestedvariables.dev.Discord.Quiver.events.music.*;
+import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
 
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
@@ -59,12 +60,15 @@ public class Main {
         jda.addEventListener(new Unban());
         jda.addEventListener(new Unmute());
         // End of Moderation Event Listeners
+        // Bot Owner Event Listeners 
+        jda.addEventListener(new Announcement());
+        // End of Bot Owner Event Listeners
         //Done Adding Event Listeners
 
 
 
         for (int i = 0; i < 1; i++) {
-			jda.useSharding(i, 1).build();
+			jda.useSharding(i, 2).build();
         }
         
         System.out.print("Bullseye! Quiver is online!");

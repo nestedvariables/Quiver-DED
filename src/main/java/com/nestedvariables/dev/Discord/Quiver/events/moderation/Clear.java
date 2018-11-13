@@ -52,12 +52,18 @@ public class Clear extends ListenerAdapter {
                         success.setDescription(":white_medium_small_square: Successfully deleted " + messageDelete
                                 + " messages from " + event.getChannel().getAsMention());
                         success.setColor(randomColor);
-                        success.setFooter("Quiver Message Clear", Info.LOGO);                                               
+                        success.setFooter("Quiver Message Clear", Info.LOGO);  
+                        
+                        event.getChannel().sendMessage(success.build()).queue((message) -> {
+                            message.delete().queueAfter(5,TimeUnit.SECONDS);
+                        });
                     } else {
                         EmbedBuilder tooManyMessages = new EmbedBuilder();
 
                         tooManyMessages.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
-                                + ", the amount of messages you specified to delete were too many to delete at once. \n:white_medium_small_square: Or the messages attempting to be deleted are older the 2 weeks. \n :white_medium_small_square: Maximum amount of messages you can delete at a time is 100.");
+                                + ", the amount of messages you specified to delete were too many to delete at once. " 
+                                + "\n:white_medium_small_square: Or the messages attempting to be deleted are older the 2 weeks." 
+                                + " \n :white_medium_small_square: Maximum amount of messages you can delete at a time is 100.");
                         tooManyMessages.setColor(Info.ERROR_RED);
                         tooManyMessages.setFooter("Quiver Message Delete", Info.LOGO);
 
@@ -70,7 +76,7 @@ public class Clear extends ListenerAdapter {
                 EmbedBuilder nullPerms = new EmbedBuilder();
 
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
-                        + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to manage messages to use this command.");
+                        + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to manage messages for this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
                 nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
 
