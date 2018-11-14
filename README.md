@@ -7,6 +7,5 @@
 
 <img align="right" src="https://raw.githubusercontent.com/NestedVariables/Quiver/master/Quiver.png" height="200" width="200">
 
- ## Quiver Discord Bot
-
+ # Quiver Discord Bot
  ---
