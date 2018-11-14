@@ -62,12 +62,13 @@ public class Main {
         // End of Moderation Event Listeners
         // Bot Owner Event Listeners 
         jda.addEventListener(new Announcement());
+        jda.addEventListener(new JoinAnnouncement());
         // End of Bot Owner Event Listeners
         //Done Adding Event Listeners
 
 
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 2; i++) {
 			jda.useSharding(i, 2).build();
         }
         
