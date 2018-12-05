@@ -11,7 +11,7 @@ public class ClearQueue extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
         if(args[0].equalsIgnoreCase(Info.PREFIX)){
-            
+                        
         }
 
 

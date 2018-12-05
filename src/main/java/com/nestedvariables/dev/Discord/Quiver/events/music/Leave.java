@@ -10,8 +10,13 @@ public class Leave extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split(" ");
 
-        if(args[0].equalsIgnoreCase(Info.PREFIX)){
-            
+        if(args[0].equalsIgnoreCase(Info.PREFIX + "leave") || args[0].equalsIgnoreCase(Info.PREFIX + "fuckoff")){
+            if(event.getGuild().getMemberById(event.getJDA().getSelfUser().getId()).getVoiceState()
+            .inVoiceChannel() == false){
+                event.getChannel().sendMessage("I'm not in a voice channel :(").queue();
+            } else {
+                event.getGuild().getAudioManager().closeAudioConnection();
+            }
         }
 
 

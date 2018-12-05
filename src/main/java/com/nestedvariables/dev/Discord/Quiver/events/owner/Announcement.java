@@ -19,7 +19,7 @@ public class Announcement extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
         if (args[0].equalsIgnoreCase(Info.PREFIX + "announce") || args[0].equalsIgnoreCase(Info.PREFIX + "ann")) {
-            if(event.getAuthor().getId().equals("79693184417931264")) {
+            if(event.getAuthor().getId().equals("79693184417931264") || event.getAuthor().getId().equals("237768953739476993")) {
                 if(args.length < 2){
                     EmbedBuilder nullColor = new EmbedBuilder();
 
@@ -34,7 +34,7 @@ public class Announcement extends ListenerAdapter {
                 if(args.length < 3){
                     EmbedBuilder nullReason = new EmbedBuilder();
 
-                    nullReason.setDescription("YA DUMBASS YOU DIDN'T SPECIFY A REASON FOR THE ANNOUNCEMENT");
+                    nullReason.setDescription("You didn't specify a reason for the announcement");
                     nullReason.setColor(Info.ERROR_RED);
                     nullReason.setFooter("Quiver Announcement Failure", Info.LOGO);
 

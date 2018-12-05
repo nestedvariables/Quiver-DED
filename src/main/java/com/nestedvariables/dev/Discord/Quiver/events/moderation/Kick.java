@@ -61,22 +61,23 @@ public class Kick extends ListenerAdapter {
                     event.getChannel().sendMessage(kick.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
                     });
+                    kickReason = "";                    
                 }
 
+            }else {
+                EmbedBuilder nullPerms = new EmbedBuilder();
+    
+                nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
+                        + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to kick members from this guild to use this command.");
+                nullPerms.setColor(Info.ERROR_RED);
+                nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
+    
+                event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
+                    message.delete().queueAfter(10, TimeUnit.SECONDS);
+                });
             }
 
-        } else {
-            EmbedBuilder nullPerms = new EmbedBuilder();
-
-            nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
-                    + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to kick members from this guild to use this command.");
-            nullPerms.setColor(Info.ERROR_RED);
-            nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
-
-            event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
-                message.delete().queueAfter(10, TimeUnit.SECONDS);
-            });
-        }
+        } 
     }
 
 }

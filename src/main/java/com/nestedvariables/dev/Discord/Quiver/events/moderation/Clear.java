@@ -40,7 +40,22 @@ public class Clear extends ListenerAdapter {
                     messageDeleteS = args[1];
                     messageDelete = Integer.parseInt(messageDeleteS);
 
-                    if (messageDelete < 100) {
+                    if (messageDelete > 101 || messageDelete < 2) {
+
+                        EmbedBuilder tooManyMessages = new EmbedBuilder();
+
+                        tooManyMessages.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
+                                + ", the amount of messages you specified to delete were too many to delete at once. " 
+                                + "\n:white_medium_small_square: Or the messages attempting to be deleted are older the 2 weeks." 
+                                + " \n :white_medium_small_square: Maximum amount of messages you can delete at a time is 100.");
+                        tooManyMessages.setColor(Info.ERROR_RED);
+                        tooManyMessages.setFooter("Quiver Message Delete", Info.LOGO);
+
+                        event.getChannel().sendMessage(tooManyMessages.build()).queue((message) -> {
+                            message.delete().queueAfter(15, TimeUnit.SECONDS);
+                        });
+                        
+                    } else {
                         Random random = new Random();
                         int randomColor = random.nextInt(0xffffff + 1);
 
@@ -56,19 +71,6 @@ public class Clear extends ListenerAdapter {
                         
                         event.getChannel().sendMessage(success.build()).queue((message) -> {
                             message.delete().queueAfter(5,TimeUnit.SECONDS);
-                        });
-                    } else {
-                        EmbedBuilder tooManyMessages = new EmbedBuilder();
-
-                        tooManyMessages.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
-                                + ", the amount of messages you specified to delete were too many to delete at once. " 
-                                + "\n:white_medium_small_square: Or the messages attempting to be deleted are older the 2 weeks." 
-                                + " \n :white_medium_small_square: Maximum amount of messages you can delete at a time is 100.");
-                        tooManyMessages.setColor(Info.ERROR_RED);
-                        tooManyMessages.setFooter("Quiver Message Delete", Info.LOGO);
-
-                        event.getChannel().sendMessage(tooManyMessages.build()).queue((message) -> {
-                            message.delete().queueAfter(15, TimeUnit.SECONDS);
                         });
                     }
                 }

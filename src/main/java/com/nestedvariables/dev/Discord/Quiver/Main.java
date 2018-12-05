@@ -2,9 +2,13 @@ package com.nestedvariables.dev.Discord.Quiver;
 
 import javax.security.auth.login.LoginException;
 
+import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
+import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
+import com.nestedvariables.dev.Discord.Quiver.events.information.*;
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
 import com.nestedvariables.dev.Discord.Quiver.events.music.*;
 import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
+import com.nestedvariables.dev.Discord.Quiver.events.serverowner.LeaveGuild;
 
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
@@ -15,6 +19,7 @@ import net.dv8tion.jda.core.exceptions.RateLimitedException;
 public class Main {
 
     static String token = System.console().readLine("Insert Token  \n");
+    static String botName = "Quiver";
     public static JDABuilder jda;
 
     public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException {
@@ -22,8 +27,33 @@ public class Main {
 
         jda.setStatus(OnlineStatus.ONLINE);
         jda.setGame(Game.watching("Archery | " + Info.PREFIX + "help"));
-        
+
         // Adding Event Listeners
+        // Announcement Event Listeners
+        jda.addEventListener(new MemberJoin());
+        // End of Announcement Event Listeners
+        // Channel System Listeners
+        jda.addEventListener(new ChannelCreate());
+        jda.addEventListener(new ChannelInvite());
+        jda.addEventListener(new ChannelCleanup());
+        // End of Channel System Listeners
+        // Information Event Listeners
+        jda.addEventListener(new BotInfo());
+        jda.addEventListener(new Help());
+        jda.addEventListener(new PermissionHelp());
+        jda.addEventListener(new ServerInfo());
+        jda.addEventListener(new UserInfo());
+        // End of Information Event Listeners
+        // Moderation Event Listeners
+        jda.addEventListener(new Ban());
+        jda.addEventListener(new Clear());
+        jda.addEventListener(new Kick());
+        jda.addEventListener(new Mute());
+        jda.addEventListener(new Softban());
+        /* Disabled until i learn how to list shit properly from audit logs
+         jda.addEventListener(new Unban()); */
+        jda.addEventListener(new Unmute());
+        // End of Moderation Event Listeners
         // Music Event Listeners
         jda.addEventListener(new ClearQueue());
         jda.addEventListener(new Join());
@@ -37,8 +67,8 @@ public class Main {
         jda.addEventListener(new Queue());
         jda.addEventListener(new QueueLoop());
         jda.addEventListener(new QueueMove());
-        jda.addEventListener(new QueueRemove());                
-        jda.addEventListener(new QueueSkip()); 
+        jda.addEventListener(new QueueRemove());
+        jda.addEventListener(new QueueSkip());
         jda.addEventListener(new RemoveDupes());
         jda.addEventListener(new Replay());
         jda.addEventListener(new Resume());
@@ -51,29 +81,21 @@ public class Main {
         jda.addEventListener(new Twitch());
         jda.addEventListener(new Volume());
         // End of Music Event Listeners
-        // Moderation Event Listeners
-        jda.addEventListener(new Ban());
-        jda.addEventListener(new Clear());
-        jda.addEventListener(new Kick());
-        jda.addEventListener(new Mute());
-        jda.addEventListener(new Softban());
-        jda.addEventListener(new Unban());
-        jda.addEventListener(new Unmute());
-        // End of Moderation Event Listeners
-        // Bot Owner Event Listeners 
+        // Bot Owner Event Listeners
         jda.addEventListener(new Announcement());
+        jda.addEventListener(new BlacklistMember());
         jda.addEventListener(new JoinAnnouncement());
         // End of Bot Owner Event Listeners
-        //Done Adding Event Listeners
+        // Server Owner Event Listeners
+        jda.addEventListener(new LeaveGuild());
+        // End of Server Owner Event Listeners
+        // Done Adding Event Listeners
 
-
-
-        for (int i = 0; i < 2; i++) {
-			jda.useSharding(i, 2).build();
+        for (int i = 0; i < 1; i++) {
+            jda.useSharding(i, 1).build();
         }
-        
-        System.out.print("Bullseye! Quiver is online!");
 
+        System.out.print("Bullseye! " + botName + " is online!");
 
     }
 

@@ -10,8 +10,8 @@ public class Pause extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split(" ");
 
-        if(args[0].equalsIgnoreCase(Info.PREFIX)){
-            
+        if(args[0].equalsIgnoreCase(Info.PREFIX + "pause")){
+                        
         }
 
 
