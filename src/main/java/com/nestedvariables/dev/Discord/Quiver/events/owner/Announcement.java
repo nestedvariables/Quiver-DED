@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import com.nestedvariables.dev.Discord.Quiver.Bools;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -19,19 +20,8 @@ public class Announcement extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
         if (args[0].equalsIgnoreCase(Info.PREFIX + "announce") || args[0].equalsIgnoreCase(Info.PREFIX + "ann")) {
-            if(event.getAuthor().getId().equals("79693184417931264") || event.getAuthor().getId().equals("237768953739476993")) {
+            if(Bools.isBotOwner(event)) {
                 if(args.length < 2){
-                    EmbedBuilder nullColor = new EmbedBuilder();
-
-                    nullColor.setDescription("You didn't specify a color for the embed");
-                    nullColor.setColor(Info.ERROR_RED);
-                    nullColor.setFooter("Quiver Announcement Failure", Info.LOGO);
-
-                    event.getChannel().sendMessage(nullColor.build()).queue((message) -> {
-                        message.delete().queueAfter(10, TimeUnit.SECONDS);
-                    });
-                }
-                if(args.length < 3){
                     EmbedBuilder nullReason = new EmbedBuilder();
 
                     nullReason.setDescription("You didn't specify a reason for the announcement");

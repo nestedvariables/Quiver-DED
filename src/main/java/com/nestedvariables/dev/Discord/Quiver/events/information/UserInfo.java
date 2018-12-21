@@ -1,11 +1,11 @@
 package com.nestedvariables.dev.Discord.Quiver.events.information;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -17,13 +17,13 @@ public class UserInfo extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
         if (args[0].equalsIgnoreCase(Info.PREFIX + "userinfo")) {
+
             try { 
-            Class.forName("com.mysql.jdbc.Driver");
-            sqlCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/Quiver", "root", "");
-            Statement sqlStatement = sqlCon.createStatement();
-            
-            ResultSet sqlResult = sqlStatement.executeQuery("");
-            
+                Connection conn = SQLDriver.getConn();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("");
+
+                while(rs.next());
             
             }catch(Exception e) {
             e.printStackTrace();

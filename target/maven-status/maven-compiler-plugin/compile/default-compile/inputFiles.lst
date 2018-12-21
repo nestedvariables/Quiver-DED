@@ -3,7 +3,6 @@
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Replay.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Stop.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/PauseLeave.java
-/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/owner/JoinAnnouncement.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Playlist.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Skip.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/moderation/Mute.java
@@ -11,6 +10,7 @@
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/moderation/Softban.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/moderation/Kick.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/RemoveDupes.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/guildjoinevents/JoinAnnouncement.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Soundcloud.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Loop.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Play.java
@@ -19,9 +19,11 @@
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/serverowner/LeaveGuild.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Settings.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Leave.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/serverowner/Toggles.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/Main.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/SQLDriver.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/information/PermissionHelp.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/misc/RegionChange.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Volume.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/Bools.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/information/UserInfo.java
@@ -34,10 +36,13 @@
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/QueueLoop.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Twitch.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/information/ServerInfo.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/guildjoinevents/CreateOptionsTable.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/owner/Unblacklist.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/TrackScheduler.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/owner/BlacklistMember.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/NowPlaying.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/moderation/Clear.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/AudioPlayerSendHandler.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Lyrics.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/moderation/Ban.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Queue.java
@@ -50,3 +55,4 @@
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/ClearQueue.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Search.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/QueueRemove.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/misc/GoogleVoice.java

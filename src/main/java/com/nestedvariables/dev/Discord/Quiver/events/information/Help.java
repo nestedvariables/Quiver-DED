@@ -19,10 +19,8 @@ public class Help extends ListenerAdapter {
             Random random = new Random();
             int randomColor = random.nextInt(0xffffff + 1);
             if (Bools.isBlacklisted(event)) {
-                event.getChannel().sendMessage(
-                        event.getMember().getAsMention() + " You can't use commands because you were blacklisted")
-                        .queue();
-            } else if (Bools.isBotOwner(event)) {
+                event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();
+            } else if (Bools.isBotOwnerGuild(event)) {
                 EmbedBuilder owner = new EmbedBuilder();
 
                 owner.setTitle(":tools: Owner Help");
@@ -45,7 +43,21 @@ public class Help extends ListenerAdapter {
                     });
                 }
 
-            } else if (event.getMember().hasPermission(Permission.ADMINISTRATOR)) {
+            } else if (Bools.isServerOwner(event)) {
+
+                EmbedBuilder serverOwner = new EmbedBuilder();
+
+                if (args.length < 2) {
+                    event.getChannel().sendMessage(serverOwner.build()).queue();
+                } else if (args.length == 2 && args[1].equalsIgnoreCase("--dm")) {
+                    event.getAuthor().openPrivateChannel().queue((channel) -> {
+                        channel.sendMessage(serverOwner.build()).queue((message) -> {
+                            message.delete().queueAfter(60, TimeUnit.SECONDS);
+                        });
+                    });
+                }
+
+            } else if (event.getMember().hasPermission(Permission.ADMINISTRATOR)){
 
             } else if (event.getMember().hasPermission(Permission.MANAGE_ROLES)) {
 
@@ -59,6 +71,10 @@ public class Help extends ListenerAdapter {
                 regular.addField(Info.PREFIX + "serverinfo", "Will display information on the server the command is used in.", false);
                 regular.addField(Info.PREFIX + "userinfo", "Will display information about the user that ran the command \nOptionally tag a member of the server to get information on them", false);
                 regular.setFooter("Quiver Default User Help", Info.LOGO);
+
+                event.getChannel().sendMessage(regular.build()).queue((message) -> {
+                    message.delete().queueAfter(30, TimeUnit.SECONDS);
+                });
             }
 
         }

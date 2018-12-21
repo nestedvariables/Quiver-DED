@@ -1,4 +1,4 @@
-package com.nestedvariables.dev.Discord.Quiver.events.owner;
+package com.nestedvariables.dev.Discord.Quiver.events.guildjoinevents;
 
 import java.util.Random;
 

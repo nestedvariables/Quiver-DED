@@ -40,7 +40,13 @@ public class Clear extends ListenerAdapter {
                     messageDeleteS = args[1];
                     messageDelete = Integer.parseInt(messageDeleteS);
 
-                    if (messageDelete > 101 || messageDelete < 2) {
+                    if (messageDelete < 1) {
+                        EmbedBuilder notEnoughMessages = new EmbedBuilder();
+
+                        notEnoughMessages.setDescription("");
+                    }
+
+                    if (messageDelete > 101) {
 
                         EmbedBuilder tooManyMessages = new EmbedBuilder();
 

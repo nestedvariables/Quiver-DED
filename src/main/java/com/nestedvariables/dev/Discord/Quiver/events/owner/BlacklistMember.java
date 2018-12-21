@@ -1,10 +1,9 @@
 package com.nestedvariables.dev.Discord.Quiver.events.owner;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Bools;
@@ -19,14 +18,14 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class BlacklistMember extends ListenerAdapter {
 
     String reason = "";
+    Integer oldID;
+    String blacklistID;
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
         if (args[0].equalsIgnoreCase(Info.PREFIX + "blacklist")) {
 
-            if (Bools.isBotOwner(event)) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
-                Date date = new Date();
+            if (Bools.isBotOwnerGuild(event)) {
                 if (args.length < 2) {
                     EmbedBuilder nullUser = new EmbedBuilder();
 
@@ -50,29 +49,38 @@ public class BlacklistMember extends ListenerAdapter {
 
                         Member blacklistedMember = event.getMessage().getMentionedMembers().get(0);
 
+                        ResultSet rs = stmt.executeQuery("SELECT * FROM `blacklist`");
+
+                        while(rs.next())
+                        blacklistID = rs.getString(6); 
+
+                        if(blacklistID == null) {
+                            oldID = 0;
+                        }
+
+                        Integer blacklistIDNew = oldID + 1;
+
                         stmt.execute(
-                                "INSERT INTO `blacklist`(`discord_id`, `discord_username`, `reason`, `blacklister`, `blacklist_time`)"
+                                "INSERT INTO `blacklist`(`discord_id`, `discord_username`, `reason`, `blacklister`, `blacklist_id`)"
                                         + "VALUES('" + blacklistedMember.getUser().getId().toString() + "','"
                                         + blacklistedMember.getUser().getName().toString() + "#"
                                         + blacklistedMember.getUser().getDiscriminator().toString() + "','" + reason
                                         + "','" + event.getMember().getUser().getName().toString() + "#"
                                         + event.getMember().getUser().getDiscriminator().toString() + "','"
-                                        + dateFormat.format(date) + "')");
+                                        + blacklistIDNew.toString() + "')");
 
                         EmbedBuilder eb = new EmbedBuilder();
 
-                        eb.setTitle("Blacklisted!");
+                        eb.setAuthor("Blacklisted | ID: " + blacklistIDNew + "");
                         eb.setColor(Info.ERROR_RED);
                         eb.setThumbnail(blacklistedMember.getUser().getAvatarUrl());
                         eb.setDescription("Blacklisted " + blacklistedMember + " from using Quiver");
                         eb.addField("Reason", reason, false);
                         eb.setFooter("Quiver Blacklisted Member" , Info.LOGO);
 
-                        event.getMember().getUser().openPrivateChannel().queue((channel) -> {
-                            channel.sendMessage(eb.build()).queue((message) -> {
+                        event.getChannel().sendMessage(eb.build()).queue((message) -> {
                                 message.delete().queueAfter(15, TimeUnit.SECONDS);
                             });
-                        });
                         conn.close();
                         reason = "";
                     } catch (SQLException sqle) {

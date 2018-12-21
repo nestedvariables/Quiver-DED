@@ -2,6 +2,7 @@ package com.nestedvariables.dev.Discord.Quiver.events.music;
 
 import java.util.concurrent.TimeUnit;
 
+import com.nestedvariables.dev.Discord.Quiver.events.music.AudioPlayerSendHandler;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
@@ -47,28 +48,23 @@ public class Play extends ListenerAdapter {
             } else {
 
                 AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
-                playerManager.useRemoteNodes("trigonmc.tk:8080", "trigonmc.tk:8081","trigonmc.tk:8082");
-                AudioSourceManagers.registerRemoteSources(playerManager);
-
                 AudioPlayer player = playerManager.createPlayer();
-                
+                //playerManager.useRemoteNodes("localhost:8080");
+                AudioSourceManagers.registerRemoteSources(playerManager);
                 TrackScheduler trackScheduler = new TrackScheduler(player);
-
                 player.addListener(trackScheduler);
 
+                event.getGuild().getAudioManager().setSendingHandler(new AudioPlayerSendHandler(player));
+               
                 if (player.isPaused()) {
                     player.setPaused(false);
                     event.getChannel().sendMessage("Resumed Playback").queue();
                 }
 
-                if (event.getGuild().getMemberById(event.getJDA().getSelfUser().getId()).getVoiceState()
-                        .inVoiceChannel() == false) {
+                if (event.getGuild().getMemberById(event.getJDA().getSelfUser().getId()).getVoiceState().inVoiceChannel() == false) {
 
                     event.getGuild().getAudioManager().openAudioConnection(event.getMember().getVoiceState().getChannel());
-                    event.getChannel()
-                            .sendMessage(
-                                    "Joining " + event.getMember().getVoiceState().getChannel().getName().toString())
-                            .queue();
+                    event.getChannel().sendMessage("Joining " + event.getMember().getVoiceState().getChannel().getName().toString()).queue();
 
                     final String trackUrl;
                     final String url = args[1];
@@ -117,7 +113,6 @@ public class Play extends ListenerAdapter {
                         }
 
                     });
-
                 }
 
             }

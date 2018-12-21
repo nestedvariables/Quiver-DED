@@ -20,9 +20,9 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class Ban extends ListenerAdapter {
 
-    Integer oldID;
-    Integer banID;
+    String banID;
     String banReason = "";
+    Integer oldID;
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
@@ -55,23 +55,23 @@ public class Ban extends ListenerAdapter {
 
                         ResultSet rs = stmt.executeQuery("SELECT * FROM `bans`");
                         while (rs.next())
-                            oldID = rs.getInt(3);
-
-                        if (oldID == null) {
+                            banID = rs.getString(3);
+                            
+                        if (banID == null) {
                             oldID = 0;
                         }
 
-                        banID = oldID + 1;
+                        Integer newBanID = oldID + 1;
 
                         while (rs.next())
                             stmt.execute(
-                                    "INSERT INTO `bans`(`discord_id` , `discord_username` , `ban_id` , `ban_reason` , `guild_name` , `guild_id` , `ban_date`)"
+                                    "INSERT INTO `bans`(`discord_id` , `discord_username` , `ban_id` , `ban_reason` , `guild_name` , `guild_id`)"
                                             + "VALUES('" + memberToBan.getUser().getId().toString() + "','"
                                             + memberToBan.getUser().getName().toString() + "#"
-                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '" + banID
-                                            + "','" + banReason + "','" + event.getGuild().getName().toString() + "','"
-                                            + event.getGuild().getId().toString() + "','" + dateFormat.format(date)
-                                            + "')");
+                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '" + newBanID.toString()
+                                            + "','" + "Ban Executor Didn\'t Specify a Reason" + "','"
+                                            + event.getGuild().getName().toString() + "','"
+                                            + event.getMember().getUser().getId().toString() + "')");
 
                         event.getGuild().getController()
                                 .ban(memberToBan, 7, "Ban ID: " + banID + "| Ban executor didn't specify a reason")
@@ -94,7 +94,10 @@ public class Ban extends ListenerAdapter {
                     } catch (SQLException sqle) {
                         event.getJDA().getGuildById("488137783127572491").getTextChannelById("517756124846358529")
                                 .sendMessage(event.getJDA().getGuildById("488137783127572491")
-                                        .getRoleById("489269871306080257").getAsMention() + "\n A ban command failed on the guild: " + event.getGuild().getName().toString() + " with the ID: " + event.getGuild().getId().toString() + "\n Reason:" + sqle.toString())
+                                        .getRoleById("489269871306080257").getAsMention()
+                                        + "\n A ban command failed on the guild: "
+                                        + event.getGuild().getName().toString() + " with the ID: "
+                                        + event.getGuild().getId().toString() + "\n Reason:" + sqle.toString())
                                 .queue();
                     }
                 } else {
@@ -113,21 +116,22 @@ public class Ban extends ListenerAdapter {
 
                         ResultSet rs = stmt.executeQuery("SELECT * FROM `bans`");
                         while (rs.next())
-                            oldID = rs.getInt(3);
+                            banID = rs.getString(3);
 
-                        if (oldID == null) {
-                            oldID = 0;
-                        }
-
-                        banID = oldID + 1; 
+                            if (banID == null) {
+                                oldID = 0;
+                            }
+    
+                            Integer newBanID = oldID + 1;
 
                         while (rs.next())
                             stmt.execute(
                                     "INSERT INTO `bans`(`discord_id` , `discord_username` , `ban_id` , `ban_reason` , `guild_name` , `guild_id` , `ban_date`)"
                                             + "VALUES('" + memberToBan.getUser().getId().toString() + "','"
                                             + memberToBan.getUser().getName().toString() + "#"
-                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '" + banID
+                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '" + newBanID.toString()
                                             + "','" + banReason + "','" + event.getGuild().getName().toString() + "','"
+                                            + event.getMember().getUser().getId().toString() + "','"
                                             + event.getGuild().getId().toString() + "','" + dateFormat.format(date)
                                             + "'");
 
@@ -153,7 +157,10 @@ public class Ban extends ListenerAdapter {
                     } catch (SQLException sqle) {
                         event.getJDA().getGuildById("488137783127572491").getTextChannelById("517756124846358529")
                                 .sendMessage(event.getJDA().getGuildById("488137783127572491")
-                                        .getRoleById("489269871306080257").getAsMention() + "\n A ban command failed on the guild: " + event.getGuild().getName().toString() + " with the ID: " + event.getGuild().getId().toString() + "\n Reason:" + sqle.toString())
+                                        .getRoleById("489269871306080257").getAsMention()
+                                        + "\n A ban command failed on the guild: "
+                                        + event.getGuild().getName().toString() + " with the ID: "
+                                        + event.getGuild().getId().toString() + "\n Reason:" + sqle.toString())
                                 .queue();
                     }
                 }

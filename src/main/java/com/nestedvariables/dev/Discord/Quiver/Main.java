@@ -4,96 +4,99 @@ import javax.security.auth.login.LoginException;
 
 import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
+import com.nestedvariables.dev.Discord.Quiver.events.guildjoinevents.*;
 import com.nestedvariables.dev.Discord.Quiver.events.information.*;
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
 import com.nestedvariables.dev.Discord.Quiver.events.music.*;
 import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
-import com.nestedvariables.dev.Discord.Quiver.events.serverowner.LeaveGuild;
+import com.nestedvariables.dev.Discord.Quiver.events.serverowner.*;
 
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 public class Main {
 
-    static String token = System.console().readLine("Insert Token  \n");
     static String botName = "Quiver";
-    public static JDABuilder jda;
+    static Integer shardCount = -1;
 
     public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException {
-        jda = new JDABuilder(AccountType.BOT).setToken(token);
+        DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 
-        jda.setStatus(OnlineStatus.ONLINE);
-        jda.setGame(Game.watching("Archery | " + Info.PREFIX + "help"));
+        builder.setToken(args[0]);
 
-        // Adding Event Listeners
-        // Announcement Event Listeners
-        jda.addEventListener(new MemberJoin());
-        // End of Announcement Event Listeners
-        // Channel System Listeners
-        jda.addEventListener(new ChannelCreate());
-        jda.addEventListener(new ChannelInvite());
-        jda.addEventListener(new ChannelCleanup());
-        // End of Channel System Listeners
-        // Information Event Listeners
-        jda.addEventListener(new BotInfo());
-        jda.addEventListener(new Help());
-        jda.addEventListener(new PermissionHelp());
-        jda.addEventListener(new ServerInfo());
-        jda.addEventListener(new UserInfo());
-        // End of Information Event Listeners
-        // Moderation Event Listeners
-        jda.addEventListener(new Ban());
-        jda.addEventListener(new Clear());
-        jda.addEventListener(new Kick());
-        jda.addEventListener(new Mute());
-        jda.addEventListener(new Softban());
-        /* Disabled until i learn how to list shit properly from audit logs
-         jda.addEventListener(new Unban()); */
-        jda.addEventListener(new Unmute());
-        // End of Moderation Event Listeners
-        // Music Event Listeners
-        jda.addEventListener(new ClearQueue());
-        jda.addEventListener(new Join());
-        jda.addEventListener(new Leave());
-        jda.addEventListener(new Loop());
-        jda.addEventListener(new Lyrics());
-        jda.addEventListener(new NowPlaying());
-        jda.addEventListener(new Pause());
-        jda.addEventListener(new PauseLeave());
-        jda.addEventListener(new Play());
-        jda.addEventListener(new Queue());
-        jda.addEventListener(new QueueLoop());
-        jda.addEventListener(new QueueMove());
-        jda.addEventListener(new QueueRemove());
-        jda.addEventListener(new QueueSkip());
-        jda.addEventListener(new RemoveDupes());
-        jda.addEventListener(new Replay());
-        jda.addEventListener(new Resume());
-        jda.addEventListener(new Search());
-        jda.addEventListener(new Settings());
-        jda.addEventListener(new Skip());
-        jda.addEventListener(new Soundcloud());
-        jda.addEventListener(new Stop());
-        jda.addEventListener(new TimeSkip());
-        jda.addEventListener(new Twitch());
-        jda.addEventListener(new Volume());
-        // End of Music Event Listeners
-        // Bot Owner Event Listeners
-        jda.addEventListener(new Announcement());
-        jda.addEventListener(new BlacklistMember());
-        jda.addEventListener(new JoinAnnouncement());
-        // End of Bot Owner Event Listeners
-        // Server Owner Event Listeners
-        jda.addEventListener(new LeaveGuild());
-        // End of Server Owner Event Listeners
-        // Done Adding Event Listeners
+        builder.addEventListeners(
+            // Announcement Event Listeners
+            new MemberJoin(),
+            
+            // Channel System Listeners
+            new ChannelCreate(),
+            new ChannelInvite(),
+            new ChannelCleanup(),
 
-        for (int i = 0; i < 1; i++) {
-            jda.useSharding(i, 1).build();
-        }
+            // Guild Join Event Listeners
+            new CreateOptionsTable(),
+            new JoinAnnouncement(),
+
+            // Information Event Listeners
+            new BotInfo(),
+            new Help(),
+            new PermissionHelp(),
+            new ServerInfo(),
+            new UserInfo(),
+
+            // Moderation Event Listeners
+            new Ban(),
+            new Clear(),
+            new Kick(),
+            new Mute(),
+            new Softban(),
+            new Unmute(),
+            
+            // Music Event Listeners
+            new ClearQueue(),
+            new Join(),
+            new Leave(),
+            new Loop(),
+            new Lyrics(),
+            new NowPlaying(),
+            new Pause(),
+            new PauseLeave(),
+            new Play(),
+            new Queue(),
+            new QueueLoop(),
+            new QueueMove(),
+            new QueueRemove(),
+            new QueueSkip(),
+            new RemoveDupes(),
+            new Replay(),
+            new Resume(),
+            new Search(),
+            new Settings(),
+            new Skip(),
+            new Soundcloud(),
+            new Stop(),
+            new TimeSkip(),
+            new Twitch(),
+            new Volume(),
+
+            // Bot Owner Event Listners
+            new Announcement(),
+            new BlacklistMember(),
+
+            // Server Owner Event Listeners
+            new LeaveGuild(),
+            new SetPrefix(),
+            new Toggles()
+
+        );
+
+        builder.setStatus(OnlineStatus.ONLINE);
+        builder.setGameProvider(id -> Game.watching("Archery | " + Info.PREFIX + "help | Shard Number " + id));
+        builder.setShardsTotal(shardCount);
+
+        builder.build();
 
         System.out.print("Bullseye! " + botName + " is online!");
 
