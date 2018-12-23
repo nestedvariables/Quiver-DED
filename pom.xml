@@ -5,7 +5,7 @@
 
   <groupId>com.nestedvariables.dev.Discord</groupId>
   <artifactId>Quiver</artifactId>
-  <version>0.0.60</version>
+  <version>0.0.88</version>
 
   <name>Quiver</name>
   <url>https://nestedvariables.tk/quiver</url>
@@ -33,7 +33,7 @@
       <scope>compile</scope>
     </dependency>
 
-    <!-- Lavaplayer Audio Sending and Controller for JDA-->
+    <!-- Lavaplayer Audio Sending and Controller for JDA -->
     <dependency>
       <groupId>com.sedmelluq</groupId>
       <artifactId>lavaplayer</artifactId>

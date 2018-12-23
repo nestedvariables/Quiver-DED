@@ -25,7 +25,7 @@ public class BlacklistMember extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split(" ");
         if (args[0].equalsIgnoreCase(Info.PREFIX + "blacklist")) {
 
-            if (Bools.isBotOwnerGuild(event)) {
+            if (Bools.isBotOwner(event)) {
                 if (args.length < 2) {
                     EmbedBuilder nullUser = new EmbedBuilder();
 

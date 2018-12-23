@@ -55,7 +55,7 @@ public class Ban extends ListenerAdapter {
 
                         ResultSet rs = stmt.executeQuery("SELECT * FROM `bans`");
                         while (rs.next())
-                            banID = rs.getString(3);
+                            banID = rs.getString("`ban_id`");
                             
                         if (banID == null) {
                             oldID = 0;
@@ -65,7 +65,7 @@ public class Ban extends ListenerAdapter {
 
                         while (rs.next())
                             stmt.execute(
-                                    "INSERT INTO `bans`(`discord_id` , `discord_username` , `ban_id` , `ban_reason` , `guild_name` , `guild_id`)"
+                                    "INSERT INTO `bans`(`discord_id` , `discord_username` , `ban_id` , `ban_reason` , `guild_name` , `guild_id`,`ban_executor`,`ban_executor_id`)"
                                             + "VALUES('" + memberToBan.getUser().getId().toString() + "','"
                                             + memberToBan.getUser().getName().toString() + "#"
                                             + memberToBan.getUser().getDiscriminator().toString() + "' , '" + newBanID.toString()

@@ -11,7 +11,7 @@ public class Unblacklist extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
         if (args[0].equalsIgnoreCase(Info.PREFIX + "unblacklist")) {
-            if(Bools.isBotOwnerGuild(event)) {
+            if(Bools.isBotOwner(event)) {
                 
             }
         }

@@ -10,6 +10,7 @@ com/nestedvariables/dev/Discord/Quiver/events/moderation/Softban.class
 com/nestedvariables/dev/Discord/Quiver/events/channelsystem/ChannelCreate.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Soundcloud.class
 com/nestedvariables/dev/Discord/Quiver/events/information/ServerInfo.class
+com/nestedvariables/dev/Discord/Quiver/Prefix.class
 com/nestedvariables/dev/Discord/Quiver/Main.class
 com/nestedvariables/dev/Discord/Quiver/events/guildjoinevents/JoinAnnouncement.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Lyrics.class
@@ -43,6 +44,7 @@ com/nestedvariables/dev/Discord/Quiver/events/music/Resume.class
 com/nestedvariables/dev/Discord/Quiver/events/information/PermissionHelp.class
 com/nestedvariables/dev/Discord/Quiver/Info.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Playlist.class
+com/nestedvariables/dev/Discord/Quiver/events/serverowner/SetPrefix.class
 com/nestedvariables/dev/Discord/Quiver/events/announcements/MemberJoin.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Replay.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Twitch.class
