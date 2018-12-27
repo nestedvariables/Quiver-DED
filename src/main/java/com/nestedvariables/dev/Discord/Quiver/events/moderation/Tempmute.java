@@ -18,22 +18,14 @@ import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class Ban extends ListenerAdapter {
-
-    String banID;
-    String banReason = "";
-    Integer oldID;
+public class Tempmute extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
-
-        EmbedBuilder error = new EmbedBuilder();
-
-        error.setDescription("An internal server error occured on our end. \nPlease join our [Support Server](https://discord.gg/p9xj9UD \"Quiver Support Discord Server\")");
-        error.setColor(Info.ERROR_RED);
-        error.setFooter("Quiver System Error", Info.LOGO);
-
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "ban")) {
+        if (args[0].equalsIgnoreCase(Info.LOGO + "tempmute")) {
+            String banID = "";
+            String banReason = "";
+            Integer oldID = 0;
             SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
             Date date = new Date();
             event.getMessage().delete().queue();
@@ -62,10 +54,10 @@ public class Ban extends ListenerAdapter {
                         ResultSet rs = stmt.executeQuery("SELECT * FROM `bans`");
                         while (rs.next())
                             banID = rs.getString("`ban_id`");
-                            
-                        if (banID == null) {
-                            oldID = 0;
-                        }
+
+                            if (banID == null) {
+                               oldID = 0;
+                            }
 
                         Integer newBanID = oldID + 1;
 
@@ -74,9 +66,9 @@ public class Ban extends ListenerAdapter {
                                     "INSERT INTO `bans`(`discord_id` , `discord_username` , `ban_id` , `ban_reason` , `guild_name` , `guild_id`,`ban_executor`,`ban_executor_id`)"
                                             + "VALUES('" + memberToBan.getUser().getId().toString() + "','"
                                             + memberToBan.getUser().getName().toString() + "#"
-                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '" + newBanID.toString()
-                                            + "','" + "Ban Executor Didn\'t Specify a Reason" + "','"
-                                            + event.getGuild().getName().toString() + "','"
+                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '"
+                                            + newBanID.toString() + "','" + "Ban Executor Didn\'t Specify a Reason"
+                                            + "','" + event.getGuild().getName().toString() + "','"
                                             + event.getMember().getUser().getId().toString() + "')");
 
                         event.getGuild().getController()
@@ -124,19 +116,20 @@ public class Ban extends ListenerAdapter {
                         while (rs.next())
                             banID = rs.getString(3);
 
-                            if (banID == null) {
-                                oldID = 0;
-                            }
-    
-                            Integer newBanID = oldID + 1;
+                        if (banID == null) {
+                            oldID = 0;
+                        }
+
+                        Integer newBanID = oldID + 1;
 
                         while (rs.next())
                             stmt.execute(
                                     "INSERT INTO `bans`(`discord_id` , `discord_username` , `ban_id` , `ban_reason` , `guild_name` , `guild_id` , `ban_date`)"
                                             + "VALUES('" + memberToBan.getUser().getId().toString() + "','"
                                             + memberToBan.getUser().getName().toString() + "#"
-                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '" + newBanID.toString()
-                                            + "','" + banReason + "','" + event.getGuild().getName().toString() + "','"
+                                            + memberToBan.getUser().getDiscriminator().toString() + "' , '"
+                                            + newBanID.toString() + "','" + banReason + "','"
+                                            + event.getGuild().getName().toString() + "','"
                                             + event.getMember().getUser().getId().toString() + "','"
                                             + event.getGuild().getId().toString() + "','" + dateFormat.format(date)
                                             + "'");
@@ -161,9 +154,6 @@ public class Ban extends ListenerAdapter {
                         banReason = "";
                         conn.close();
                     } catch (SQLException sqle) {
-                        event.getChannel().sendMessage(error.build()).queue((message) -> {
-                            message.delete().queueAfter(10, TimeUnit.SECONDS);
-                        });
                         event.getJDA().getGuildById("488137783127572491").getTextChannelById("517756124846358529")
                                 .sendMessage(event.getJDA().getGuildById("488137783127572491")
                                         .getRoleById("489269871306080257").getAsMention()
@@ -185,6 +175,7 @@ public class Ban extends ListenerAdapter {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);
                 });
             }
+
         }
     }
 }

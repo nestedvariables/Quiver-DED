@@ -15,9 +15,8 @@ public class CreateOptionsTable extends ListenerAdapter {
     public void onGuildJoin(GuildJoinEvent event) {
         String region = event.getGuild().getRegionRaw();
         String defaultLang = "en_US";
+
         try {
-            
-            System.out.println(region);
             switch (region) {
                 case "us-east":
                     defaultLang = "en_US";

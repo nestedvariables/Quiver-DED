@@ -20,15 +20,18 @@ com/nestedvariables/dev/Discord/Quiver/events/moderation/Kick.class
 com/nestedvariables/dev/Discord/Quiver/events/serverowner/Toggles.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Join.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Volume.class
+com/nestedvariables/dev/Discord/Quiver/events/moderation/Tempmute.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Search.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Queue.class
 com/nestedvariables/dev/Discord/Quiver/events/guildjoinevents/CreateOptionsTable.class
 com/nestedvariables/dev/Discord/Quiver/events/music/AudioPlayerSendHandler.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Skip.class
+com/nestedvariables/dev/Discord/Quiver/events/owner/ErrorTest.class
 com/nestedvariables/dev/Discord/Quiver/events/music/QueueMove.class
 com/nestedvariables/dev/Discord/Quiver/events/music/QueueRemove.class
 com/nestedvariables/dev/Discord/Quiver/events/owner/BlacklistMember.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Leave.class
+com/nestedvariables/dev/Discord/Quiver/events/misc/RegionChange.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Stop.class
 com/nestedvariables/dev/Discord/Quiver/events/music/QueueLoop.class
 com/nestedvariables/dev/Discord/Quiver/events/information/Help.class
@@ -46,6 +49,7 @@ com/nestedvariables/dev/Discord/Quiver/Info.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Playlist.class
 com/nestedvariables/dev/Discord/Quiver/events/serverowner/SetPrefix.class
 com/nestedvariables/dev/Discord/Quiver/events/announcements/MemberJoin.class
+com/nestedvariables/dev/Discord/Quiver/events/owner/CodeBlock.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Replay.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Twitch.class
 com/nestedvariables/dev/Discord/Quiver/events/music/RemoveDupes.class

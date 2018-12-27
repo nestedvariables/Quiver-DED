@@ -12,6 +12,7 @@ import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
 import com.nestedvariables.dev.Discord.Quiver.events.guildjoinevents.*;
 import com.nestedvariables.dev.Discord.Quiver.events.information.*;
+import com.nestedvariables.dev.Discord.Quiver.events.misc.*;
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
 import com.nestedvariables.dev.Discord.Quiver.events.music.*;
 import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
@@ -101,6 +102,8 @@ public class Main {
             // Bot Owner Event Listners
             new Announcement(),
             new BlacklistMember(),
+            new CodeBlock(),
+            new ErrorTest(),
 
             // Server Owner Event Listeners
             new LeaveGuild(),

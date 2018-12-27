@@ -34,6 +34,7 @@ public class Toggles extends ListenerAdapter {
                         event.getChannel().sendMessage(nullArgs.build()).queue((message) -> {
                             message.delete().queueAfter(10, TimeUnit.SECONDS);
                         });
+                        // Toggle for the Channel System
                     } else if (args[1].equalsIgnoreCase("channels") || args[1].equalsIgnoreCase("channelsystem")) {
 
                         if(Bools.isChannelSystemEnabled(event)){
