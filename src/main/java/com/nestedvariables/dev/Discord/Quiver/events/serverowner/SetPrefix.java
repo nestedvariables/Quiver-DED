@@ -18,7 +18,7 @@ public class SetPrefix extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "setprefix")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "setprefix")) {
             if (args.length < 2) {
 
                 EmbedBuilder nullArgs = new EmbedBuilder();

@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -33,7 +34,7 @@ public class Ban extends ListenerAdapter {
         error.setColor(Info.ERROR_RED);
         error.setFooter("Quiver System Error", Info.LOGO);
 
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "ban")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "ban")) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
             Date date = new Date();
             event.getMessage().delete().queue();

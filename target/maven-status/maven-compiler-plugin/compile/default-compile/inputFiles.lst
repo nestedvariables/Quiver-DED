@@ -62,4 +62,5 @@
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/ClearQueue.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/Search.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/music/QueueRemove.java
+/home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/owner/StatsUpdate.java
 /home/exzibyte/Development/Workspaces/Oxygen Workspace/Quiver/Quiver/src/main/java/com/nestedvariables/dev/Discord/Quiver/events/misc/GoogleVoice.java

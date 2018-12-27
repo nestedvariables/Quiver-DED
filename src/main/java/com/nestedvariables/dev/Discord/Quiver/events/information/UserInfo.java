@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -16,7 +16,7 @@ public class UserInfo extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "userinfo")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "userinfo")) {
 
             try { 
                 Connection conn = SQLDriver.getConn();

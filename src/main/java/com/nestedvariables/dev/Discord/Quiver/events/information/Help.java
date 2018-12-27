@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Bools;
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -15,7 +16,7 @@ public class Help extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "help")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "help")) {
             Random random = new Random();
             int randomColor = random.nextInt(0xffffff + 1);
             if (Bools.isBlacklisted(event)) {
@@ -25,12 +26,12 @@ public class Help extends ListenerAdapter {
 
                 owner.setTitle(":tools: Owner Help");
                 owner.setColor(randomColor);
-                owner.addField(Info.PREFIX + "announce <announcement>", "Will send a message to the owner of every server Quiver is in.", false);
-                owner.addField(Info.PREFIX + "blacklist <user>", "Will blacklist a user from using Quiver", false);
-                owner.addField(Info.PREFIX + "botinfo", "Will display all information on the bot. \nOptionally use: `--dm` to send in DM.", false);
-                owner.addField(Info.PREFIX + "help", "Will show this embed. \nOptionally use: `--dm` to send in DM.", false);
-                owner.addField(Info.PREFIX + "serverinfo", "Will send an embed with information about the server the command is used in. \nOptionally use: `--dm` to send in DM", false);
-                owner.addField(Info.PREFIX + "userinfo", "Will send an embed with information about the user that ran the command \nOptionally use: `--dm` to send in DM", false);
+                owner.addField(Prefix.getPrefix(event) + "announce <announcement>", "Will send a message to the owner of every server Quiver is in.", false);
+                owner.addField(Prefix.getPrefix(event) + "blacklist <user>", "Will blacklist a user from using Quiver", false);
+                owner.addField(Prefix.getPrefix(event) + "botinfo", "Will display all information on the bot. \nOptionally use: `--dm` to send in DM.", false);
+                owner.addField(Prefix.getPrefix(event) + "help", "Will show this embed. \nOptionally use: `--dm` to send in DM.", false);
+                owner.addField(Prefix.getPrefix(event) + "serverinfo", "Will send an embed with information about the server the command is used in. \nOptionally use: `--dm` to send in DM", false);
+                owner.addField(Prefix.getPrefix(event) + "userinfo", "Will send an embed with information about the user that ran the command \nOptionally use: `--dm` to send in DM", false);
                 owner.setFooter("Quiver's Owner Help", Info.LOGO);
 
                 if (args.length < 2) {
@@ -66,10 +67,10 @@ public class Help extends ListenerAdapter {
 
                 regular.setTitle("Default Help");
                 regular.setColor(randomColor);
-                regular.addField(Info.PREFIX + "botinfo", "Will display information on the bot. \nOptionally use: `--dm` to send in DM", false);
-                regular.addField(Info.PREFIX + "help" , "Will display this. \nOptionally use `--dm` to send in DM", false);
-                regular.addField(Info.PREFIX + "serverinfo", "Will display information on the server the command is used in.", false);
-                regular.addField(Info.PREFIX + "userinfo", "Will display information about the user that ran the command \nOptionally tag a member of the server to get information on them", false);
+                regular.addField(Prefix.getPrefix(event) + "botinfo", "Will display information on the bot. \nOptionally use: `--dm` to send in DM", false);
+                regular.addField(Prefix.getPrefix(event) + "help" , "Will display this. \nOptionally use `--dm` to send in DM", false);
+                regular.addField(Prefix.getPrefix(event) + "serverinfo", "Will display information on the server the command is used in.", false);
+                regular.addField(Prefix.getPrefix(event) + "userinfo", "Will display information about the user that ran the command \nOptionally tag a member of the server to get information on them", false);
                 regular.setFooter("Quiver Default User Help", Info.LOGO);
 
                 event.getChannel().sendMessage(regular.build()).queue((message) -> {

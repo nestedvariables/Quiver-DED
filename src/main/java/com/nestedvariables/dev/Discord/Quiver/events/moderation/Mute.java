@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -21,7 +22,7 @@ public class Mute extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "mute")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "mute")) {
             List<Role> roles = event.getGuild().getRolesByName("Muted", true);
 
             if (roles.size() < 1) {

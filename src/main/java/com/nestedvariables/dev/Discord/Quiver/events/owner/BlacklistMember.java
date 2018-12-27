@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Bools;
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -23,7 +24,7 @@ public class BlacklistMember extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "blacklist")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "blacklist")) {
 
             if (Bools.isBotOwner(event)) {
                 if (args.length < 2) {

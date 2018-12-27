@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.events.music.AudioPlayerSendHandler;
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -22,7 +23,7 @@ public class Play extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "play")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "play")) {
             if (event.getMember().getVoiceState().inVoiceChannel() == false) {
                 EmbedBuilder noChannel = new EmbedBuilder();
 

@@ -1,6 +1,7 @@
 com/nestedvariables/dev/Discord/Quiver/SQLDriver_Template.class
 com/nestedvariables/dev/Discord/Quiver/Bools.class
 com/nestedvariables/dev/Discord/Quiver/events/music/Pause.class
+com/nestedvariables/dev/Discord/Quiver/events/owner/StatsUpdate.class
 com/nestedvariables/dev/Discord/Quiver/events/moderation/Ban.class
 com/nestedvariables/dev/Discord/Quiver/events/music/TrackScheduler.class
 com/nestedvariables/dev/Discord/Quiver/events/information/UserInfo.class

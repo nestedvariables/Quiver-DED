@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Bools;
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
@@ -19,7 +20,7 @@ public class Announcement extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
-        if (args[0].equalsIgnoreCase(Info.PREFIX + "announce") || args[0].equalsIgnoreCase(Info.PREFIX + "ann")) {
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "announce") || args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "ann")) {
             if(Bools.isBotOwner(event)) {
                 if(args.length < 2){
                     EmbedBuilder nullReason = new EmbedBuilder();

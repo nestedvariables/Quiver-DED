@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -19,7 +20,7 @@ public class Softban extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
-        if(args[0].equalsIgnoreCase(Info.PREFIX + "softban")){
+        if(args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "softban")){
             Invite invite = event.getGuild().getDefaultChannel().createInvite().setMaxAge(0).setMaxUses(1).setUnique(true).complete();
             event.getMessage().delete().queue();
             if (event.getMember().hasPermission(Permission.BAN_MEMBERS)) {

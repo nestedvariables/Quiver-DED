@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -18,7 +19,7 @@ public class Unban extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split(" ");
 
-        if(args[0].equalsIgnoreCase(Info.PREFIX + "unban")){
+        if(args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "unban")){
             if(event.getMember().hasPermission(Permission.BAN_MEMBERS)) {
                 if(args.length < 2){
                     EmbedBuilder nullUser = new EmbedBuilder();
