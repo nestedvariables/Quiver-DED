@@ -11,32 +11,25 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class MemberJoin extends ListenerAdapter {
 
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+        Random random = new Random();
+        int randomColor = random.nextInt(0xffffff + 1);
+        EmbedBuilder join = new EmbedBuilder();
+        join.setColor(randomColor);
+        join.setThumbnail(event.getMember().getUser().getAvatarUrl());
+
         if (event.getMember().getUser().isBot()) {
-            Random random = new Random();
-            int randomColor = random.nextInt(0xffffff + 1);
-            EmbedBuilder bot = new EmbedBuilder();
-
-            bot.setTitle(":robot: New Bot!");
-            bot.setColor(randomColor);
-            bot.setThumbnail(event.getMember().getUser().getAvatarUrl());
-            bot.addField("New Bot's Name", event.getMember().getAsMention(), false);
-            bot.setFooter("Quiver New Bot Welcome", Info.LOGO);
-
-            event.getGuild().getDefaultChannel().sendMessage(bot.build()).queue();
-        } else {
-            Random random = new Random();
-            int randomColor = random.nextInt(0xffffff + 1);
-            EmbedBuilder user = new EmbedBuilder();
-
-            user.setTitle("New Member!");
-            user.setColor(randomColor);
-            user.setThumbnail(event.getMember().getUser().getAvatarUrl());
-            user.addField("New User's Name", event.getMember().getAsMention(),false);
-            user.setFooter("Quiver New Member Welcome", Info.LOGO);
-
-            event.getGuild().getDefaultChannel().sendMessage(user.build()).queue();
-
+            join.setTitle(":robot: New Bot!");
+            join.addField("New bot's name", event.getMember().getAsMention(), false);
+            join.setFooter("Quiver New Bot Welcome", Info.LOGO);
+        } 
+        else {
+            join.setTitle("New Member!");
+            join.addField("New member's name", event.getMember().getAsMention(), false);
+            join.setFooter("Quiver New Member Welcome", Info.LOGO);
         }
-    }
 
+        // Send and clear embed
+        event.getGuild().getDefaultChannel().sendMessage(join.build()).queue();
+        join.clear();
+    }
 }
