@@ -18,7 +18,7 @@ public class Announcement extends ListenerAdapter {
     String announcement = "";
  
     public void onMessageReceived(MessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "announce") || args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "ann")) {
             if(Bools.isBotOwner(event)) {

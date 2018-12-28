@@ -15,6 +15,7 @@ import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
+
 public class Main {
 
     static String botName = "Quiver";
@@ -23,7 +24,8 @@ public class Main {
     public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException {
         DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 
-        builder.setToken(args[0]);
+        // Fetch token from token file
+        builder.setToken(Token.token);
 
         builder.addEventListeners(
             // Announcement Event Listeners
@@ -34,7 +36,6 @@ public class Main {
             new ChannelCreate(),
             new ChannelInvite(),
             
-
             // Guild Join Event Listeners
             new CreateOptionsTable(),
             new JoinAnnouncement(),

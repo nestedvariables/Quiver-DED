@@ -19,7 +19,7 @@ public class ChannelCreate extends ListenerAdapter {
         Boolean nsfwBool;
 
         public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-                String[] args = event.getMessage().getContentRaw().split(" ");
+                String[] args = event.getMessage().getContentRaw().split("\\s+");
                 if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "privatechannel")) {
                         if (Bools.isBlacklisted(event)) {
                                 event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();

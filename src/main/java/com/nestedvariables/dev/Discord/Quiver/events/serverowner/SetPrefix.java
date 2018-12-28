@@ -17,7 +17,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class SetPrefix extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
         if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "setprefix")) {
             if (args.length < 2) {
 

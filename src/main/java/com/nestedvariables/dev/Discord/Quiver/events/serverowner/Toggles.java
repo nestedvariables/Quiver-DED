@@ -18,7 +18,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class Toggles extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
         if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "toggle")) {
             if (Bools.isServerOwner(event) || Bools.isAdministrator(event)) {
                 try {
