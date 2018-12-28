@@ -14,7 +14,7 @@ public class JoinAnnouncement extends ListenerAdapter {
         // Message saying thank you for inviting the bot and saying a message is about
         // to be sent with information on commands and how to run them
         event.getGuild().getDefaultChannel().sendMessage("Hi! I'm " + event.getJDA().getSelfUser().getAsMention()
-                + ", and I'd like to thank you for welcoming me into your discord guild! \nHere is information about what I can do and how to do it:")
+                + ", and I'd like to thank you for welcoming me into your Discord server! \nHere's information about what I can do:")
                 .queue();
 
         // Random color generator for embed
@@ -31,5 +31,6 @@ public class JoinAnnouncement extends ListenerAdapter {
 
         // Send page 1 of command information embed
         event.getGuild().getDefaultChannel().sendMessage(eb1.build()).queue();
+        eb1.clear(); // Clear embed
     }
 }
