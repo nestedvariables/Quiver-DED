@@ -15,7 +15,7 @@ public class UserInfo extends ListenerAdapter {
     Connection sqlCon;
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
         if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "userinfo")) {
 
             try { 

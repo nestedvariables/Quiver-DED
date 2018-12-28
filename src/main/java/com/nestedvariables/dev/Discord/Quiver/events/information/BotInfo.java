@@ -12,9 +12,10 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class BotInfo extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
         
-        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "botinfo") || args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "quiver")) {            Random random = new Random();
+        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "botinfo") || args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "quiver")) {            
+            Random random = new Random();
             int randomColor = random.nextInt(0xffffff + 1);
 
             EmbedBuilder eb = new EmbedBuilder();
@@ -31,6 +32,7 @@ public class BotInfo extends ListenerAdapter {
             eb.setFooter("Quiver Bot Information", Info.LOGO);
 
             event.getChannel().sendMessage(eb.build()).queue();
+            eb.clear();
         }
     }
 }

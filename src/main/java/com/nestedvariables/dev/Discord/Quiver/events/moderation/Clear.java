@@ -19,7 +19,7 @@ public class Clear extends ListenerAdapter {
     String messageDeleteS;
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "clear") || args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "c")) {
             event.getMessage().delete().queue();

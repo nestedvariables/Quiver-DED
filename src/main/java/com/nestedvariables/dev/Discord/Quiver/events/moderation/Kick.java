@@ -17,7 +17,7 @@ public class Kick extends ListenerAdapter {
     String kickReason = "";
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "kick")) {
             if (event.getMember().hasPermission(Permission.KICK_MEMBERS)) {

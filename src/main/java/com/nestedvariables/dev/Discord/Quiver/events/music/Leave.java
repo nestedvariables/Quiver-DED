@@ -8,7 +8,7 @@ import com.nestedvariables.dev.Discord.Quiver.Prefix;
 public class Leave extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if(args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "leave") || args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "fuckoff")){
             if(event.getGuild().getMemberById(event.getJDA().getSelfUser().getId()).getVoiceState()

@@ -18,7 +18,7 @@ public class Unmute extends ListenerAdapter {
     String muteReason = "";
     
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "unmute")) {
 

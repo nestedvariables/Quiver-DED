@@ -18,7 +18,7 @@ public class Softban extends ListenerAdapter {
     String banReason = " ";
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if(args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "softban")){
             Invite invite = event.getGuild().getDefaultChannel().createInvite().setMaxAge(0).setMaxUses(1).setUnique(true).complete();

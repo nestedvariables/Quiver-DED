@@ -26,7 +26,7 @@ public class Ban extends ListenerAdapter {
     Integer oldID;
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String[] args = event.getMessage().getContentRaw().split(" ");
+        String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         EmbedBuilder error = new EmbedBuilder();
 
