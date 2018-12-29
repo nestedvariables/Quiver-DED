@@ -1,7 +1,5 @@
 package com.nestedvariables.dev.Discord.Quiver;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-
 public class Info {
     public static String PREFIX = "Q!";
     public static String LOGO = "https://raw.githubusercontent.com/NestedVariables/Quiver/master/Quiver.png";

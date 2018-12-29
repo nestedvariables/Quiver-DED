@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.nestedvariables.dev.Discord.Quiver.Embeds;
 import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Logger;
 import com.nestedvariables.dev.Discord.Quiver.Prefix;
