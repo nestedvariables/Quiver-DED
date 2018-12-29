@@ -12,14 +12,17 @@ import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
 import com.nestedvariables.dev.Discord.Quiver.events.serverowner.*;
 
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 public class Main {
 
-    static String botName = "Quiver";
+    public static String botName = "Quiver";
+    // For the most part set this to -1
     public static Integer shardCount = -1;
+    public static ShardManager shardManager;
 
     public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException {
         DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
@@ -89,7 +92,7 @@ public class Main {
             new BlacklistMember(),
             new CodeBlock(),
             new ErrorTest(),
-            new StatsUpdate(),
+            //new StatsUpdate(),
             new Unblacklist(),
 
             // Server Owner Event Listeners
@@ -103,9 +106,9 @@ public class Main {
         builder.setGameProvider(id -> Game.watching("Archery | " + Info.PREFIX + "help | Shard Number " + id));
         builder.setShardsTotal(shardCount);
 
-        builder.build();
+        shardManager = builder.build();
 
-        System.out.print("Bullseye! " + botName + " is online!");
+        System.out.print("\n\nBullseye! " + botName + " is online!\n\n");
 
     }
 

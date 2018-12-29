@@ -5,6 +5,7 @@
 target/
 bin/
 src/main/java/com/nestedvariables/dev/Discord/Quiver/SQLDriver.java
+src/main/java/com/nestedvariables/dev/Discord/Quiver/Token.java
 My-Google-Assistant-f04dd100ade1.json
 *.png
 LICENSE

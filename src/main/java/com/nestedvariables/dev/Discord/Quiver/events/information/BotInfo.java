@@ -3,6 +3,7 @@ package com.nestedvariables.dev.Discord.Quiver.events.information;
 import java.util.Random;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Main;
 import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -26,8 +27,8 @@ public class BotInfo extends ListenerAdapter {
             eb.setDescription(":white_medium_small_square: Username: " + event.getJDA().getSelfUser().getAsMention() + "#" + event.getJDA().getSelfUser().getDiscriminator().toString()
             + "             :white_medium_small_square: Prefix: " + Prefix.getPrefix(event)
             + " \n:white_medium_small_square: User ID: " + event.getJDA().getSelfUser().getId().toString()
-            + " \n:white_medium_small_square: Guild Count: " + event.getJDA().getGuilds().size()
-            + " \n:white_medium_small_square: User Count: " + event.getJDA().getUsers().size()
+            + " \n:white_medium_small_square: Guild Count: " + Main.shardManager.getGuilds().size()
+            + " \n:white_medium_small_square: User Count: " + Main.shardManager.getUsers().size()
             + " \n:white_medium_small_square: Quiver's Home Guild: [Invite](https://discord.gg/432hTd4 \"Quiver's Home Discord Server\")");
             eb.setFooter("Quiver Bot Information", Info.LOGO);
 
