@@ -2,6 +2,7 @@ package com.nestedvariables.dev.Discord.Quiver.events.information;
 
 import java.util.concurrent.TimeUnit;
 
+import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
 import net.dv8tion.jda.core.EmbedBuilder;
