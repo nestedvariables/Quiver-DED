@@ -2,9 +2,9 @@ package com.nestedvariables.dev.Discord.Quiver;
 
 import javax.security.auth.login.LoginException;
 
+import com.nestedvariables.dev.Discord.Quiver.events.GuildJoin;
 import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
-import com.nestedvariables.dev.Discord.Quiver.events.guildjoinevents.*;
 import com.nestedvariables.dev.Discord.Quiver.events.information.*;
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
 import com.nestedvariables.dev.Discord.Quiver.events.music.*;
@@ -37,8 +37,7 @@ public class Main {
             new ChannelInvite(),
             
             // Guild Join Event Listeners
-            new CreateOptionsTable(),
-            new JoinAnnouncement(),
+            new GuildJoin(),
 
             // Information Event Listeners
             new BotInfo(),

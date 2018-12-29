@@ -12,6 +12,8 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class Prefix extends ListenerAdapter {
 
+    // TODO: Merge into GuildData.java
+
     public static String getPrefix(GuildMessageReceivedEvent event) {
         String prefix = "";
         try {
