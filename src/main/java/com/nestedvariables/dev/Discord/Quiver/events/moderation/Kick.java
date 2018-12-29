@@ -3,8 +3,8 @@ package com.nestedvariables.dev.Discord.Quiver.events.moderation;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
-import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -19,7 +19,7 @@ public class Kick extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "kick")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "kick")) {
             if (event.getMember().hasPermission(Permission.KICK_MEMBERS)) {
                 if (args.length < 2) {
                     EmbedBuilder nullUser = new EmbedBuilder();

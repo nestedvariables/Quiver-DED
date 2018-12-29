@@ -1,7 +1,8 @@
-    package com.nestedvariables.dev.Discord.Quiver;
+package com.nestedvariables.dev.Discord.Quiver;
 
 import javax.security.auth.login.LoginException;
 
+import com.nestedvariables.dev.Discord.Quiver.commands.test;
 import com.nestedvariables.dev.Discord.Quiver.events.GuildJoin;
 import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
@@ -98,8 +99,10 @@ public class Main {
             // Server Owner Event Listeners
             new LeaveGuild(),
             new SetPrefix(),
-            new Toggles()
+            new Toggles(),
 
+            // Test command
+            new test()
         );
 
         builder.setStatus(OnlineStatus.ONLINE);

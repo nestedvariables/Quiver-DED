@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
-import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -21,7 +21,7 @@ public class Clear extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "clear") || args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "c")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "clear") || args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "c")) {
             event.getMessage().delete().queue();
             if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                 

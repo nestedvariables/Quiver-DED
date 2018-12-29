@@ -3,7 +3,6 @@ package com.nestedvariables.dev.Discord.Quiver.events.information;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
-import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -14,7 +13,7 @@ public class PermissionHelp extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if(args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "permhelp")) {
+        if(args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "permhelp")) {
             if(event.getMember().isOwner()){
 
             } else {

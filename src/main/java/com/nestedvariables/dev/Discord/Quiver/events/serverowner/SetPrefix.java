@@ -6,10 +6,9 @@ import java.sql.Statement;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
-import com.nestedvariables.dev.Discord.Quiver.Prefix;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
-
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -18,12 +17,12 @@ public class SetPrefix extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "setprefix")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "setprefix")) {
             if (args.length < 2) {
 
                 EmbedBuilder nullArgs = new EmbedBuilder();
 
-                nullArgs.setDescription(event.getMember().getAsMention() + ", You didn't specify what you want your new prefix to be! \n\nUsage: " + Prefix.getPrefix(event) + "setprefix <new prefix>");
+                nullArgs.setDescription(event.getMember().getAsMention() + ", You didn't specify what you want your new prefix to be! \n\nUsage: " + GuildData.getPrefix(event.getGuild().getId()) + "setprefix <new prefix>");
                 nullArgs.setColor(Info.ERROR_RED);
                 nullArgs.setFooter("Quiver Custom Prefix Error", Info.LOGO);
 

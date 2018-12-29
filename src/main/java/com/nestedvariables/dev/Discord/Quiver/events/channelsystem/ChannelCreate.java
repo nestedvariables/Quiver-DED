@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Bools;
+import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
-import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -20,7 +20,7 @@ public class ChannelCreate extends ListenerAdapter {
 
         public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
                 String[] args = event.getMessage().getContentRaw().split("\\s+");
-                if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "privatechannel")) {
+                if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "privatechannel")) {
                         if (Bools.isBlacklisted(event)) {
                                 event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();
                         } else {
@@ -30,7 +30,7 @@ public class ChannelCreate extends ListenerAdapter {
 
                                                 nullArgs.setTitle("Invalid Usage");
                                                 nullArgs.setColor(Info.ERROR_RED);
-                                                nullArgs.setDescription("Correct Usage: `" + Prefix.getPrefix(event) + "privatechannel <slowmode time> {-nsfw}` \nKey:\n<> | Required\n{} | Optional");
+                                                nullArgs.setDescription("Correct Usage: `" + GuildData.getPrefix(event.getGuild().getId()) + "privatechannel <slowmode time> {-nsfw}` \nKey:\n<> | Required\n{} | Optional");
                                                 nullArgs.setFooter("Quiver Invalid Usage", Info.LOGO);
 
                                                 event.getChannel().sendMessage(nullArgs.build()).queue((message) -> {
@@ -57,7 +57,7 @@ public class ChannelCreate extends ListenerAdapter {
                                                 event.getGuild().getController().createCategory("Private Channels").queue();
                                                 event.getGuild().getController().createTextChannel(event.getMember().getEffectiveName() + "s-private-text-channel").queue((channel) -> {
                                                                         channel.getManager().setParent(event.getGuild().getCategoriesByName("Private Channels", true).get(0));
-                                                                        channel.getManager().setTopic(event.getMember().getEffectiveName().toString() + "'s Private Text Channel \n\nOwner: " + event.getMember().getAsMention() + "\nInvited: None \n\nTo invite users the owner of the channel must run the command " + Prefix.getPrefix(event)  + "privateinvite <mention a user>");
+                                                                        channel.getManager().setTopic(event.getMember().getEffectiveName().toString() + "'s Private Text Channel \n\nOwner: " + event.getMember().getAsMention() + "\nInvited: None \n\nTo invite users the owner of the channel must run the command " + GuildData.getPrefix(event.getGuild().getId())  + "privateinvite <mention a user>");
                                                                         channel.getManager().setSlowmode(slowmodeInt); 
                                                                         channel.getManager().setNSFW(nsfwBool);
                                                                         channel.getManager().putPermissionOverride(event.getMember(), pTextAllow, pDeny).queue();
@@ -72,7 +72,7 @@ public class ChannelCreate extends ListenerAdapter {
                                         } else {
                                                 event.getGuild().getController().createTextChannel(event.getMember().getEffectiveName() + "'s-private-text-channel").queue((channel) -> {
                                                                         channel.getManager().setParent(event.getGuild().getCategoriesByName("Private Channels", true).get(0));
-                                                                        channel.getManager().setTopic(event.getMember().getEffectiveName().toString() + "'s Private Text Channel \n\nOwner: " + event.getMember().getAsMention() + "\nInvited: None \n\nTo invite users the owner of the channel must run the command " + Prefix.getPrefix(event) + "privateinvite <mention a user>");
+                                                                        channel.getManager().setTopic(event.getMember().getEffectiveName().toString() + "'s Private Text Channel \n\nOwner: " + event.getMember().getAsMention() + "\nInvited: None \n\nTo invite users the owner of the channel must run the command " + GuildData.getPrefix(event.getGuild().getId()) + "privateinvite <mention a user>");
                                                                         channel.getManager().setSlowmode(slowmodeInt);
                                                                         channel.getManager().setNSFW(nsfwBool);
                                                                         channel.getManager().putPermissionOverride(event.getMember(), pTextAllow, pDeny).queue();

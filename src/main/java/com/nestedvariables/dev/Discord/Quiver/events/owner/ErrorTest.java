@@ -3,8 +3,8 @@ package com.nestedvariables.dev.Discord.Quiver.events.owner;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Bools;
+import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
-import com.nestedvariables.dev.Discord.Quiver.Prefix;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -14,7 +14,7 @@ public class ErrorTest extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(Prefix.getPrefix(event) + "error")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "error")) {
             if (Bools.isBotOwner(event)) {
                 EmbedBuilder error = new EmbedBuilder();
 

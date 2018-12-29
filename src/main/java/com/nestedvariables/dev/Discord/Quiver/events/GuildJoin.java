@@ -6,7 +6,6 @@ import java.sql.Statement;
 
 import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Logger;
-import com.nestedvariables.dev.Discord.Quiver.Prefix;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -21,7 +20,7 @@ public class GuildJoin extends ListenerAdapter {
         introduction.setColor(GuildData.embedColor());
         introduction.setDescription("Phew, I made it over the ~waves~ intact. Oh, hey there, I'm " + event.getJDA().getSelfUser().getAsMention() + " and I'd like to thank you for adding me to your Discord server, it feels pretty toasty in here. Here's some stuff you should know about me:");
         introduction.addField("I'm known as", event.getJDA().getSelfUser().getAsMention(), true);
-        introduction.addField("My prefix is", Prefix.getPrefix(event), true);event.getJDA().getSelfUser().getAsMention();
+        introduction.addField("My prefix is", GuildData.getPrefix(event.getGuild().getId()), true);event.getJDA().getSelfUser().getAsMention();
 
         event.getGuild().getDefaultChannel().sendMessage(introduction.build()).queue();
         introduction.clear();
@@ -42,7 +41,7 @@ public class GuildJoin extends ListenerAdapter {
             }
         }
         catch (Exception e) {
-            Logger.log(e);
+            Logger.log(e.toString());
             event.getGuild().getDefaultChannel().sendMessage("blin vadim caused an error").queue();
         }
     }

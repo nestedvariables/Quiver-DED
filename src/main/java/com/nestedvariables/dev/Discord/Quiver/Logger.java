@@ -3,9 +3,9 @@ package com.nestedvariables.dev.Discord.Quiver;
 public class Logger {
 
     // Logger method
-    public static void log(Exception e) {
+    public static void log(String info) {
         if (Info.debug) {
-            e.printStackTrace();
+            System.out.println(info);
         }
     }
 }
