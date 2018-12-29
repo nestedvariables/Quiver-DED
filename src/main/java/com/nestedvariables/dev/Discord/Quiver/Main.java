@@ -19,8 +19,9 @@ import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 public class Main {
 
-    static String botName = "Quiver";
-    public static Integer shardCount = 5;
+    public static String botName = "Quiver";
+    // For the most part set this to -1
+    public static Integer shardCount = -1;
     public static ShardManager shardManager;
 
     public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException {
