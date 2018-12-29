@@ -20,7 +20,7 @@ public class Announcement extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "announce") || args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "ann")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "announce") || args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "ann")) {
             if(Bools.isBotOwner(event)) {
                 if(args.length < 2){
                     EmbedBuilder nullReason = new EmbedBuilder();

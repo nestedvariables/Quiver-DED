@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import net.dv8tion.jda.core.entities.Guild;
+
 public class GuildData {
 
     public static HashMap<String, String> locales = new HashMap<>();
@@ -33,8 +35,13 @@ public class GuildData {
     }
 
     // Return prefix for guild
-    public static String getPrefix(String guild) {
-        return prefixes.get(guild);
+    public static String getPrefix(Guild guild) {
+        return prefixes.get(guild.getId());
+    }
+
+    // Set prefix for guild
+    public static void setPrefix(Guild guild, String prefix) {
+
     }
 
     // Return embed color 

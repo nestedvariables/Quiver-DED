@@ -34,7 +34,7 @@ public class Ban extends ListenerAdapter {
         error.setColor(Info.ERROR_RED);
         error.setFooter("Quiver System Error", Info.LOGO);
 
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "ban")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "ban")) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
             Date date = new Date();
             event.getMessage().delete().queue();

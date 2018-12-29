@@ -16,7 +16,7 @@ public class UserInfo extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "userinfo")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "userinfo")) {
 
             try { 
                 Connection conn = SQLDriver.getConn();

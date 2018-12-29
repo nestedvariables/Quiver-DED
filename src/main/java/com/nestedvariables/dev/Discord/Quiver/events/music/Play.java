@@ -23,7 +23,7 @@ public class Play extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "play")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "play")) {
             if (event.getMember().getVoiceState().inVoiceChannel() == false) {
                 EmbedBuilder noChannel = new EmbedBuilder();
 

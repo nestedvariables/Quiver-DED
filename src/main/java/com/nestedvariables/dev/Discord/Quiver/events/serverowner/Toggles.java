@@ -19,7 +19,7 @@ public class Toggles extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "toggle")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "toggle")) {
             if (Bools.isServerOwner(event) || Bools.isAdministrator(event)) {
                 try {
                     Connection conn = SQLDriver.getConn();

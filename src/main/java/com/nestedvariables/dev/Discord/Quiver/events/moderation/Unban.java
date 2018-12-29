@@ -19,7 +19,7 @@ public class Unban extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if(args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "unban")){
+        if(args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "unban")){
             if(event.getMember().hasPermission(Permission.BAN_MEMBERS)) {
                 if(args.length < 2){
                     EmbedBuilder nullUser = new EmbedBuilder();

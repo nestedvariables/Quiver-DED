@@ -24,7 +24,7 @@ public class BlacklistMember extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "blacklist")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "blacklist")) {
 
             if (Bools.isBotOwner(event)) {
                 if (args.length < 2) {

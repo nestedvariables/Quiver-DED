@@ -22,7 +22,7 @@ public class Mute extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild().getId()) + "mute")) {
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "mute")) {
             List<Role> roles = event.getGuild().getRolesByName("Muted", true);
 
             if (roles.size() < 1) {
