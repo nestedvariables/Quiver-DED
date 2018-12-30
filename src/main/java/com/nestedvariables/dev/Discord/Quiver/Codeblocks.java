@@ -32,10 +32,10 @@ public class Codeblocks extends ListenerAdapter {
                 event.getMessage().delete().queue();
 
                 EmbedBuilder codeblock = new EmbedBuilder();
-                codeblock.setColor(GuildData.embedColor());
-                codeblock.setTitle(GuildData.getMessage(event.getGuild(), "codeblockEmbedTitle"));
-                codeblock.setDescription(GuildData.getMessage(event.getGuild(), "codeblockEmbedDescription").replace("{link}", "https://hastebin.com/" + new JsonParser().parse(result).getAsJsonObject().get("key").getAsString()));
-                codeblock.setFooter(GuildData.getMessage(event.getGuild(), "name") + " " + GuildData.getMessage(event.getGuild(), "codeblockEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
+                codeblock.setColor(Utils.embedColor());
+                codeblock.setTitle(Utils.getMessage(event.getGuild(), "codeblockEmbedTitle"));
+                codeblock.setDescription(Utils.getMessage(event.getGuild(), "codeblockEmbedDescription").replace("{link}", "https://hastebin.com/" + new JsonParser().parse(result).getAsJsonObject().get("key").getAsString()));
+                codeblock.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "codeblockEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
                 event.getChannel().sendMessage(codeblock.build()).queue();
                 codeblock.clear();
 

@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Bools;
-import com.nestedvariables.dev.Discord.Quiver.GuildData;
+import com.nestedvariables.dev.Discord.Quiver.Utils;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
@@ -19,7 +19,7 @@ public class Toggles extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "toggle")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "toggle")) {
             if (Bools.isServerOwner(event) || Bools.isAdministrator(event)) {
                 try {
                     Connection conn = SQLDriver.getConn();

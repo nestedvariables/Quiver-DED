@@ -117,7 +117,7 @@ public class Main {
         System.out.print("\n\nBullseye! " + botName + " is online!\n\n");
 
         // Load all necessary data for guilds
-        GuildData.loadData();
+        Utils.loadData();
     }
 
 }

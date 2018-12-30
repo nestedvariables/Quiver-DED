@@ -4,5 +4,8 @@
     "setlocale": "Set locale to {locale}.",
     "codeblockEmbedTitle": "📋 Pasted code block.",
     "codeblockEmbedDescription": "Looks like your code block was pretty\nlong, so I've created a paste for you:\n{link}",
-    "codeblockEmbedFooter": "Code Paste"
+    "codeblockEmbedFooter": "Code Paste",
+
+    "set": "set",
+    "prefix": "prefix"
 }

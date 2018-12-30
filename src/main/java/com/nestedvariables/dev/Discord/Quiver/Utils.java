@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import net.dv8tion.jda.core.entities.Guild;
 
-public class GuildData {
+public class Utils {
 
     public static HashMap<String, String> locales = new HashMap<>();
     public static HashMap<String, String> prefixes = new HashMap<>();
@@ -68,7 +68,7 @@ public class GuildData {
     public static String getMessage(Guild guild, String message) {
         JSONParser parser = new JSONParser();
         try {
-            InputStream in = GuildData.class.getResourceAsStream("locale/" + GuildData.getLocale(guild) + ".json");
+            InputStream in = Utils.class.getResourceAsStream("locale/" + Utils.getLocale(guild) + ".json");
             Object object = parser.parse(IOUtils.toString(in, "UTF-8"));
             JSONObject json = (JSONObject) object;
             in.close();
@@ -140,4 +140,7 @@ public class GuildData {
                 return null;
         } */
     }
+
+    // Send usage Embed
+    
 }

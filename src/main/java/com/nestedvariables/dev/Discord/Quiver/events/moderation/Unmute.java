@@ -3,7 +3,7 @@ package com.nestedvariables.dev.Discord.Quiver.events.moderation;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import com.nestedvariables.dev.Discord.Quiver.GuildData;
+import com.nestedvariables.dev.Discord.Quiver.Utils;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -20,7 +20,7 @@ public class Unmute extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "unmute")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "unmute")) {
 
             Role muteRole = event.getGuild().getRolesByName("Muted", true).get(0);
 

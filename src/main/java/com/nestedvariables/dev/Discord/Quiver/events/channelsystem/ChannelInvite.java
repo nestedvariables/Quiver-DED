@@ -2,7 +2,7 @@ package com.nestedvariables.dev.Discord.Quiver.events.channelsystem;
 
 import java.util.concurrent.TimeUnit;
 
-import com.nestedvariables.dev.Discord.Quiver.GuildData;
+import com.nestedvariables.dev.Discord.Quiver.Utils;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -13,7 +13,7 @@ public class ChannelInvite extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "privateinvite")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "privateinvite")) {
             if(args.length < 2) {
                 EmbedBuilder nullUser = new EmbedBuilder();
 
