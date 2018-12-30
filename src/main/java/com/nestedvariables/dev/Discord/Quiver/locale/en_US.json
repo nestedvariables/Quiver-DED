@@ -5,6 +5,8 @@
     "codeBlockEmbedTitle": "📋 Pasted code block.",
     "codeBlockEmbedDescription": "Looks like your code block was pretty\nlong, so I've created a paste for you:\n{link}",
     "codeBlockEmbedFooter": "Code Paste",
+    "fatalErrorEmbedTitle":"❗ A major error occured.",
+    "fatalErrorEmbedDescription":"Well, it seems like something isn't quite right.\n",
     "prefixSetEmbedDescription": "All future commands will use this prefix.\n`Ex. {prefix}set locale`",
     "prefixSetEmbedFooter": "Prefix",
     "prefixSetEmbedTitle": "✅ Changed the prefix to `{prefix}`.",

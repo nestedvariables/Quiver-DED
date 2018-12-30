@@ -41,8 +41,7 @@ public class GuildJoin extends ListenerAdapter {
             }
         }
         catch (Exception e) {
-            Logger.log(e.toString());
-            event.getGuild().getDefaultChannel().sendMessage("blin vadim caused an error").queue();
+            Logger.log("fatal", e.toString(), event.getGuild(), event.getGuild().getDefaultChannel());
         }
     }
 }

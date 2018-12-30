@@ -33,9 +33,9 @@ public class Codeblocks extends ListenerAdapter {
 
                 EmbedBuilder codeblock = new EmbedBuilder();
                 codeblock.setColor(Utils.embedColor("codeBlock"));
-                codeblock.setTitle(Utils.getMessage(event.getGuild(), "codeBlockEmbedTitle"));
-                codeblock.setDescription(Utils.getMessage(event.getGuild(), "codeBlockEmbedDescription").replace("{link}", "https://hastebin.com/" + new JsonParser().parse(result).getAsJsonObject().get("key").getAsString()));
-                codeblock.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "codeBlockEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
+                codeblock.setTitle(Utils.getMessage(event.getChannel(), "codeBlockEmbedTitle"));
+                codeblock.setDescription(Utils.getMessage(event.getChannel(), "codeBlockEmbedDescription").replace("{link}", "https://hastebin.com/" + new JsonParser().parse(result).getAsJsonObject().get("key").getAsString()));
+                codeblock.setFooter(Utils.getMessage(event.getChannel(), "name") + " " + Utils.getMessage(event.getChannel(), "codeBlockEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
                 event.getChannel().sendMessage(codeblock.build()).queue();
                 codeblock.clear();
 
@@ -43,7 +43,7 @@ public class Codeblocks extends ListenerAdapter {
                 result = "";
             } 
             catch (Exception e) {
-                Logger.log(e.toString());
+                Logger.log("fatal", e.toString(), event.getGuild(), event.getChannel());
             }
         }
     }

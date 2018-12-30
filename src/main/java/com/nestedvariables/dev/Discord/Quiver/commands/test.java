@@ -10,7 +10,7 @@ public class test extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "testmsg")) {
-            event.getChannel().sendMessage(Utils.getMessage(event.getGuild(), "testmsg")).queue();
+            event.getChannel().sendMessage(Utils.getMessage(event.getChannel(), "testmsg")).queue();
         }
     }
 }
