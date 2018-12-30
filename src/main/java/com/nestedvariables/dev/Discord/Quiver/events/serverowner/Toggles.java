@@ -6,8 +6,8 @@ import java.sql.Statement;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import com.nestedvariables.dev.Discord.Quiver.Bools;
 import com.nestedvariables.dev.Discord.Quiver.Utils;
+import com.nestedvariables.dev.Discord.Quiver.Checks;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
@@ -20,7 +20,7 @@ public class Toggles extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "toggle")) {
-            if (Bools.isServerOwner(event) || Bools.isAdministrator(event)) {
+            if (Checks.isServerOwner(event) || Checks.isAdministrator(event)) {
                 try {
                     Connection conn = SQLDriver.getConn();
                     Statement stmt = conn.createStatement();
@@ -38,7 +38,7 @@ public class Toggles extends ListenerAdapter {
                         // Toggle for the Channel System
                     } else if (args[1].equalsIgnoreCase("channels") || args[1].equalsIgnoreCase("channelsystem")) {
 
-                        if(Bools.isChannelSystemEnabled(event)){
+                        if(Checks.isChannelSystemEnabled(event)){
                         Random random = new Random();
                         int randomColor = random.nextInt(0xffffff + 1);
                         

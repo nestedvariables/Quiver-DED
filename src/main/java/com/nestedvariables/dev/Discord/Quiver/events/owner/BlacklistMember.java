@@ -6,13 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.concurrent.TimeUnit;
 
-<<<<<<< HEAD
-import com.nestedvariables.dev.Discord.Quiver.Bools;
 import com.nestedvariables.dev.Discord.Quiver.Utils;
-=======
 import com.nestedvariables.dev.Discord.Quiver.Checks;
-import com.nestedvariables.dev.Discord.Quiver.GuildData;
->>>>>>> 203eb1627be08835dfa105763360d87eb25d1321
 import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
@@ -64,7 +59,7 @@ public class BlacklistMember extends ListenerAdapter {
                             oldID = 0;
                         }
 
-                        Integer blacklistIDNew = oldID + 1;
+                        int blacklistIDNew = oldID + 1;
 
                         stmt.execute(
                                 "INSERT INTO `blacklist`(`discord_id`, `discord_username`, `reason`, `blacklister`, `blacklist_id`)"
@@ -73,7 +68,7 @@ public class BlacklistMember extends ListenerAdapter {
                                         + blacklistedMember.getUser().getDiscriminator().toString() + "','" + reason
                                         + "','" + event.getMember().getUser().getName().toString() + "#"
                                         + event.getMember().getUser().getDiscriminator().toString() + "','"
-                                        + blacklistIDNew.toString() + "')");
+                                        + String.valueOf(blacklistIDNew) + "')");
 
                         EmbedBuilder eb = new EmbedBuilder();
 

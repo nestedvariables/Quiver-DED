@@ -17,7 +17,7 @@ public class GuildJoin extends ListenerAdapter {
 
         // Introduce bot in server
         EmbedBuilder introduction = new EmbedBuilder();
-        introduction.setColor(Utils.embedColor());
+        introduction.setColor(Utils.embedColor("welcome"));
         introduction.setDescription("Phew, I made it over the ~waves~ intact. Oh, hey there, I'm " + event.getJDA().getSelfUser().getAsMention() + " and I'd like to thank you for adding me to your Discord server, it feels pretty toasty in here. Here's some stuff you should know about me:");
         introduction.addField("I'm known as", event.getJDA().getSelfUser().getAsMention(), true);
         introduction.addField("My prefix is", Utils.getPrefix(event.getGuild()), true);event.getJDA().getSelfUser().getAsMention();

@@ -3,13 +3,8 @@ package com.nestedvariables.dev.Discord.Quiver.events.information;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-<<<<<<< HEAD
-import com.nestedvariables.dev.Discord.Quiver.Bools;
-import com.nestedvariables.dev.Discord.Quiver.Utils;
-=======
 import com.nestedvariables.dev.Discord.Quiver.Checks;
-import com.nestedvariables.dev.Discord.Quiver.GuildData;
->>>>>>> 203eb1627be08835dfa105763360d87eb25d1321
+import com.nestedvariables.dev.Discord.Quiver.Utils;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
 import net.dv8tion.jda.core.EmbedBuilder;
