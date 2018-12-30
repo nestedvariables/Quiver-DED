@@ -9,10 +9,8 @@ public class test extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase("~load")) {
-            //event.getChannel().sendMessage(event.getGuild().getRegionRaw() + ": " + GuildData.locale(event.getGuild().getRegionRaw())).queue();
-            GuildData.loadData();
-            System.out.println(GuildData.locales);
+        if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "testmsg")) {
+            event.getChannel().sendMessage(GuildData.getMessage(event.getGuild(), "testmsg")).queue();
         }
     }
 }

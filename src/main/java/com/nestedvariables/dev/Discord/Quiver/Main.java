@@ -12,6 +12,7 @@ import com.nestedvariables.dev.Discord.Quiver.events.music.*;
 import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
 import com.nestedvariables.dev.Discord.Quiver.events.serverowner.*;
 
+import com.nestedvariables.dev.Discord.Quiver.commands.Settings;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.OnlineStatus;
@@ -80,7 +81,6 @@ public class Main {
             new Replay(),
             new Resume(),
             new Search(),
-            new Settings(),
             new Skip(),
             new Soundcloud(),
             new Stop(),
@@ -102,7 +102,10 @@ public class Main {
             new Toggles(),
 
             // Test command
-            new test()
+            new test(),
+
+            // ill organize later
+            new Settings()
         );
 
         builder.setStatus(OnlineStatus.ONLINE);
@@ -113,6 +116,8 @@ public class Main {
 
         System.out.print("\n\nBullseye! " + botName + " is online!\n\n");
 
+        // Load all necessary data for guilds
+        GuildData.loadData();
     }
 
 }

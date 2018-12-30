@@ -1,0 +1,4 @@
+{
+    "testmsg": "Hey there, this is a test message that I just pulled from the locale JSON!",
+    "setlocale": "Set locale to {locale}."
+}

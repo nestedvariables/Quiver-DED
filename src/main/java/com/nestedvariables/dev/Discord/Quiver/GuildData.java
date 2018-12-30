@@ -1,9 +1,19 @@
 package com.nestedvariables.dev.Discord.Quiver;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
+
+import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import net.dv8tion.jda.core.entities.Guild;
 
@@ -25,9 +35,10 @@ public class GuildData {
             else {
                 while (result.next()) {
                     locales.put(result.getString("guild"), result.getString("locale"));
-                    System.out.println(result.getString("guild") + "   " + result.getString("locale"));
+                    prefixes.put(result.getString("guild"), result.getString("prefix"));
                 }
             }
+            statement.close();
         }
         catch (Exception e) {
             Logger.log(e.toString());
@@ -41,18 +52,68 @@ public class GuildData {
 
     // Set prefix for guild
     public static void setPrefix(Guild guild, String prefix) {
-
+        try {
+            Connection connection = SQLDriver.getConn();
+            Statement statement = connection.createStatement();
+            statement.execute("UPDATE `guild_options` SET `prefix`='" + prefix + "' WHERE `guild`='" + guild.getId() + "'");
+            prefixes.put(guild.getId(), prefix);
+            statement.close();
+        }
+        catch (Exception e) {
+            Logger.log(e.toString());
+        }
     }
 
     // Return embed color 
     public static Integer embedColor() {
         return 0x45f442;
     }
+
+    // Get message with proper locale
+    public static String getMessage(Guild guild, String message) {
+        JSONParser parser = new JSONParser();
+        try {
+            InputStream in = GuildData.class.getResourceAsStream("locale/" + GuildData.getLocale(guild) + ".json");
+            Object object = parser.parse(IOUtils.toString(in, "UTF-8"));
+            JSONObject json = (JSONObject) object;
+            return (String) json.get(message);
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            Logger.log(e.toString());
+            return "blin";
+        }
+    }
+
+    // Set locale
+    public static void setLocale(Guild guild, String locale) {
+        try {
+            Connection connection = SQLDriver.getConn();
+            Statement statement = connection.createStatement();
+            statement.execute("UPDATE `guild_options` SET `locale`='" + locale + "' WHERE `guild`='" + guild.getId() + "'");
+            locales.put(guild.getId(), locale);
+            statement.close();
+        }
+        catch (Exception e) {
+            Logger.log(e.toString());
+        }
+    } 
     
+    // Get locale for guild
+    public static String getLocale(Guild guild) {
+        return locales.get(guild.getId());
+    }
+
     // Return default locale
     public static String locale(String region) {
-        System.out.println(region);
-        switch (region) {
+        //switch (region) {
+            if (region.equals("us-central")) {
+                return "en_US";
+            }
+            else {
+                return null;
+            }
+            /*
             case "us-east":
                 return "en_US";
             case "us-west":
@@ -81,6 +142,6 @@ public class GuildData {
                 return "en_GB";
             default:
                 return null;
-        }
+        } */
     }
 }
