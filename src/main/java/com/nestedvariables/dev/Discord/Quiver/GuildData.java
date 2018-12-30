@@ -76,12 +76,13 @@ public class GuildData {
             InputStream in = GuildData.class.getResourceAsStream("locale/" + GuildData.getLocale(guild) + ".json");
             Object object = parser.parse(IOUtils.toString(in, "UTF-8"));
             JSONObject json = (JSONObject) object;
+            in.close();
             return (String) json.get(message);
         } 
         catch (Exception e) {
             e.printStackTrace();
             Logger.log(e.toString());
-            return "blin";
+            return null;
         }
     }
 
