@@ -91,7 +91,6 @@ public class Main {
             // Bot Owner Event Listners
             new Announcement(),
             new BlacklistMember(),
-            new CodeBlock(),
             new ErrorTest(),
             //new StatsUpdate(),
             new Unblacklist(),
