@@ -18,6 +18,7 @@ public class Settings extends ListenerAdapter {
                 usage.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "usageEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
                 usage.setColor(Utils.embedColor("usage"));
                 event.getChannel().sendMessage(usage.build()).queue();
+                usage.clear();
             }
             else if (args[1].equalsIgnoreCase("prefix")) {
                 if (args.length < 3) {
@@ -27,6 +28,7 @@ public class Settings extends ListenerAdapter {
                     usage.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "usageEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
                     usage.setColor(Utils.embedColor("usage"));
                     event.getChannel().sendMessage(usage.build()).queue();
+                    usage.clear();
                 }
                 else {
                     Utils.setPrefix(event.getGuild(), args[2]);
@@ -41,7 +43,22 @@ public class Settings extends ListenerAdapter {
             }
             else if (args[1].equalsIgnoreCase("locale")) {
                 if (args.length < 3) {
-                    event.getChannel().sendMessage("Usage: `!set locale 'locale'`").queue();
+                    EmbedBuilder usage = new EmbedBuilder();
+                    usage.setTitle(Utils.getMessage(event.getGuild(), "usageEmbedTitle").replace("{command}", args[1].replace(Utils.getPrefix(event.getGuild()), "")).replace("{prefix}", Utils.getPrefix(event.getGuild())));
+                    usage.setDescription(Utils.getMessage(event.getGuild(), "localeUsage").replace("{prefix}", Utils.getPrefix(event.getGuild())));
+                    usage.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "usageEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
+                    usage.setColor(Utils.embedColor("usage"));
+                    usage.addField("🇧🇷 " + Utils.getMessage(event.getGuild(), "brazil"), "`pt_BR`", true);
+                    usage.addField("🇪🇺 " + Utils.getMessage(event.getGuild(), "europe"), "`en_GB`, `de_DE`", true);
+                    usage.addField("🇭🇰 " + Utils.getMessage(event.getGuild(), "hongKong"), "`en_HK`", true);
+                    usage.addField("🇯🇵 " + Utils.getMessage(event.getGuild(), "japan"), "`ja_JP`", true);
+                    usage.addField("🇷🇺 " + Utils.getMessage(event.getGuild(), "russia"), "`ru_RU`", true);
+                    usage.addField("🇸🇬 " + Utils.getMessage(event.getGuild(), "singapore"), "`en_SG`", true);
+                    usage.addField("🇿🇦 " + Utils.getMessage(event.getGuild(), "southAfrica"), "`en_ZA`", true);
+                    usage.addField("🇦🇺 " + Utils.getMessage(event.getGuild(), "australia"), "`en_AU`", true);
+                    usage.addField("🇺🇸 " + Utils.getMessage(event.getGuild(), "unitedStates"), "`en_US`", true);
+                    event.getChannel().sendMessage(usage.build()).queue();
+                    usage.clear();
                 }
                 else {
                     Utils.setLocale(event.getGuild(), args[2]);

@@ -15,7 +15,7 @@ public class test extends ListenerAdapter {
         }
         else if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "error")) {
             if (args[1].equalsIgnoreCase("fatal")) {
-                Utils.getMessage(null, "adsvadsfadsfadf");
+                Utils.getPrefix(event.getJDA().getGuildById("523301176309972993"));
             }
             else {
                 Logger.log("fatal", "vadim went into blender", event.getGuild());
