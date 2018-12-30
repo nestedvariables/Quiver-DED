@@ -3,7 +3,7 @@ package com.nestedvariables.dev.Discord.Quiver.events.information;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import com.nestedvariables.dev.Discord.Quiver.Bools;
+import com.nestedvariables.dev.Discord.Quiver.Checks;
 import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
@@ -19,9 +19,9 @@ public class Help extends ListenerAdapter {
         if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "help")) {
             Random random = new Random();
             int randomColor = random.nextInt(0xffffff + 1);
-            if (Bools.isBlacklisted(event)) {
+            if (Checks.isBlacklisted(event)) {
                 event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();
-            } else if (Bools.isBotOwner(event)) {
+            } else if (Checks.isBotOwner(event)) {
                 EmbedBuilder owner = new EmbedBuilder();
 
                 owner.setTitle(":tools: Owner Help");
@@ -44,7 +44,7 @@ public class Help extends ListenerAdapter {
                     });
                 }
 
-            } else if (Bools.isServerOwner(event)) {
+            } else if (Checks.isServerOwner(event)) {
 
                 EmbedBuilder serverOwner = new EmbedBuilder();
 

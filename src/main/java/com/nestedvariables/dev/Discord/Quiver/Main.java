@@ -51,7 +51,6 @@ public class Main {
 
             // Misc Event Listeners
             
-
             // Moderation Event Listeners
             new Ban(),
             new Clear(),
@@ -62,7 +61,6 @@ public class Main {
             
             // Music Event Listeners
             
-
             // Bot Owner Event Listners
             new Announcement(),
             new BlacklistMember(),

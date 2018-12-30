@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import com.nestedvariables.dev.Discord.Quiver.Bools;
+import com.nestedvariables.dev.Discord.Quiver.Checks;
 import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
@@ -21,7 +21,7 @@ public class Announcement extends ListenerAdapter {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
         if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "announce") || args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "ann")) {
-            if(Bools.isBotOwner(event)) {
+            if(Checks.isBotOwner(event)) {
                 if(args.length < 2){
                     EmbedBuilder nullReason = new EmbedBuilder();
 

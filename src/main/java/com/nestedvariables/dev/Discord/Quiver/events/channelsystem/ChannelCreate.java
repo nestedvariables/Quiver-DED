@@ -4,7 +4,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.nestedvariables.dev.Discord.Quiver.Bools;
+import com.nestedvariables.dev.Discord.Quiver.Checks;
 import com.nestedvariables.dev.Discord.Quiver.GuildData;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
@@ -21,10 +21,10 @@ public class ChannelCreate extends ListenerAdapter {
         public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
                 String[] args = event.getMessage().getContentRaw().split("\\s+");
                 if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "privatechannel")) {
-                        if (Bools.isBlacklisted(event)) {
+                        if (Checks.isBlacklisted(event)) {
                                 event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();
                         } else {
-                                if (Bools.isChannelSystemEnabled(event)) {
+                                if (Checks.isChannelSystemEnabled(event)) {
                                         if(args.length < 2) {
                                                 EmbedBuilder nullArgs = new EmbedBuilder();
 
