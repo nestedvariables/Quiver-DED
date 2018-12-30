@@ -14,7 +14,7 @@ public class PermissionHelp extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if(args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "permhelp")) {
+        if(args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "permhelp")) {
             if(event.getMember().isOwner()){
 
             } else {

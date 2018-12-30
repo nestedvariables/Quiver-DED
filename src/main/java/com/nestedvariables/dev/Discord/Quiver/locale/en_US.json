@@ -6,7 +6,8 @@
     "codeBlockEmbedDescription": "Looks like your code block was pretty\nlong, so I've created a paste for you:\n{link}",
     "codeBlockEmbedFooter": "Code Paste",
     "fatalErrorEmbedTitle":"❗ A major error occured.",
-    "fatalErrorEmbedDescription":"Well, it seems like something isn't quite right.\n",
+    "fatalErrorEmbedDescription":"Well, it seems like something isn't quite right.\nPlease submit a screenshot of this error over at our [Support Server](https://discord.gg/p9xj9UD \"support Discord server\").\n\nHere's the full error log:\n{error}",
+    "fatalErrorEmbedFooter": "Error Report",
     "prefixSetEmbedDescription": "All future commands will use this prefix.\n`Ex. {prefix}set locale`",
     "prefixSetEmbedFooter": "Prefix",
     "prefixSetEmbedTitle": "✅ Changed the prefix to `{prefix}`.",
@@ -15,6 +16,6 @@
     "usageEmbedTitle": "🔧 Here's how to use the {command} command:",
     "usageEmbedFooter": "Command Usage",
 
-    "set": "set",
-    "prefix": "prefix"
+    "setCommand": "set",
+    "prefixCommand": "prefix"
 }

@@ -10,15 +10,15 @@ public class test extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "testmsg")) {
-            event.getChannel().sendMessage(Utils.getMessage(event.getChannel(), "testmsg")).queue();
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "testmsg")) {
+            event.getChannel().sendMessage(Utils.getMessage(event.getGuild(), "testmsg")).queue();
         }
-        else if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "error")) {
+        else if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "error")) {
             if (args[1].equalsIgnoreCase("fatal")) {
-                Utils.setPrefix(null, null, null);
+                Utils.getMessage(null, "adsvadsfadsfadf");
             }
             else {
-                Logger.log("warning", "vadim went into blender", event.getGuild(), event.getChannel());
+                Logger.log("fatal", "vadim went into blender", event.getGuild());
             }
         }
     }

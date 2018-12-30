@@ -10,7 +10,6 @@ import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import net.dv8tion.jda.core.entities.Channel;
 import net.dv8tion.jda.core.entities.Guild;
 
 public class Utils {
@@ -26,7 +25,7 @@ public class Utils {
             ResultSet result = statement.executeQuery("SELECT * FROM `guild_options`");
                    
             if (!result.next()) {
-                Logger.log("warning", "No guilds in database.", null, null);
+                Logger.log("warning", "No guilds in database.", null);
             }
             else {
                 while (result.next()) {
@@ -37,17 +36,17 @@ public class Utils {
             statement.close();
         }
         catch (Exception e) {
-            Logger.log("fatal", e.toString(), null, null);
+            Logger.log("fatal", e.toString(), null);
         }
     }
 
     // Return prefix for guild
-    public static String getPrefix(Channel channel) {
-        return prefixes.get(channel.getGuild().getId());
+    public static String getPrefix(Guild guild) {
+        return prefixes.get(guild.getId());
     }
 
     // Set prefix for guild
-    public static void setPrefix(Guild guild, Channel channel, String prefix) {
+    public static void setPrefix(Guild guild, String prefix) {
         try {
             Connection connection = SQLDriver.getConn();
             Statement statement = connection.createStatement();
@@ -56,7 +55,7 @@ public class Utils {
             statement.close();
         }
         catch (Exception e) {
-            Logger.log("fatal", e.toString(), guild, channel);
+            Logger.log("fatal", e.toString(), guild);
         }
     }
 
@@ -75,33 +74,32 @@ public class Utils {
     }
 
     // Get message with proper locale
-    public static String getMessage(Channel channel, String message) {
+    public static String getMessage(Guild guild, String message) {
         JSONParser parser = new JSONParser();
         try {
-            InputStream in = Utils.class.getResourceAsStream("locale/" + Utils.getLocale(channel.getGuild()) + ".json");
+            InputStream in = Utils.class.getResourceAsStream("locale/" + Utils.getLocale(guild) + ".json");
             Object object = parser.parse(IOUtils.toString(in, "UTF-8"));
             JSONObject json = (JSONObject) object;
             in.close();
             return (String) json.get(message);
         } 
         catch (Exception e) {
-            e.printStackTrace();
-            Logger.log("fatal", e.toString(), channel.getGuild(), channel);
+            Logger.log("fatal", String.valueOf(e), guild);
             return null;
         }
     }
 
     // Set locale
-    public static void setLocale(Channel channel, String locale) {
+    public static void setLocale(Guild guild, String locale) {
         try {
             Connection connection = SQLDriver.getConn();
             Statement statement = connection.createStatement();
-            statement.execute("UPDATE `guild_options` SET `locale`='" + locale + "' WHERE `guild`='" + channel.getGuild().getId() + "'");
-            locales.put(channel.getGuild().getId(), locale);
+            statement.execute("UPDATE `guild_options` SET `locale`='" + locale + "' WHERE `guild`='" + guild.getId() + "'");
+            locales.put(guild.getId(), locale);
             statement.close();
         }
         catch (Exception e) {
-            Logger.log("fatal", e.toString(), channel.getGuild(), channel);
+            Logger.log("fatal", e.toString(), guild);
         }
     } 
     
