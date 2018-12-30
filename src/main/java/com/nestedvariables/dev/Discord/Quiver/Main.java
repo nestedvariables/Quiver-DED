@@ -8,9 +8,7 @@ import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
 import com.nestedvariables.dev.Discord.Quiver.events.information.*;
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
-import com.nestedvariables.dev.Discord.Quiver.events.music.*;
 import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
-import com.nestedvariables.dev.Discord.Quiver.events.serverowner.*;
 
 import com.nestedvariables.dev.Discord.Quiver.commands.Settings;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
@@ -53,7 +51,6 @@ public class Main {
 
             // Misc Event Listeners
             
-
             // Moderation Event Listeners
             new Ban(),
             new Clear(),
@@ -63,31 +60,7 @@ public class Main {
             new Unmute(),
             
             // Music Event Listeners
-            new ClearQueue(),
-            new Join(),
-            new Leave(),
-            new Loop(),
-            new Lyrics(),
-            new NowPlaying(),
-            new Pause(),
-            new PauseLeave(),
-            new Play(),
-            new Queue(),
-            new QueueLoop(),
-            new QueueMove(),
-            new QueueRemove(),
-            new QueueSkip(),
-            new RemoveDupes(),
-            new Replay(),
-            new Resume(),
-            new Search(),
-            new Skip(),
-            new Soundcloud(),
-            new Stop(),
-            new TimeSkip(),
-            new Twitch(),
-            new Volume(),
-
+            
             // Bot Owner Event Listners
             new Announcement(),
             new BlacklistMember(),
@@ -96,10 +69,6 @@ public class Main {
             new Unblacklist(),
 
             // Server Owner Event Listeners
-            new LeaveGuild(),
-            new SetPrefix(),
-            new Toggles(),
-
             // Test command
             new test(),
 
@@ -109,7 +78,7 @@ public class Main {
         );
 
         builder.setStatus(OnlineStatus.ONLINE);
-        builder.setGameProvider(id -> Game.watching("Archery | " + Info.PREFIX + "help | Shard Number " + id));
+        builder.setGameProvider(id -> Game.watching("Archery | Q!help | Shard Number " + id));
         builder.setShardsTotal(shardCount);
 
         shardManager = builder.build();

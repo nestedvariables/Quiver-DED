@@ -4,8 +4,13 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+<<<<<<< HEAD
 import com.nestedvariables.dev.Discord.Quiver.Bools;
 import com.nestedvariables.dev.Discord.Quiver.Utils;
+=======
+import com.nestedvariables.dev.Discord.Quiver.Checks;
+import com.nestedvariables.dev.Discord.Quiver.GuildData;
+>>>>>>> 203eb1627be08835dfa105763360d87eb25d1321
 import com.nestedvariables.dev.Discord.Quiver.Info;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -20,11 +25,16 @@ public class ChannelCreate extends ListenerAdapter {
 
         public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
                 String[] args = event.getMessage().getContentRaw().split("\\s+");
+<<<<<<< HEAD
                 if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "privatechannel")) {
                         if (Bools.isBlacklisted(event)) {
+=======
+                if (args[0].equalsIgnoreCase(GuildData.getPrefix(event.getGuild()) + "privatechannel")) {
+                        if (Checks.isBlacklisted(event)) {
+>>>>>>> 203eb1627be08835dfa105763360d87eb25d1321
                                 event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();
                         } else {
-                                if (Bools.isChannelSystemEnabled(event)) {
+                                if (Checks.isChannelSystemEnabled(event)) {
                                         if(args.length < 2) {
                                                 EmbedBuilder nullArgs = new EmbedBuilder();
 

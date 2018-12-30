@@ -5,6 +5,13 @@
     "codeblockEmbedTitle": "📋 Pasted code block.",
     "codeblockEmbedDescription": "Looks like your code block was pretty\nlong, so I've created a paste for you:\n{link}",
     "codeblockEmbedFooter": "Code Paste",
+    "prefixSetEmbedDescription": "All future commands will use this prefix.\n`Ex. {prefix}set locale`",
+    "prefixSetEmbedFooter": "Prefix",
+    "prefixSetEmbedTitle": "✅ Changed the prefix to `{prefix}`.",
+    "prefixUsage": "`{prefix}set prefix [prefix]` Set a new prefix for the server.",
+    "setUsage": "`{prefix}set prefix [prefix]` Set a new prefix for the server.\n`{prefix}set locale [locale code]` Change the language of all commands/messages.",
+    "usageEmbedTitle": "🔧 Here's how to use the {command} command:",
+    "usageEmbedFooter": "Command Usage",
 
     "set": "set",
     "prefix": "prefix"

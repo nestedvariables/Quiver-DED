@@ -10,6 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Channel;
 import net.dv8tion.jda.core.entities.Guild;
 
 public class Utils {
@@ -60,8 +62,15 @@ public class Utils {
     }
 
     // Return embed color 
-    public static Integer embedColor() {
-        return 0x45f442;
+    public static Integer embedColor(String type) {
+        switch (type) {
+            case "usage":
+                return 0xffc83f;
+            case "success":
+                return 0x3fff6f;
+            default:
+                return 0x45f442;
+        }
     }
 
     // Get message with proper locale
@@ -140,7 +149,4 @@ public class Utils {
                 return null;
         } */
     }
-
-    // Send usage Embed
-    
 }

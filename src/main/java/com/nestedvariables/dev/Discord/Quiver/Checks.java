@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class Bools extends ListenerAdapter {
+public class Checks extends ListenerAdapter {
 
     public static boolean isChannelSystemEnabled(GuildMessageReceivedEvent event) {
         String channelSystemEnabled = "true";        
