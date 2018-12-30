@@ -13,7 +13,7 @@ public class ChannelInvite extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "privateinvite")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "privateinvite")) {
             if(args.length < 2) {
                 EmbedBuilder nullUser = new EmbedBuilder();
 

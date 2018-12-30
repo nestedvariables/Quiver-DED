@@ -42,8 +42,8 @@ public class Utils {
     }
 
     // Return prefix for guild
-    public static String getPrefix(Guild guild) {
-        return prefixes.get(guild.getId());
+    public static String getPrefix(Channel channel) {
+        return prefixes.get(channel.getGuild().getId());
     }
 
     // Set prefix for guild

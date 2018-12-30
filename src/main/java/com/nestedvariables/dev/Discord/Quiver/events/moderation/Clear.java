@@ -21,7 +21,7 @@ public class Clear extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "clear") || args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "c")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "clear") || args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "c")) {
             event.getMessage().delete().queue();
             if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                 
@@ -47,13 +47,13 @@ public class Clear extends ListenerAdapter {
                         notEnoughMessages.setDescription("");
                     }
 
-                    if (messageDelete > 101) {
+                    if (messageDelete > 100) {
 
                         EmbedBuilder tooManyMessages = new EmbedBuilder();
 
                         tooManyMessages.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                                 + ", the amount of messages you specified to delete were too many to delete at once. " 
-                                + "\n:white_medium_small_square: Or the messages attempting to be deleted are older the 2 weeks." 
+                                + "\n:white_medium_small_square: Or the mesgetGuildsages attempting to be deleted are older the 2 weeks." 
                                 + " \n :white_medium_small_square: Maximum amount of messages you can delete at a time is 100.");
                         tooManyMessages.setColor(Info.ERROR_RED);
                         tooManyMessages.setFooter("Quiver Message Delete", Info.LOGO);

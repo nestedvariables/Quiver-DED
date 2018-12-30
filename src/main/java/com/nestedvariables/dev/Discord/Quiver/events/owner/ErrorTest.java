@@ -14,7 +14,7 @@ public class ErrorTest extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "error")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "error")) {
             if (Checks.isBotOwner(event)) {
                 EmbedBuilder error = new EmbedBuilder();
 

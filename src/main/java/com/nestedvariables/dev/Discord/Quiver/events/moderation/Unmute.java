@@ -20,7 +20,7 @@ public class Unmute extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "unmute")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "unmute")) {
 
             Role muteRole = event.getGuild().getRolesByName("Muted", true).get(0);
 

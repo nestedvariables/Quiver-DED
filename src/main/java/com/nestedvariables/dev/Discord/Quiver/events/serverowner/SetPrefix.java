@@ -17,12 +17,12 @@ public class SetPrefix extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "setprefix")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getChannel()) + "setprefix")) {
             if (args.length < 2) {
 
                 EmbedBuilder nullArgs = new EmbedBuilder();
 
-                nullArgs.setDescription(event.getMember().getAsMention() + ", You didn't specify what you want your new prefix to be! \n\nUsage: " + Utils.getPrefix(event.getGuild()) + "setprefix <new prefix>");
+                nullArgs.setDescription(event.getMember().getAsMention() + ", You didn't specify what you want your new prefix to be! \n\nUsage: " + Utils.getPrefix(event.getChannel()) + "setprefix <new prefix>");
                 nullArgs.setColor(Info.ERROR_RED);
                 nullArgs.setFooter("Quiver Custom Prefix Error", Info.LOGO);
 
