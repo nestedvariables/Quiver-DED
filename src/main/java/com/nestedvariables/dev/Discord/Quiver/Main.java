@@ -105,7 +105,8 @@ public class Main {
             new test(),
 
             // ill organize later
-            new Settings()
+            new Settings(),
+            new Codeblocks()
         );
 
         builder.setStatus(OnlineStatus.ONLINE);
