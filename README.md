@@ -12,7 +12,7 @@
  # Introduction
  ---
 
- Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features). I'm open source so if you have code improvements and/or a translation fix open a pull request. 
+ Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features). I'm open source so if you have code improvements and/or a translation to be added or to be fixed open a pull request. 
 
  ## Features
  ---
