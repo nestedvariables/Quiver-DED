@@ -28,5 +28,5 @@
  
 Command | Description | Usage 
 ------------ | ------------- | ------------ 
-Content cell 1 | Content cell 2 | content cell 3
+Content cell 1 | Content cell 2 | super long usage field to test stuffs
 Content column 1 | Content column 2 extra characters to take up space and see what this does when its really long even more characters to try to make it take 3 lines and make it really long | content column 3 
