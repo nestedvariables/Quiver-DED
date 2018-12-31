@@ -22,9 +22,11 @@
  
  Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a translation to be added or fixed open a pull request. 
 
+ ## 
+
  ## Features
  
 Command | Description | Usage | Extra Information
 ------------ | ------------- | ------------ | ------------
 Content cell 1 | Content cell 2 | content cell 3 | asdfasdfasd
-Content column 1 | Content column 2 | content column 3 | ssdfagsdfasdfa
+Content column 1 | Content column 2 extra characters to take up space and see what this does when its really long | content column 3 | ssdfagsdfasdfa
