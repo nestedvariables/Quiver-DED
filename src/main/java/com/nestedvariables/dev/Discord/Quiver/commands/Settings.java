@@ -62,7 +62,13 @@ public class Settings extends ListenerAdapter {
                 }
                 else {
                     Utils.setLocale(event.getGuild(), args[2]);
-                    event.getChannel().sendMessage(Utils.getMessage(event.getGuild(), "setlocale").replace("{locale}", Utils.getLocale(event.getGuild()))).queue();
+                    EmbedBuilder success = new EmbedBuilder();
+                    success.setTitle(Utils.getMessage(event.getGuild(), "localeSetEmbedTitle").replace("{locale}", Utils.getLocale(event.getGuild())));
+                    success.setDescription(Utils.getMessage(event.getGuild(), "localeSetEmbedDescription"));
+                    success.setColor(Utils.embedColor("success"));
+                    success.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "localeSetEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
+                    event.getChannel().sendMessage(success.build()).queue();
+                    success.clear();
                 }   
             }
         }

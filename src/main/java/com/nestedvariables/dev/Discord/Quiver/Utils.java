@@ -16,7 +16,8 @@ public class Utils {
 
     public static HashMap<String, String> locales = new HashMap<>();
     public static HashMap<String, String> prefixes = new HashMap<>();
-    
+    public static HashMap<String, String> logChannels = new HashMap<>();
+
     // Fills up hashmaps on bot boot
     public static void loadData() {
         try {
@@ -31,6 +32,7 @@ public class Utils {
                 while (result.next()) {
                     locales.put(result.getString("guild"), result.getString("locale"));
                     prefixes.put(result.getString("guild"), result.getString("prefix"));
+                    logChannels.put(result.getString("guild"), result.getString("log_channel"));
                 }
             }
             statement.close();
@@ -52,6 +54,25 @@ public class Utils {
             Statement statement = connection.createStatement();
             statement.execute("UPDATE `guild_options` SET `prefix`='" + prefix + "' WHERE `guild`='" + guild.getId() + "'");
             prefixes.put(guild.getId(), prefix);
+            statement.close();
+        }
+        catch (Exception e) {
+            Logger.log("fatal", e.toString(), guild);
+        }
+    }
+
+    // Return log channel for guild
+    public static String getLogChannel(Guild guild) {
+        return logChannels.get(guild.getId());
+    }
+
+    // Set log channel for guild
+    public static void setLogChannel(Guild guild, String channelId) {
+        try {
+            Connection connection = SQLDriver.getConn();
+            Statement statement = connection.createStatement();
+            statement.execute("UPDATE `guild_options` SET `log_channel`='" + channelId + "' WHERE `guild`='" + guild.getId() + "'");
+            logChannels.put(guild.getId(), channelId);
             statement.close();
         }
         catch (Exception e) {
