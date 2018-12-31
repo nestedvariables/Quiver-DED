@@ -7,11 +7,11 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Utils;
-import com.nestedvariables.dev.Discord.Quiver.Checks;
 import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -20,7 +20,7 @@ public class Toggles extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "toggle")) {
-            if (Checks.isServerOwner(event) || Checks.isAdministrator(event)) {
+            if (Utils.isServerOwner(event) || Utils.isAdministrator(event)) {
                 try {
                     Connection conn = SQLDriver.getConn();
                     Statement stmt = conn.createStatement();
@@ -38,7 +38,7 @@ public class Toggles extends ListenerAdapter {
                         // Toggle for the Channel System
                     } else if (args[1].equalsIgnoreCase("channels") || args[1].equalsIgnoreCase("channelsystem")) {
 
-                        if(Checks.isChannelSystemEnabled(event)){
+                        if(Utils.isChannelSystemEnabled(event)){
                         Random random = new Random();
                         int randomColor = random.nextInt(0xffffff + 1);
                         
@@ -62,7 +62,6 @@ public class Toggles extends ListenerAdapter {
 
                         stmt.execute("UPDATE `guild_options` SET `channel_system`='true' WHERE `guild_id`='" + event.getGuild().getId().toString() + "'");
                         conn.close();
-
                         }
                     }
                 } catch (SQLException e) {
