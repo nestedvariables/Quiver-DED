@@ -12,7 +12,7 @@
  # Introduction
  ---
 
- Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to ).  I'm open source so if you have code improvements and/or a translation to be added or fixed open a pull request. 
+ Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to teleport to the features list").  I'm open source so if you have code improvements and/or a translation to be added or fixed open a pull request. 
 
  ## Features
  ---
