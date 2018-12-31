@@ -24,4 +24,7 @@
 
  ## Features
  
-
+Command | Test | test
+------------ | ------------- | ------------
+Content cell 1 | Content cell 2 | content cell 3
+Content column 1 | Content column 2 | content column 3
