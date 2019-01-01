@@ -25,7 +25,7 @@ public class Logger {
                     }
                     fatal.clear();
                     System.out.println(info);
-            }
+                }
         }
         else {
             // Do something else if guild is null
