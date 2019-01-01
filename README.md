@@ -37,5 +37,5 @@ Command | Description | Usage
 | Language | Locale code |
 |:------------:|:------------:|
 | United States English | en_US |
-| Iraeli Hebrew | he_IL |
+| Israeli Hebrew | he_IL |
 | Saudi Arabian Arabic | ar_SA |
