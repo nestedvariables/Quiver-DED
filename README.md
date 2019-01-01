@@ -24,13 +24,13 @@
 
  ## Features
 
-<table width="100%" align="center" text-align="center">
+<table width="100%" align="center">
 <tr>
   <th>Command</th>
   <th>Description</th>
   <th>Usage</th>
 </tr>
-<tr>
+<tr text-align="center">
   <td><a href="https://nestedvariables.tk/quiver/commands/set">set</a></td>
   <td>Changes settings for the whole guild </td>
   <td> set prefix {prefix} <br/> set locale {<a href="#languages">locale</a>} </td>
