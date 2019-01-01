@@ -20,12 +20,13 @@
 
  # Introduction
  
- Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a translation to be added or fixed open a pull request. 
+ Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a [translation]("Will be posting the English locale file in a couple days") to be added or fixed open a pull request. 
 
  ## 
 
  ## Features
  
+<span style="color: #96989b">* Has more information click the command to get the full breakdown on the command</span>
 Command | Description | Usage 
 |:------------:|-------------|------------|
-set | This is the base command to set options for the guild | set prefix {prefix} <br/> set locale {locale}
+<a style="color: black; text-decoration: underline;" href="https://nestedvariables.tk/quiver/commands">set*</a> | You can use this command to set options for the guild | set prefix {prefix} <br/> set locale {locale}
