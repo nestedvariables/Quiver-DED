@@ -20,7 +20,7 @@
 
  # Introduction
  
- Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a [translation]("Will be posting the English locale file in a couple days") to be added or fixed open a pull request. 
+ Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a [translation](#languages "Will be posting the English locale file in a couple days") to be added or fixed open a pull request. 
 
  ## Features
 
