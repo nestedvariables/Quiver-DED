@@ -30,7 +30,7 @@
 
 Command | Description | Usage 
 |:------------:|-------------|------------|
-[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | You can use this command to set options for the guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
+[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | Changes settings for the whole guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
 
 ## Languages
 
