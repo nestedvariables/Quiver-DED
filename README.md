@@ -30,11 +30,11 @@
 
 Command | Description | Usage 
 |:------------:|-------------|------------|
-[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | You can use this command to set options for the guild | set prefix {prefix} <br/> set locale {locale}
+[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | You can use this command to set options for the guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
 
 ## Languages
 
-| Language | Locale code to use in the set command |
+| Language | Locale code |
 |:------------:|:------------:|
 | United States English | en_US |
 | Iraeli Hebrew | he_IL |
