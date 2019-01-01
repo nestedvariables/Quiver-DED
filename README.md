@@ -24,19 +24,25 @@
 
  ## Features
 
+<table width="100%" align="center">
+<tr>
+  <th>Command</th>
+  <th>Description</th>
+  <th>Usage</th>
+</tr>
+<tr>
+  <td><a href="https://nestedvariables.tk/quiver/commands/set">set</a></td>
+  <td>Changes settings for the whole guild </td>
+  <td> set prefix {prefix} <br/> set locale {<a href="#languages">locale</a>} </td>
+</table>
+
 Command | Description | Usage 
 |:------------:|-------------|------------|
 [set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | Changes settings for the whole guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
 
 ## Languages
 
-| Language | Locale code |
-|:------------:|:------------:|
-| United States English | en_US |
-| Israeli Hebrew | he_IL |
-| Saudi Arabian Arabic | ar_SA |
-
-<table style="width:100%">
+<table width="100%" align="center">
   <tr>
     <th>Language</th>
     <th>Locale Code</th>
