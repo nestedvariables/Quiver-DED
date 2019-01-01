@@ -24,7 +24,7 @@
 
  ## Features
 
-<table width="100%" align="center">
+<table width="100%" align="center" text-align="center">
 <tr>
   <th>Command</th>
   <th>Description</th>
@@ -42,7 +42,7 @@ Command | Description | Usage
 
 ## Languages
 
-<table width="100%" align="center">
+<table width="100%" align="center" text-align="center">
   <tr>
     <th>Language</th>
     <th>Locale Code</th>
