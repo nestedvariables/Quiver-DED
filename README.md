@@ -26,7 +26,8 @@
 
  ## Features
  
-<span style="color: #96989b">* Has more information click the command to get the full breakdown on the command</span>
+<span color="#96989b">Has more information click the command to get the full breakdown on the command</span>
+
 Command | Description | Usage 
 |:------------:|-------------|------------|
-[set*](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | You can use this command to set options for the guild | set prefix {prefix} <br/> set locale {locale}
+[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | You can use this command to set options for the guild | set prefix {prefix} <br/> set locale {locale}
