@@ -35,3 +35,22 @@ Command | Description | Usage
 | United States English | en_US |
 | Israeli Hebrew | he_IL |
 | Saudi Arabian Arabic | ar_SA |
+
+<table style="width:100%">
+  <tr>
+    <th>Language</th>
+    <th>Locale Code</th>
+  </tr>
+  <tr>
+    <td>United States English</td>
+    <td>en_US</td>
+  </tr>
+  <tr>
+    <td>Israeli Hebrew</td>
+    <td>he_IL</td> 
+  </tr>
+  <tr>
+    <td>Saudi Arabian Arabic</td>
+    <td>ar_SA</td> 
+  </tr>
+</table>
