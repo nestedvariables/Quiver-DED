@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/NestedVariables/Quiver/master/Quiver-Banner-1800x200.png" height="100">
+<img src="https://nestedvariables.tk/quiver/assets/Quiver-Banner.png" height="100">
 
 <div align="center">
 <a href="https://nestedvariables.tk/quiver">
@@ -22,11 +22,7 @@
  
  Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a [translation]("Will be posting the English locale file in a couple days") to be added or fixed open a pull request. 
 
- ## 
-
  ## Features
- 
-<span color="#96989b">Has more information click the command to get the full breakdown on the command</span>
 
 Command | Description | Usage 
 |:------------:|-------------|------------|
