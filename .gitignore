@@ -10,5 +10,3 @@ My-Google-Assistant-f04dd100ade1.json
 *.png
 LICENSE
 start.sh
-src/main/java/com/nestedvariables/dev/Discord/Quiver/locale/he_IL.json
-src/main/resources/locale/he_IL.json

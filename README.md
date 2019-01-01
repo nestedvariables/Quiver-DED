@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/NestedVariables/Quiver/master/Quiver-Banner-1800x200.png" height="100">
+<img src="https://nestedvariables.tk/quiver/assets/Quiver-Banner.png" height="100">
 
 <div align="center">
 <a href="https://nestedvariables.tk/quiver">
@@ -20,22 +20,43 @@
 
  # Introduction
  
- Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a [translation]("Will be posting the English locale file in a couple days") to be added or fixed open a pull request. 
-
- ## 
+ Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a [translation](#languages "Will be posting the English locale file in a couple days") to be added or fixed open a pull request. 
 
  ## Features
- 
-<span color="#96989b">Has more information click the command to get the full breakdown on the command</span>
+
+<table width="100%" align="center">
+<tr>
+  <th>Command</th>
+  <th>Description</th>
+  <th>Usage</th>
+</tr>
+<tr text-align="center">
+  <td><a href="https://nestedvariables.tk/quiver/commands/set">set</a></td>
+  <td>Changes settings for the whole guild </td>
+  <td> set prefix {prefix} <br/> set locale {<a href="#languages">locale</a>} </td>
+</table>
 
 Command | Description | Usage 
 |:------------:|-------------|------------|
-[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | You can use this command to set options for the guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
+[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | Changes settings for the whole guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
 
 ## Languages
 
-| Language | Locale code |
-|:------------:|:------------:|
-| United States English | en_US |
-| Israeli Hebrew | he_IL |
-| Saudi Arabian Arabic | ar_SA |
+<table width="100%" align="center" text-align="center">
+  <tr>
+    <th>Language</th>
+    <th>Locale Code</th>
+  </tr>
+  <tr>
+    <td>United States English</td>
+    <td>en_US</td>
+  </tr>
+  <tr>
+    <td>Israeli Hebrew</td>
+    <td>he_IL</td> 
+  </tr>
+  <tr>
+    <td>Saudi Arabian Arabic</td>
+    <td>ar_SA</td> 
+  </tr>
+</table>
