@@ -281,4 +281,30 @@ public class Utils {
         }
     }
 
+    public static boolean isPremium(Guild guild) {
+        try {
+            Connection connection = SQLDriver.getConn();
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM `premium`");
+                   
+            if (!result.next()) {
+                Logger.log("warning", "No premium users in database.", null);
+                return false;
+            }
+            else {
+                while (result.next()) {
+                    if (guild.getOwner().getUser().getId().equals(result.getString("user"))) {
+                        statement.close();
+                        return true;
+                    }
+                }
+            }
+            statement.close();
+            return false;
+        }
+        catch (Exception e) {
+            Logger.log("fatal", e.toString(), null);
+            return false;
+        }
+    }
 }
