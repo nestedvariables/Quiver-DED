@@ -41,7 +41,9 @@ public class Main {
             // ill organize later
             new Settings(),
             new Codeblocks(),
-            new Help()
+            new Help(),
+            new GuildJoin(),
+            new ErrorTest()
         );
 
         builder.setStatus(OnlineStatus.ONLINE);
