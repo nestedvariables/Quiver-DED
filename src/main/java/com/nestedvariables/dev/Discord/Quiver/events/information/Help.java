@@ -25,8 +25,8 @@ public class Help extends ListenerAdapter {
 
                 owner.setTitle(":tools: Owner Help");
                 owner.setColor(randomColor);
-                owner.addField(Utils.getPrefix(event.getGuild()) + "announce <announcement>", "Will send a message to the owner of every server Quiver is in.", false);
-                owner.addField(Utils.getPrefix(event.getGuild()) + "blacklist <user>", "Will blacklist a user from using Quiver", false);
+                owner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "announce"), "Will send a message to the owner of every server Quiver is in.", false);
+                owner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "blacklist"), "Will blacklist a user from using Quiver", false);
                 owner.addField(Utils.getPrefix(event.getGuild()) + "botinfo", "Will display all information on the bot. \nOptionally use: `--dm` to send in DM.", false);
                 owner.addField(Utils.getPrefix(event.getGuild()) + "help", "Will show this embed. \nOptionally use: `--dm` to send in DM.", false);
                 owner.addField(Utils.getPrefix(event.getGuild()) + "serverinfo", "Will send an embed with information about the server the command is used in. \nOptionally use: `--dm` to send in DM", false);
@@ -66,10 +66,10 @@ public class Help extends ListenerAdapter {
 
                 regular.setTitle("Default Help");
                 regular.setColor(randomColor);
-                regular.addField(Utils.getPrefix(event.getGuild()) + "botinfo", "Will display information on the bot. \nOptionally use: `--dm` to send in DM", false);
-                regular.addField(Utils.getPrefix(event.getGuild()) + "help" , "Will display this. \nOptionally use `--dm` to send in DM", false);
-                regular.addField(Utils.getPrefix(event.getGuild()) + "serverinfo", "Will display information on the server the command is used in.", false);
-                regular.addField(Utils.getPrefix(event.getGuild()) + "userinfo", "Will display information about the user that ran the command \nOptionally tag a member of the server to get information on them", false);
+                regular.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "botinfo"), "Will display information on the bot. \nOptionally use: `--dm` to send in DM", false);
+                regular.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "help"), "Will display this. \nOptionally use `--dm` to send in DM", false);
+                regular.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "serverinfo"), "Will display information on the server the command is used in.", false);
+                regular.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "userinfo"), "Will display information about the user that ran the command \nOptionally tag a member of the server to get information on them", false);
                 regular.setFooter("Quiver Default User Help", Info.LOGO);
 
                 event.getChannel().sendMessage(regular.build()).queue((message) -> {
