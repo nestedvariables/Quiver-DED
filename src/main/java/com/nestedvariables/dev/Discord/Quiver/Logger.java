@@ -13,9 +13,9 @@ public class Logger {
                     System.out.println(info);
                 case "fatal":
                     EmbedBuilder fatal = new EmbedBuilder();
-                    fatal.setTitle(Utils.getMessage(guild, "fatalErrorEmbedTitle"));
-                    fatal.setDescription(Utils.getMessage(guild, "fatalErrorEmbedDescription").replace("{error}", "```\n" + info + "\n```"));
-                    fatal.setFooter(Utils.getMessage(guild, "name") + " " + Utils.getMessage(guild, "fatalErrorEmbedFooter"), guild.getJDA().getSelfUser().getAvatarUrl());
+                    fatal.setTitle(Utils.loggerMessages.get("fatalErrorEmbedTitle"));
+                    fatal.setDescription(Utils.loggerMessages.get("fatalErrorEmbedDescription").replace("{error}", "```\n" + info + "\n```"));
+                    fatal.setFooter(Utils.loggerMessages.get("fatalErrorEmbedFooter"), guild.getJDA().getSelfUser().getAvatarUrl());
                     fatal.setColor(0xff5555);
                     if (Utils.getLogChannel(guild) == null) {
                         guild.getDefaultChannel().sendMessage(fatal.build()).queue();

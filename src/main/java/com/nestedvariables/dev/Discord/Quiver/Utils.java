@@ -21,6 +21,7 @@ public class Utils {
     public static HashMap<String, String> locales = new HashMap<>();
     public static HashMap<String, String> prefixes = new HashMap<>();
     public static HashMap<String, String> logChannels = new HashMap<>();
+    public static HashMap<String, String> loggerMessages = new HashMap<>();
 
     // Fills up hashmaps on bot boot
     public static void loadData() {
@@ -44,6 +45,11 @@ public class Utils {
         catch (Exception e) {
             Logger.log("fatal", e.toString(), null);
         }
+
+        // Load logger error messages into RAM
+        loggerMessages.put("fatalErrorEmbedTitle", "❗ A major error occured.");
+        loggerMessages.put("fatalErrorEmbedDescription", "Well, it seems like something isn't quite right.\nPlease submit a screenshot of this error over at our [Support Server](https://discord.gg/p9xj9UD \"support Discord server\").\n\nHere's the full error log:\n{error}");
+        loggerMessages.put("fatalErrorEmbedFooter", "Logs");
     }
 
     // Return prefix for guild
