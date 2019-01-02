@@ -9,7 +9,7 @@ import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
 import com.nestedvariables.dev.Discord.Quiver.events.information.*;
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
 import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
-
+import com.nestedvariables.dev.Discord.Quiver.commands.Help;
 import com.nestedvariables.dev.Discord.Quiver.commands.Settings;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
@@ -34,47 +34,14 @@ public class Main {
             // Announcement Event Listeners
             new MemberJoin(),
             
-            // Channel System Listeners
-            new ChannelCleanup(),
-            new ChannelCreate(),
-            new ChannelInvite(),
-            
-            // Guild Join Event Listeners
-            new GuildJoin(),
-
-            // Information Event Listeners
-            new BotInfo(),
-            new Help(),
-            new PermissionHelp(),
-            new ServerInfo(),
-            new UserInfo(),
-
-            // Misc Event Listeners
-            
-            // Moderation Event Listeners
-            new Ban(),
-            new Clear(),
-            new Kick(),
-            new Mute(),
-            new Softban(),
-            new Unmute(),
-            
-            // Music Event Listeners
-            
-            // Bot Owner Event Listners
-            new Announcement(),
-            new BlacklistMember(),
-            new ErrorTest(),
-            //new StatsUpdate(),
-            new Unblacklist(),
-
             // Server Owner Event Listeners
             // Test command
             new test(),
 
             // ill organize later
             new Settings(),
-            new Codeblocks()
+            new Codeblocks(),
+            new Help()
         );
 
         builder.setStatus(OnlineStatus.ONLINE);

@@ -93,6 +93,8 @@ public class Utils {
                 return 0x3fff6f;
             case "codeBlock":
                 return 0xa06926;
+            case "error":
+                return 0xff4032;
             default:
                 return 0x45f442;
         }
