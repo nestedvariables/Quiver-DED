@@ -21,5 +21,9 @@ public class test extends ListenerAdapter {
                 Logger.log("fatal", "vadim went into blender", event.getGuild());
             }
         }
+        else if (args[0].equals("~ispremium")) {
+            event.getChannel().sendMessage("Guild owner: " + event.getGuild().getOwner().getUser().getName()).queue();
+            event.getChannel().sendMessage(String.valueOf(Utils.isPremium(event.getGuild()))).queue();
+        }
     }
 }
