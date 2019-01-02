@@ -1,4 +1,6 @@
 {
+    please don't remove any emoji or {placeholders} remove this line though when you create pull request or give it back
+
     "name": "Quiver",
     "blacklistEmbedDescription": "❌ Sorry, {user}, you can't use commands as you were blacklisted!",
     "blacklistEmbedFooter": "Blacklisted Member",
