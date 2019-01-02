@@ -13,7 +13,7 @@ public class Help extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         
-        if(args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "help") || args[0].equalsIgnoreCase("q!help")){
+        if(args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpCommand")) || args[0].equalsIgnoreCase("q!help")){
 
             try{
                 if(Utils.isBlacklisted(event)){
@@ -32,15 +32,20 @@ public class Help extends ListenerAdapter {
 
                     EmbedBuilder botOwner = new EmbedBuilder();
 
-                    botOwner.setTitle("Bot Owner Help");
-                    botOwner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpEmbedAnnounceTitle"), Utils.getMessage(event.getGuild(), "helpEmbedAnnounceDescription").replace("{prefix}" , Utils.getPrefix(event.getGuild())), false);
-                    botOwner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpEmbedBlacklistTitle"), Utils.getMessage(event.getGuild(), "helpEmbedBlacklistDescription").replace("{prefix}", Utils.getPrefix(event.getGuild())), false);
-                    botOwner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpEmbedUnblackTitle"),Utils.getMessage(event.getGuild(), "helpEmbedUnblacklistDescription").replace("{prefix}", Utils.getPrefix(event.getGuild())), false);
+                    botOwner.setTitle(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "botOwnerHelpEmbedTitle"));
+                    botOwner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpEmbedAnnounceTitle"), Utils.getMessage(event.getGuild(), "helpEmbedAnnounceDescription").replace("{prefix}" , Utils.getPrefix(event.getGuild())), true);
+                    botOwner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpEmbedBlacklistTitle"), Utils.getMessage(event.getGuild(), "helpEmbedBlacklistDescription").replace("{prefix}", Utils.getPrefix(event.getGuild())), true);
+                    botOwner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpEmbedUnblackTitle"),Utils.getMessage(event.getGuild(), "helpEmbedUnblacklistDescription").replace("{prefix}", Utils.getPrefix(event.getGuild())), true);
+                    botOwner.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "botOwnerHelpEmbedFooter") , event.getJDA().getSelfUser().getAvatarUrl());
 
-
+                    event.getChannel().sendMessage(botOwner.build()).queue();
+                    
                 } else if(Utils.isServerOwner(event)){
                     
                     EmbedBuilder serverOwner = new EmbedBuilder();
+
+                    serverOwner.setTitle(Utils.getMessage(event.getGuild(), "serverOwnerHelpEmbedTitle"));
+                    serverOwner.addField(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), ""),"",true);
 
                 } else if(Utils.isAdministrator(event)){
 
