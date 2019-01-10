@@ -101,6 +101,8 @@ public class Utils {
                 return 0xa06926;
             case "error":
                 return 0xff4032;
+            case "info":
+                return 0x5eccff;
             default:
                 return 0x45f442;
         }

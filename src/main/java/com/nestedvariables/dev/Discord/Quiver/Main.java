@@ -4,6 +4,7 @@ import javax.security.auth.login.LoginException;
 
 import com.nestedvariables.dev.Discord.Quiver.commands.test;
 import com.nestedvariables.dev.Discord.Quiver.events.GuildJoin;
+import com.nestedvariables.dev.Discord.Quiver.events.ReadyListener;
 import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
 import com.nestedvariables.dev.Discord.Quiver.events.information.*;
@@ -31,19 +32,17 @@ public class Main {
         builder.setToken(Token.token);
 
         builder.addEventListeners(
-            // Announcement Event Listeners
-            new MemberJoin(),
-            
-            // Server Owner Event Listeners
-            // Test command
-            new test(),
 
-            // ill organize later
-            new Settings(),
-            new Codeblocks(),
-            new Help(),
-            new GuildJoin(),
-            new ErrorTest()
+                new Blacklist(),
+                new Codeblocks(),
+                new Clear(),
+                new GuildJoin(),
+                new Help(),
+                new List(),
+                //new ReadyListener(),
+                new Settings(),
+                new Unblacklist()
+
         );
 
         builder.setStatus(OnlineStatus.ONLINE);

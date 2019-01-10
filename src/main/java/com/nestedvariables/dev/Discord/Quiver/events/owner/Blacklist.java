@@ -15,7 +15,7 @@ import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class BlacklistMember extends ListenerAdapter {
+public class Blacklist extends ListenerAdapter {
 
     String reason = "";
     Integer oldID;

@@ -21,7 +21,7 @@ public class Clear extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "clear") || args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "c")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "clearCommand")) || args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "cCommand"))) {
             event.getMessage().delete().queue();
             if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
                 
@@ -44,7 +44,13 @@ public class Clear extends ListenerAdapter {
                     if (messageDelete < 1) {
                         EmbedBuilder notEnoughMessages = new EmbedBuilder();
 
-                        notEnoughMessages.setDescription("");
+                        notEnoughMessages.setDescription(Utils.getMessage(event.getGuild(), "notEnoughMessagesEmbedDescription").replace("{user}", event.getMessage().getMember().getAsMention()));
+                        notEnoughMessages.setColor(Utils.embedColor("error"));
+                        notEnoughMessages.setFooter(Utils.getMessage(event.getGuild(), "name") + Utils.getMessage(event.getGuild(), "notEnoughMessagesEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
+
+                        event.getChannel().sendMessage(notEnoughMessages.build()).queue((message) -> {
+                            message.delete().queueAfter(15, TimeUnit.SECONDS);
+                        });
                     }
 
                     if (messageDelete > 100) {

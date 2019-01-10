@@ -20,7 +20,7 @@ public class Settings extends ListenerAdapter {
                 event.getChannel().sendMessage(usage.build()).queue();
                 usage.clear();
             }
-            else if (args[1].equalsIgnoreCase("prefix")) {
+            else if (args[1].equalsIgnoreCase(Utils.getMessage(event.getGuild(), "prefixSubcommand"))) {
                 if (args.length < 3) {
                     EmbedBuilder usage = new EmbedBuilder();
                     usage.setTitle(Utils.getMessage(event.getGuild(), "usageEmbedTitle").replace("{command}", args[1].replace(Utils.getPrefix(event.getGuild()), "")).replace("{prefix}", Utils.getPrefix(event.getGuild())));
@@ -41,7 +41,7 @@ public class Settings extends ListenerAdapter {
                     success.clear();
                 }   
             }
-            else if (args[1].equalsIgnoreCase("locale")) {
+            else if (args[1].equalsIgnoreCase(Utils.getMessage(event.getGuild(), "localeSubcommand"))) {
                 if (args.length < 3) {
                     EmbedBuilder usage = new EmbedBuilder();
                     usage.setTitle(Utils.getMessage(event.getGuild(), "usageEmbedTitle").replace("{command}", args[1].replace(Utils.getPrefix(event.getGuild()), "")).replace("{prefix}", Utils.getPrefix(event.getGuild())));
