@@ -7,7 +7,6 @@ import java.net.URISyntaxException;
 
 import com.nestedvariables.dev.Discord.Quiver.Logger;
 import com.nestedvariables.dev.Discord.Quiver.Main;
-import com.nestedvariables.dev.Discord.Quiver.Utils;
 
 import ca.momoperes.canarywebhooks.DiscordMessage;
 import ca.momoperes.canarywebhooks.WebhookClient;
