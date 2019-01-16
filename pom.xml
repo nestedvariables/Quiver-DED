@@ -22,11 +22,6 @@
       <name>jcenter-bintray</name>
       <url>http://jcenter.bintray.com</url>
     </repository>
-    <!-- Jitpack Package Repository for Git -->
-    <repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
   </repositories>
 
   <dependencies>
@@ -92,13 +87,6 @@
       <artifactId>jersey-client</artifactId>
       <version>1.19</version>
     </dependency>
-
-    <!-- Momothereal's Java Webhook Client -->
-    <dependency>
-	    <groupId>com.github.momothereal</groupId>
-	    <artifactId>java-canary-webhooks</artifactId>
-	    <version>master</version>
-	  </dependency>
 
     <!-- Google Voice API 
     <dependency>

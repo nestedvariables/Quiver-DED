@@ -39,7 +39,7 @@ public class Main {
                 new GuildJoin(),
                 new Help(),
                 new List(),
-                //new ReadyListener(),
+                new ReadyListener(),
                 new Settings(),
                 new Unblacklist()
 
