@@ -47,7 +47,8 @@ public class ReadyListener extends ListenerAdapter {
             */
             shardID = null;
         } catch (Exception e) {
-
+            e.printStackTrace();
+            Logger.log("fatal", e.toString(), null);
         }
 
     }
