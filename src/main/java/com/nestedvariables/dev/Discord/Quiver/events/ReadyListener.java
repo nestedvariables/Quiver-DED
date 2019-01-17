@@ -1,11 +1,5 @@
 package com.nestedvariables.dev.Discord.Quiver.events;
 
-import java.awt.Color;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.Logger;
 import com.nestedvariables.dev.Discord.Quiver.Main;
 
@@ -15,7 +9,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -28,7 +21,7 @@ public class ReadyListener extends ListenerAdapter {
         try {
 
             HttpPost post = new HttpPost(webhook);
-            StringEntity params = new StringEntity("details={\"embeds\":[{\"title\": \"Shard Spawned!\",\"description\": \"**Shard ID:** \" + shardID + \"\n**Shard Guild Count:** \"" + event.getGuildTotalCount() + "\"\n**Shard User Count:** \"" + event.getJDA().getUsers().size() + "\"\n**Guild Total:** \"" + Main.shardManager.getGuilds().size() + "\"\n**User Total:** \"" + Main.shardManager.getUsers().size(), "\"color\": 6212863,\"footer\": {\"text\" : \"Quiver Shard Spawned\",\"icon_url\": \"https://raw.githubusercontent.com/NestedVariables/Quiver/master/Quiver.png\"}]}");
+            StringEntity params = new StringEntity("details={\"embeds\":[{\"title\": \"Shard Spawned!\",\"description\": \"**Shard ID:** \"" + shardID + "\"\n**Shard Guild Count:** \"" + event.getGuildTotalCount() + "\"\n**Shard User Count:** \"" + event.getJDA().getUsers().size() + "\"\n**Guild Total:** \"" + Main.shardManager.getGuilds().size() + "\"\n**User Total:** \"" + Main.shardManager.getUsers().size(), "\"color\": 6212863,\"footer\": {\"text\" : \"Quiver Shard Spawned\",\"icon_url\": \"https://raw.githubusercontent.com/NestedVariables/Quiver/master/Quiver.png\"}]}");
             post.addHeader("content-type", "application/json");
             post.setEntity(params);
             HttpResponse response = httpClient.execute(post);
