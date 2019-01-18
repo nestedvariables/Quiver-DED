@@ -21,7 +21,8 @@ import net.dv8tion.jda.core.exceptions.RateLimitedException;
 public class Main {
 
     public static String botName = "Quiver";
-    // For the most part set this to -1
+    // For the most part set this to -1 
+    // Only change this if you ABSOLUTELY 100% know what you are doing
     public static Integer shardCount = -1;
     public static ShardManager shardManager;
 
