@@ -11,7 +11,6 @@ import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
 
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.message.MessageDeleteEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -30,7 +29,7 @@ public class Toggles extends ListenerAdapter {
                         nullArgs.setDescription(
                                 event.getMember().getAsMention() + ", You didn't specify which system to disable");
                         nullArgs.setColor(Info.ERROR_RED);
-                        nullArgs.setFooter("Quiver Non-specified system", Info.LOGO);
+                        nullArgs.setFooter("Quiver Non-specified system", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(nullArgs.build()).queue((message) -> {
                             message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -46,7 +45,7 @@ public class Toggles extends ListenerAdapter {
 
                         channels.setDescription(event.getMember().getAsMention() + ", I've disabled the channel system for this guild, you can reenable it by typing the same command.");
                         channels.setColor(randomColor);
-                        channels.setFooter("Quiver Disabled System", Info.LOGO);
+                        channels.setFooter("Quiver Disabled System", Utils.getAvatar(event));
 
                         stmt.execute("UPDATE `guild_options` SET `channel_system`='false' WHERE `guild_id`='" + event.getGuild().getId().toString() + "'");
                         conn.close();
@@ -58,7 +57,7 @@ public class Toggles extends ListenerAdapter {
 
                         channels.setDescription(event.getMember().getAsMention() + ", I've enabled the channel system for this guild, you can disable it by typing the same command.");
                         channels.setColor(randomColor);
-                        channels.setFooter("Quiver Enabled System", Info.LOGO);
+                        channels.setFooter("Quiver Enabled System", Utils.getAvatar(event));
 
                         stmt.execute("UPDATE `guild_options` SET `channel_system`='true' WHERE `guild_id`='" + event.getGuild().getId().toString() + "'");
                         conn.close();
