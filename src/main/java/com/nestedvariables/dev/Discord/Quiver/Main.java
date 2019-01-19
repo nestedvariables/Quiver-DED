@@ -20,7 +20,7 @@ public class Main {
 
     public static String botName = "Quiver";
     // For the most part set this to -1
-    // With -1 Shards JDA will contact Discord with the amount of guilds the bot is in and then ask how many shards to spawn
+    // With -1 Shard Count JDA will contact Discord with the amount of guilds the bot is in and then ask how many shards to spawn
     // Only change this if you ABSOLUTELY 100% know what you are doing
     public static Integer shardCount = -1;
     public static ShardManager shardManager;
