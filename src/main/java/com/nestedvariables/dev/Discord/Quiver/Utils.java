@@ -13,6 +13,7 @@ import org.json.simple.parser.JSONParser;
 
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
@@ -337,6 +338,10 @@ public class Utils {
 
     public static String getMention(MessageReceivedEvent event){ 
         return event.getJDA().getSelfUser().getAsMention();
+    }
+
+    public static String getAvatar(GuildMemberJoinEvent event) {
+        return event.getJDA().getSelfUser().getAvatarUrl();
     }
 
     public static String getAvatar(GuildMessageReceivedEvent event) {
