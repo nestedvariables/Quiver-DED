@@ -30,7 +30,7 @@ public class Main {
         DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 
         // Fetch token from token file
-        builder.setToken(Token.token);
+        builder.setToken(Tokens.token);
 
         builder.addEventListeners(
 
