@@ -4,6 +4,8 @@
 .vscode/
 target/
 bin/
+docs/language_pull_request.md
+docs/code_pull_request.md
 src/main/java/com/nestedvariables/dev/Discord/Quiver/SQLDriver.java
 My-Google-Assistant-f04dd100ade1.json
 *.png
