@@ -3,9 +3,9 @@ package com.nestedvariables.dev.Discord.Quiver;
 import javax.security.auth.login.LoginException;
 
 import com.nestedvariables.dev.Discord.Quiver.events.*;
-import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
+/*import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
-import com.nestedvariables.dev.Discord.Quiver.events.information.*;
+import com.nestedvariables.dev.Discord.Quiver.events.information.*;*/
 import com.nestedvariables.dev.Discord.Quiver.events.moderation.*;
 import com.nestedvariables.dev.Discord.Quiver.events.owner.*;
 import com.nestedvariables.dev.Discord.Quiver.commands.Help;
@@ -19,7 +19,8 @@ import net.dv8tion.jda.core.exceptions.RateLimitedException;
 public class Main {
 
     public static String botName = "Quiver";
-    // For the most part set this to -1 
+    // For the most part set this to -1
+    // With -1 Shards JDA will contact Discord with the amount of guilds the bot is in and then ask how many shards to spawn
     // Only change this if you ABSOLUTELY 100% know what you are doing
     public static Integer shardCount = -1;
     public static ShardManager shardManager;
