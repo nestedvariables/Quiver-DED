@@ -2,7 +2,7 @@ package com.nestedvariables.dev.Discord.Quiver.events.announcements;
 
 import java.util.Random;
 
-import com.nestedvariables.dev.Discord.Quiver.Info;
+import com.nestedvariables.dev.Discord.Quiver.Utils;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
@@ -20,12 +20,12 @@ public class MemberJoin extends ListenerAdapter {
         if (event.getMember().getUser().isBot()) {
             join.setTitle(":robot: New Bot!");
             join.addField("New bot's name", event.getMember().getAsMention(), false);
-            join.setFooter("Quiver New Bot Welcome", Info.LOGO);
+            join.setFooter("Quiver New Bot Welcome", Utils.getAvatar(event));
         } 
         else {
             join.setTitle("New Member!");
             join.addField("New member's name", event.getMember().getAsMention(), false);
-            join.setFooter("Quiver New Member Welcome", Info.LOGO);
+            join.setFooter("Quiver New Member Welcome", Utils.getAvatar(event));
         }
 
         // Send and clear embed
