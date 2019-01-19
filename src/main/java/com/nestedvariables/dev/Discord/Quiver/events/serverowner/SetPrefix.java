@@ -24,7 +24,7 @@ public class SetPrefix extends ListenerAdapter {
 
                 nullArgs.setDescription(event.getMember().getAsMention() + ", You didn't specify what you want your new prefix to be! \n\nUsage: " + Utils.getPrefix(event.getGuild()) + "setprefix <new prefix>");
                 nullArgs.setColor(Info.ERROR_RED);
-                nullArgs.setFooter("Quiver Custom Prefix Error", Info.LOGO);
+                nullArgs.setFooter("Quiver Custom Prefix Error", Utils.getAvatar(event));
 
                 event.getChannel().sendMessage(nullArgs.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -45,7 +45,7 @@ public class SetPrefix extends ListenerAdapter {
 
                     prefix.setDescription(event.getMember().getAsMention() + ", I've changed the prefix for all future commands to " + args[1]);
                     prefix.setColor(randomColor);
-                    prefix.setFooter("Quiver Custom Prefix", Info.LOGO);
+                    prefix.setFooter("Quiver Custom Prefix", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(prefix.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);

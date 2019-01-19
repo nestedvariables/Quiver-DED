@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.SQLDriver;
+import com.nestedvariables.dev.Discord.Quiver.Utils;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -22,7 +23,7 @@ public class Tempmute extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(Info.LOGO + "tempmute")) {
+        if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "tempmute")) {
             String banID = "";
             String banReason = "";
             Integer oldID = 0;
@@ -36,7 +37,7 @@ public class Tempmute extends ListenerAdapter {
                     nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you didn't specify which member to ban!");
                     nullUser.setColor(Info.ERROR_RED);
-                    nullUser.setFooter("Quiver Undefined Member", Info.LOGO);
+                    nullUser.setFooter("Quiver Undefined Member", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -83,7 +84,7 @@ public class Tempmute extends ListenerAdapter {
                         banNoReason.addField("Banned Member: ", memberToBan.getEffectiveName(), false);
                         banNoReason.addField("Ban Executor: ", event.getMember().getEffectiveName(), false);
                         banNoReason.addField("Reason: ", "Ban executor didn't specify a reason", false);
-                        banNoReason.setFooter("Quiver Ban Report", Info.LOGO);
+                        banNoReason.setFooter("Quiver Ban Report", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(banNoReason.build()).queue((message) -> {
                             message.delete().queueAfter(30, TimeUnit.SECONDS);
@@ -145,7 +146,7 @@ public class Tempmute extends ListenerAdapter {
                         banWithReason.addField("Banned Member: ", memberToBan.getEffectiveName(), false);
                         banWithReason.addField("Ban Executor: ", event.getMember().getEffectiveName(), false);
                         banWithReason.addField("Reason: ", banReason, false);
-                        banWithReason.setFooter("Quiver Ban Report", Info.LOGO);
+                        banWithReason.setFooter("Quiver Ban Report", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(banWithReason.build()).queue((message) -> {
                             message.delete().queueAfter(30, TimeUnit.SECONDS);
@@ -169,7 +170,7 @@ public class Tempmute extends ListenerAdapter {
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                         + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to ban members from this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
-                nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
+                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
 
                 event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);

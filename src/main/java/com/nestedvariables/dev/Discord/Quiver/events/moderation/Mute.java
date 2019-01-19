@@ -63,7 +63,7 @@ public class Mute extends ListenerAdapter {
                         nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                                 + ", you didn't specify which member to mute!");
                         nullUser.setColor(Info.ERROR_RED);
-                        nullUser.setFooter("Quiver Undefined Member", Info.LOGO);
+                        nullUser.setFooter("Quiver Undefined Member", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                             message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -83,7 +83,7 @@ public class Mute extends ListenerAdapter {
                         muteNoReason.addField("Muted Member: ", memberToMute.getEffectiveName(), false);
                         muteNoReason.addField("Mute Executor: ", event.getMember().getEffectiveName(), false);
                         muteNoReason.addField("Reason: ", "Mute executor didn't specify a reason", false);
-                        muteNoReason.setFooter("Quiver Mute Report", Info.LOGO);
+                        muteNoReason.setFooter("Quiver Mute Report", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(muteNoReason.build()).queue((message) -> {
                             message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -107,7 +107,7 @@ public class Mute extends ListenerAdapter {
                         muteWithReason.addField("Muted Member: ", memberToMute.getEffectiveName(), false);
                         muteWithReason.addField("Mute Executor: ", event.getMember().getEffectiveName(), false);
                         muteWithReason.addField("Reason: ", muteReason, false);
-                        muteWithReason.setFooter("Quiver Mute Report", Info.LOGO);
+                        muteWithReason.setFooter("Quiver Mute Report", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(muteWithReason.build()).queue((message) -> {
                             message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -121,7 +121,7 @@ public class Mute extends ListenerAdapter {
                     nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to manage member's roles for this guild to use this command.");
                     nullPerms.setColor(Info.ERROR_RED);
-                    nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
+                    nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -137,7 +137,7 @@ public class Mute extends ListenerAdapter {
                         nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                                 + ", you didn't specify which member to mute!");
                         nullUser.setColor(Info.ERROR_RED);
-                        nullUser.setFooter("Quiver Undefined Member", Info.LOGO);
+                        nullUser.setFooter("Quiver Undefined Member", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                             message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -157,7 +157,7 @@ public class Mute extends ListenerAdapter {
                         muteNoReason.addField("Muted Member: ", memberToMute.getEffectiveName(), false);
                         muteNoReason.addField("Mute Executor: ", event.getMember().getEffectiveName(), false);
                         muteNoReason.addField("Reason: ", "Mute executor didn't specify a reason", false);
-                        muteNoReason.setFooter("Quiver Mute Report", Info.LOGO);
+                        muteNoReason.setFooter("Quiver Mute Report", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(muteNoReason.build()).queue((message) -> {
                             message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -181,7 +181,7 @@ public class Mute extends ListenerAdapter {
                         muteWithReason.addField("Muted Member: ", memberToMute.getEffectiveName(), false);
                         muteWithReason.addField("Mute Executor: ", event.getMember().getEffectiveName(), false);
                         muteWithReason.addField("Reason: ", muteReason, false);
-                        muteWithReason.setFooter("Quiver Mute Report", Info.LOGO);
+                        muteWithReason.setFooter("Quiver Mute Report", Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(muteWithReason.build()).queue((message) -> {
                             message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -195,7 +195,7 @@ public class Mute extends ListenerAdapter {
                     nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to manage member's roles for this guild to use this command.");
                     nullPerms.setColor(Info.ERROR_RED);
-                    nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
+                    nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);

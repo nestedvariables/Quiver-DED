@@ -30,7 +30,7 @@ public class Softban extends ListenerAdapter {
                     nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you didn't specify which member to softban!");
                     nullUser.setColor(Info.ERROR_RED);
-                    nullUser.setFooter("Quiver Undefined Member", Info.LOGO);
+                    nullUser.setFooter("Quiver Undefined Member", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -43,7 +43,7 @@ public class Softban extends ListenerAdapter {
                     nullReason.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                     + ", you didn't specify a reason for softbanning " + memberToBan.getAsMention() + "!");
                     nullReason.setColor(Info.ERROR_RED);
-                    nullReason.setFooter("Quiver Undefined Reason" , Info.LOGO);
+                    nullReason.setFooter("Quiver Undefined Reason" , Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(nullReason.build()).queue((message) -> {
                         message.delete().queueAfter(10,TimeUnit.SECONDS);
@@ -73,7 +73,7 @@ public class Softban extends ListenerAdapter {
                     ban.addField("SoftBanned Member: ", memberToBan.getEffectiveName() ,false);
                     ban.addField("SoftBan Executor: ", event.getMember().getEffectiveName(), false);
                     ban.addField("Reason: " , banReason , false);
-                    ban.setFooter("Quiver SoftBan Report", Info.LOGO);
+                    ban.setFooter("Quiver SoftBan Report", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(ban.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -87,7 +87,7 @@ public class Softban extends ListenerAdapter {
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                         + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to ban members from this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
-                nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
+                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
 
                 event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);

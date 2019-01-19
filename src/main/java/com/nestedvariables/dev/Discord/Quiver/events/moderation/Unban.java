@@ -27,7 +27,7 @@ public class Unban extends ListenerAdapter {
                     nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you didn't specify which user to unban!");
                     nullUser.setColor(Info.ERROR_RED);
-                    nullUser.setFooter("Quiver Undefined User", Info.LOGO);
+                    nullUser.setFooter("Quiver Undefined User", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -46,7 +46,7 @@ public class Unban extends ListenerAdapter {
                     banNoReason.addField("Unbanned Member: ", memberToBan ,false);
                     banNoReason.addField("Unban Executor: ", event.getMember().getEffectiveName(), false);
                     banNoReason.addField("Reason: " , "Unban executor didn't specify a reason" , false);
-                    banNoReason.setFooter("Quiver Unban Report", Info.LOGO);
+                    banNoReason.setFooter("Quiver Unban Report", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(banNoReason.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -69,7 +69,7 @@ public class Unban extends ListenerAdapter {
                     banWithReason.addField("Unbanned Member: ", memberToBan.getEffectiveName() ,false);
                     banWithReason.addField("Unban Executor: ", event.getMember().getEffectiveName(), false);
                     banWithReason.addField("Reason: " , banReason , false);
-                    banWithReason.setFooter("Quiver Unban Report", Info.LOGO);
+                    banWithReason.setFooter("Quiver Unban Report", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(banWithReason.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -86,7 +86,7 @@ public class Unban extends ListenerAdapter {
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                         + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to ban members from this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
-                nullPerms.setFooter("Quiver Insufficient Permissions", Info.LOGO);
+                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
     
                 event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);

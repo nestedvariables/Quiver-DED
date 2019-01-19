@@ -32,7 +32,7 @@ public class Blacklist extends ListenerAdapter {
                     nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you didn't specify which member to blacklist!");
                     nullUser.setColor(Info.ERROR_RED);
-                    nullUser.setFooter("Quiver Undefined Member", Info.LOGO);
+                    nullUser.setFooter("Quiver Undefined Member", Utils.getAvatar(event));
 
                     event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -76,7 +76,7 @@ public class Blacklist extends ListenerAdapter {
                         eb.setThumbnail(blacklistedMember.getUser().getAvatarUrl());
                         eb.setDescription("Blacklisted " + blacklistedMember + " from using Quiver");
                         eb.addField("Reason", reason, false);
-                        eb.setFooter("Quiver Blacklisted Member" , Info.LOGO);
+                        eb.setFooter("Quiver Blacklisted Member" , Utils.getAvatar(event));
 
                         event.getChannel().sendMessage(eb.build()).queue((message) -> {
                                 message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -97,7 +97,7 @@ public class Blacklist extends ListenerAdapter {
                 nullUser.setDescription(event.getMember().getAsMention()
                         + "You can't use that command as you are not one of my owners: ExZiByte#9472 or Tech#9627");
                 nullUser.setColor(Info.ERROR_RED);
-                nullUser.setFooter("Quiver Not Owner Error", Info.LOGO);
+                nullUser.setFooter("Quiver Not Owner Error", Utils.getAvatar(event));
 
                 event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                     message.delete().queueAfter(15, TimeUnit.SECONDS);

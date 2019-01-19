@@ -90,7 +90,7 @@ public class ChannelCreate extends ListenerAdapter {
                                         
                                         disSys.setColor(Info.ERROR_RED);
                                         disSys.setDescription(event.getMember().getAsMention() + " I can't create a private channel as " + event.getGuild().getOwner().getAsMention() + " has disabled the channel system.");
-                                        disSys.setFooter("Quiver Disabled System Error", Info.LOGO);
+                                        disSys.setFooter("Quiver Disabled System Error", Utils.getAvatar(event));
 
                                         event.getChannel().sendMessage(disSys.build()).queue((message) -> {
                                                 message.delete().queueAfter(15, TimeUnit.SECONDS);
