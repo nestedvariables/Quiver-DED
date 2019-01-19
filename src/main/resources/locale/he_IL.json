@@ -1,7 +1,7 @@
 {
-    "name": "",
-    "setlocale": "{locale}.",
-    "codeblockEmbedTitle": "📋 .",
-    "codeblockEmbedDescription": "\n\n{link}",
-    "codeblockEmbedFooter": ""
+    "name": "קוויבר",
+    "setlocale": ".{}להפוך את המקומי ל",
+    "codeblockEmbedTitle": ".📋בלוק קוד מודפס",
+    "codeblockEmbedDescription": "{} :נראה שבלוק הקוד שלך היה די ארוך אז יצרתי לך הדבקתי לך אותו",
+    "codeblockEmbedFooter": "ת הקוד"
 }
