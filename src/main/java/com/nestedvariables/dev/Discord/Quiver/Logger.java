@@ -1,7 +1,6 @@
 package com.nestedvariables.dev.Discord.Quiver;
 
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
 
 public class Logger {
