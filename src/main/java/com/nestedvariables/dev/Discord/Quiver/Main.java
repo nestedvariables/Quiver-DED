@@ -2,9 +2,7 @@ package com.nestedvariables.dev.Discord.Quiver;
 
 import javax.security.auth.login.LoginException;
 
-import com.nestedvariables.dev.Discord.Quiver.commands.test;
-import com.nestedvariables.dev.Discord.Quiver.events.GuildJoin;
-import com.nestedvariables.dev.Discord.Quiver.events.ReadyListener;
+import com.nestedvariables.dev.Discord.Quiver.events.*;
 import com.nestedvariables.dev.Discord.Quiver.events.announcements.*;
 import com.nestedvariables.dev.Discord.Quiver.events.channelsystem.*;
 import com.nestedvariables.dev.Discord.Quiver.events.information.*;
