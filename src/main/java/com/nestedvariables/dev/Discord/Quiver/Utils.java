@@ -311,7 +311,7 @@ public class Utils {
             ResultSet result = statement.executeQuery("SELECT * FROM `premium`");
                    
             if (!result.next()) {
-                Logger.log("warning", "No premium users in database.", null);
+                Logger.log("warning", "No premium users in database.", null); 
                 return false;
             }
             else {
@@ -330,4 +330,21 @@ public class Utils {
             return false;
         }
     }
+
+    public static String getMention(GuildMessageReceivedEvent event){ 
+        return event.getJDA().getSelfUser().getAsMention();
+    }
+
+    public static String getMention(MessageReceivedEvent event){ 
+        return event.getJDA().getSelfUser().getAsMention();
+    }
+
+    public static String getAvatar(GuildMessageReceivedEvent event) {
+        return event.getJDA().getSelfUser().getAvatarUrl();
+    }
+
+    public static String getAvatar(MessageReceivedEvent event) {
+        return event.getJDA().getSelfUser().getAvatarUrl();
+    }
+
 }
