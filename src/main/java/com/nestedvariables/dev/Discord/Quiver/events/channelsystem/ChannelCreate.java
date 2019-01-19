@@ -27,10 +27,10 @@ public class ChannelCreate extends ListenerAdapter {
                                         if(args.length < 2) {
                                                 EmbedBuilder nullArgs = new EmbedBuilder();
 
-                                                nullArgs.setTitle("Invalid Usage");
+                                                nullArgs.setTitle(Utils.getMessage(event.getGuild(), "invalidUsage"));
                                                 nullArgs.setColor(Info.ERROR_RED);
-                                                nullArgs.setDescription("Correct Usage: `" + Utils.getPrefix(event.getGuild()) + "privatechannel <slowmode time> {-nsfw}` \nKey:\n<> | Required\n{} | Optional");
-                                                nullArgs.setFooter("Quiver Invalid Usage", Info.LOGO);
+                                                nullArgs.setDescription("Correct Usage: `" + Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "channelCreateNullArgsDescription"));
+                                                nullArgs.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "invalidUsage"), Utils.getAvatar(event));
 
                                                 event.getChannel().sendMessage(nullArgs.build()).queue((message) -> {
                                                         message.delete().queueAfter(10, TimeUnit.SECONDS);
