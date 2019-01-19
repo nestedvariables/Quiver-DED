@@ -3,7 +3,6 @@ package com.nestedvariables.dev.Discord.Quiver.events.information;
 import java.util.Random;
 
 import com.nestedvariables.dev.Discord.Quiver.Utils;
-import com.nestedvariables.dev.Discord.Quiver.Info;
 import com.nestedvariables.dev.Discord.Quiver.Main;
 
 import net.dv8tion.jda.core.EmbedBuilder;
@@ -22,7 +21,7 @@ public class BotInfo extends ListenerAdapter {
             EmbedBuilder eb = new EmbedBuilder();
 
             eb.setTitle("Bot Information");
-            eb.setThumbnail(Info.LOGO);
+            eb.setThumbnail(Utils.getAvatar(event));
             eb.setColor(randomColor);
             eb.setDescription(":white_medium_small_square: Username: " + event.getJDA().getSelfUser().getAsMention() + "#" + event.getJDA().getSelfUser().getDiscriminator().toString()
             + "             :white_medium_small_square: Prefix: " + Utils.getPrefix(event.getGuild())
@@ -30,7 +29,7 @@ public class BotInfo extends ListenerAdapter {
             + " \n:white_medium_small_square: Guild Count: " + Main.shardManager.getGuilds().size()
             + " \n:white_medium_small_square: User Count: " + Main.shardManager.getUsers().size()
             + " \n:white_medium_small_square: Quiver's Home Guild: [Invite](https://discord.gg/432hTd4 \"Quiver's Home Discord Server\")");
-            eb.setFooter("Quiver Bot Information", Info.LOGO);
+            eb.setFooter("Quiver Bot Information", Utils.getAvatar(event));
 
             event.getChannel().sendMessage(eb.build()).queue();
             eb.clear();
