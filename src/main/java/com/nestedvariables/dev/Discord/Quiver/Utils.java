@@ -94,7 +94,7 @@ public class Utils {
     // Return embed color 
     public static Integer embedColor(String type) {
         switch (type) {
-            case "usage":
+            case "warning":
                 return 0xffc83f;
             case "success":
                 return 0x3fff6f;

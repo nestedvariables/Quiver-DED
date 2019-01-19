@@ -16,7 +16,7 @@ public class Settings extends ListenerAdapter {
                 usage.setTitle(Utils.getMessage(event.getGuild(), "usageEmbedTitle").replace("{command}", args[0].replace(Utils.getPrefix(event.getGuild()), "")).replace("{prefix}", Utils.getPrefix(event.getGuild())));
                 usage.setDescription(Utils.getMessage(event.getGuild(), "setUsage").replace("{prefix}", Utils.getPrefix(event.getGuild())));
                 usage.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "usageEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
-                usage.setColor(Utils.embedColor("usage"));
+                usage.setColor(Utils.embedColor("warning"));
                 event.getChannel().sendMessage(usage.build()).queue();
                 usage.clear();
             }
@@ -26,7 +26,7 @@ public class Settings extends ListenerAdapter {
                     usage.setTitle(Utils.getMessage(event.getGuild(), "usageEmbedTitle").replace("{command}", args[1].replace(Utils.getPrefix(event.getGuild()), "")).replace("{prefix}", Utils.getPrefix(event.getGuild())));
                     usage.setDescription(Utils.getMessage(event.getGuild(), "prefixUsage").replace("{prefix}", Utils.getPrefix(event.getGuild())));
                     usage.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "usageEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
-                    usage.setColor(Utils.embedColor("usage"));
+                    usage.setColor(Utils.embedColor("warning"));
                     event.getChannel().sendMessage(usage.build()).queue();
                     usage.clear();
                 }
@@ -47,7 +47,7 @@ public class Settings extends ListenerAdapter {
                     usage.setTitle(Utils.getMessage(event.getGuild(), "usageEmbedTitle").replace("{command}", args[1].replace(Utils.getPrefix(event.getGuild()), "")).replace("{prefix}", Utils.getPrefix(event.getGuild())));
                     usage.setDescription(Utils.getMessage(event.getGuild(), "localeUsage").replace("{prefix}", Utils.getPrefix(event.getGuild())));
                     usage.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "usageEmbedFooter"), event.getJDA().getSelfUser().getAvatarUrl());
-                    usage.setColor(Utils.embedColor("usage"));
+                    usage.setColor(Utils.embedColor("warning"));
                     usage.addField("🇧🇷 " + Utils.getMessage(event.getGuild(), "brazil"), "`pt_BR`", true);
                     usage.addField("🇪🇺 " + Utils.getMessage(event.getGuild(), "europe"), "`en_GB`, `de_DE`", true);
                     usage.addField("🇭🇰 " + Utils.getMessage(event.getGuild(), "hongKong"), "`en_HK`", true);
