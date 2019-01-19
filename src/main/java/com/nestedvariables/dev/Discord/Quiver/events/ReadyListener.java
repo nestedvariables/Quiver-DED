@@ -26,7 +26,6 @@ public class ReadyListener extends ListenerAdapter {
             post.setEntity(params);
             HttpResponse response = httpClient.execute(post);
 
-
             /*
             EmbedBuilder embed = new EmbedBuilder();
 
