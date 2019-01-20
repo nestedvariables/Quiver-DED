@@ -14,7 +14,7 @@ public class ErrorTest extends ListenerAdapter {
         
         if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "error")) {
             try{
-            if (Utils.isBotOwner(event)) {
+            if (Utils.isBotOwner(event.getAuthor())) {
                 
                 EmbedBuilder error = new EmbedBuilder();
 

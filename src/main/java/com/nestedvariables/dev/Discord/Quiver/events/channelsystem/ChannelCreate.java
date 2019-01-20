@@ -20,7 +20,7 @@ public class ChannelCreate extends ListenerAdapter {
         public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
                 String[] args = event.getMessage().getContentRaw().split("\\s+");
                 if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "privatechannel")) {
-                        if (Utils.isBlacklisted(event)) {
+                        if (Utils.isBlacklisted(event.getAuthor())) {
                                 
                                 EmbedBuilder blacklist = new EmbedBuilder();
                                 blacklist.setDescription(Utils.getMessage(event.getGuild(), "blacklistEmbedDescription").replace("{user}", event.getMember().getAsMention()));
@@ -29,7 +29,7 @@ public class ChannelCreate extends ListenerAdapter {
                                 event.getChannel().sendMessage(blacklist.build()).queue();
 
                         } else {
-                                if (Utils.isChannelSystemEnabled(event)) {
+                                if (Utils.isChannelSystemEnabled(event.getGuild())) {
                                         if(args.length < 2) {
                                                 EmbedBuilder nullArgs = new EmbedBuilder();
 

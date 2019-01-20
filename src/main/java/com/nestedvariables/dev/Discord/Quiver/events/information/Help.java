@@ -17,9 +17,9 @@ public class Help extends ListenerAdapter {
         if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "help")) {
             Random random = new Random();
             int randomColor = random.nextInt(0xffffff + 1);
-            if (Utils.isBlacklisted(event)) {
+            if (Utils.isBlacklisted(event.getAuthor())) {
                 event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();
-            } else if (Utils.isBotOwner(event)) {
+            } else if (Utils.isBotOwner(event.getAuthor())) {
                 EmbedBuilder owner = new EmbedBuilder();
 
                 owner.setTitle(":tools: Owner Help");

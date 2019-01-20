@@ -16,7 +16,7 @@ public class Help extends ListenerAdapter {
         if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "helpCommand")) || args[0].equalsIgnoreCase("q!help")) {
         
             try {
-                if (Utils.isBlacklisted(event)) {
+                if (Utils.isBlacklisted(event.getAuthor())) {
 
                     EmbedBuilder blacklisted = new EmbedBuilder();
 
@@ -32,7 +32,7 @@ public class Help extends ListenerAdapter {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
                     });
 
-                } else if (Utils.isBotOwner(event)) {
+                } else if (Utils.isBotOwner(event.getAuthor())) {
 
                     EmbedBuilder botOwner = new EmbedBuilder();
 

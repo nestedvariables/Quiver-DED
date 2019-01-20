@@ -37,7 +37,7 @@ public class Toggles extends ListenerAdapter {
                         // Toggle for the Channel System
                     } else if (args[1].equalsIgnoreCase("channels") || args[1].equalsIgnoreCase("channelsystem")) {
 
-                        if(Utils.isChannelSystemEnabled(event)){
+                        if(Utils.isChannelSystemEnabled(event.getGuild())){
                         Random random = new Random();
                         int randomColor = random.nextInt(0xffffff + 1);
                         
