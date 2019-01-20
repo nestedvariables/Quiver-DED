@@ -23,7 +23,7 @@ public class PermissionHelp extends ListenerAdapter {
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                         + ", you don't have sufficient permissions. \n :white_medium_small_square: You are required to the owner this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
-                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
+                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getSelfAvatar(event));
 
                 event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);

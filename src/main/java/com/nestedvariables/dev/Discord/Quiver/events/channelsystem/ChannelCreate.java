@@ -30,7 +30,7 @@ public class ChannelCreate extends ListenerAdapter {
                                                 nullArgs.setTitle(Utils.getMessage(event.getGuild(), "invalidUsage"));
                                                 nullArgs.setColor(Info.ERROR_RED);
                                                 nullArgs.setDescription("Correct Usage: `" + Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "channelCreateNullArgsDescription"));
-                                                nullArgs.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "invalidUsage"), Utils.getAvatar(event));
+                                                nullArgs.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "invalidUsage"), Utils.getSelfAvatar(event));
 
                                                 event.getChannel().sendMessage(nullArgs.build()).queue((message) -> {
                                                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -90,7 +90,7 @@ public class ChannelCreate extends ListenerAdapter {
                                         
                                         disSys.setColor(Info.ERROR_RED);
                                         disSys.setDescription(event.getMember().getAsMention() + " I can't create a private channel as " + event.getGuild().getOwner().getAsMention() + " has disabled the channel system.");
-                                        disSys.setFooter("Quiver Disabled System Error", Utils.getAvatar(event));
+                                        disSys.setFooter("Quiver Disabled System Error", Utils.getSelfAvatar(event));
 
                                         event.getChannel().sendMessage(disSys.build()).queue((message) -> {
                                                 message.delete().queueAfter(15, TimeUnit.SECONDS);

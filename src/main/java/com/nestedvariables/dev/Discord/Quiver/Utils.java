@@ -335,23 +335,23 @@ public class Utils {
         }
     }
 
-    public static String getMention(GuildMessageReceivedEvent event){ 
+    public static String getSelfMention(GuildMessageReceivedEvent event){ 
         return event.getJDA().getSelfUser().getAsMention();
     }
 
-    public static String getMention(MessageReceivedEvent event){ 
+    public static String getSelfMention(MessageReceivedEvent event){ 
         return event.getJDA().getSelfUser().getAsMention();
     }
 
-    public static String getAvatar(GuildMemberJoinEvent event) {
+    public static String getSelfAvatar(GuildMemberJoinEvent event) {
         return event.getJDA().getSelfUser().getAvatarUrl();
     }
 
-    public static String getAvatar(GuildMessageReceivedEvent event) {
+    public static String getSelfAvatar(GuildMessageReceivedEvent event) {
         return event.getJDA().getSelfUser().getAvatarUrl();
     }
 
-    public static String getAvatar(MessageReceivedEvent event) {
+    public static String getSelfAvatar(MessageReceivedEvent event) {
         return event.getJDA().getSelfUser().getAvatarUrl();
     }
 

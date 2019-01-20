@@ -26,7 +26,7 @@ public class Announcement extends ListenerAdapter {
 
                     nullReason.setDescription("You didn't specify a reason for the announcement");
                     nullReason.setColor(Info.ERROR_RED);
-                    nullReason.setFooter("Quiver Announcement Failure", Utils.getAvatar(event));
+                    nullReason.setFooter("Quiver Announcement Failure", Utils.getSelfAvatar(event));
 
                     event.getChannel().sendMessage(nullReason.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -43,7 +43,7 @@ public class Announcement extends ListenerAdapter {
                     announce.setTitle("New Announcement!");
                     announce.setColor(randomColor);
                     announce.setDescription(announcement);
-                    announce.setFooter("Quiver Announcement", Utils.getAvatar(event));
+                    announce.setFooter("Quiver Announcement", Utils.getSelfAvatar(event));
 
                     List<Guild> guilds = event.getJDA().getGuilds();
                     for (int guildCount = 0; guildCount < guilds.size(); guildCount++){
@@ -60,7 +60,7 @@ public class Announcement extends ListenerAdapter {
 
                 nullUser.setDescription("You can't use that command as you are not my owner: ExZiByte");
                 nullUser.setColor(Info.ERROR_RED);
-                nullUser.setFooter("Quiver Announcement Invalid User", Utils.getAvatar(event));
+                nullUser.setFooter("Quiver Announcement Invalid User", Utils.getSelfAvatar(event));
 
                 event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                     message.delete().queueAfter(15, TimeUnit.SECONDS);

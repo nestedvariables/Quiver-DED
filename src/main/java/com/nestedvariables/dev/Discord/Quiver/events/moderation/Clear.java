@@ -31,7 +31,7 @@ public class Clear extends ListenerAdapter {
                     nullArgs1.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you didn't specify the amount of messages to delete");
                     nullArgs1.setColor(Info.ERROR_RED);
-                    nullArgs1.setFooter("Quiver Undefined Message Count", Utils.getAvatar(event));
+                    nullArgs1.setFooter("Quiver Undefined Message Count", Utils.getSelfAvatar(event));
 
                     event.getChannel().sendMessage(nullArgs1.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -62,7 +62,7 @@ public class Clear extends ListenerAdapter {
                                 + "\n:white_medium_small_square: Or the mesgetGuildsages attempting to be deleted are older the 2 weeks." 
                                 + " \n :white_medium_small_square: Maximum amount of messages you can delete at a time is 100.");
                         tooManyMessages.setColor(Info.ERROR_RED);
-                        tooManyMessages.setFooter("Quiver Message Delete", Utils.getAvatar(event));
+                        tooManyMessages.setFooter("Quiver Message Delete", Utils.getSelfAvatar(event));
 
                         event.getChannel().sendMessage(tooManyMessages.build()).queue((message) -> {
                             message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -80,7 +80,7 @@ public class Clear extends ListenerAdapter {
                         success.setDescription(":white_medium_small_square: Successfully deleted " + messageDelete
                                 + " messages from " + event.getChannel().getAsMention());
                         success.setColor(randomColor);
-                        success.setFooter("Quiver Message Clear", Utils.getAvatar(event));  
+                        success.setFooter("Quiver Message Clear", Utils.getSelfAvatar(event));  
                         
                         event.getChannel().sendMessage(success.build()).queue((message) -> {
                             message.delete().queueAfter(5,TimeUnit.SECONDS);
@@ -93,7 +93,7 @@ public class Clear extends ListenerAdapter {
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                         + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to manage messages for this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
-                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
+                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getSelfAvatar(event));
 
                 event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);

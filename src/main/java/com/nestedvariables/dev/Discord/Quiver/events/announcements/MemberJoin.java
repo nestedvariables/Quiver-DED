@@ -20,12 +20,12 @@ public class MemberJoin extends ListenerAdapter {
         if (event.getMember().getUser().isBot()) {
             join.setTitle(":robot: New Bot!");
             join.addField("New bot's name", event.getMember().getAsMention(), false);
-            join.setFooter("Quiver New Bot Welcome", Utils.getAvatar(event));
+            join.setFooter("Quiver New Bot Welcome", Utils.getSelfAvatar(event));
         } 
         else {
             join.setTitle("New Member!");
             join.addField("New member's name", event.getMember().getAsMention(), false);
-            join.setFooter("Quiver New Member Welcome", Utils.getAvatar(event));
+            join.setFooter("Quiver New Member Welcome", Utils.getSelfAvatar(event));
         }
 
         // Send and clear embed

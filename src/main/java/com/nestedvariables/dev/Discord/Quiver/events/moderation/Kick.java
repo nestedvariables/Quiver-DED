@@ -27,7 +27,7 @@ public class Kick extends ListenerAdapter {
                     nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you didn't specify which member to kick!");
                     nullUser.setColor(Info.ERROR_RED);
-                    nullUser.setFooter("Quiver Undefined Member", Utils.getAvatar(event));
+                    nullUser.setFooter("Quiver Undefined Member", Utils.getSelfAvatar(event));
 
                     event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -57,7 +57,7 @@ public class Kick extends ListenerAdapter {
                     kick.addField("Kicked Member: ", memberToKick.getEffectiveName(), false);
                     kick.addField("Kick Executor: ", event.getMember().getEffectiveName(), false);
                     kick.addField("Reason: ", kickReason, false);
-                    kick.setFooter("Quiver Kick Report", Utils.getAvatar(event));
+                    kick.setFooter("Quiver Kick Report", Utils.getSelfAvatar(event));
 
                     event.getChannel().sendMessage(kick.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -71,7 +71,7 @@ public class Kick extends ListenerAdapter {
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                         + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to kick members from this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
-                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
+                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getSelfAvatar(event));
     
                 event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);

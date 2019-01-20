@@ -32,7 +32,7 @@ public class Unmute extends ListenerAdapter {
                     nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                             + ", you didn't specify which member to mute!");
                     nullUser.setColor(Info.ERROR_RED);
-                    nullUser.setFooter("Quiver Undefined Member", Utils.getAvatar(event));
+                    nullUser.setFooter("Quiver Undefined Member", Utils.getSelfAvatar(event));
 
                     event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                         message.delete().queueAfter(10, TimeUnit.SECONDS);
@@ -52,7 +52,7 @@ public class Unmute extends ListenerAdapter {
                     muteNoReason.addField("Unmuted Member: ", memberToMute.getEffectiveName(), false);
                     muteNoReason.addField("Unmute Executor: ", event.getMember().getEffectiveName(), false);
                     muteNoReason.addField("Reason: ", "Unmute executor didn't specify a reason", false);
-                    muteNoReason.setFooter("Quiver Unmute Report", Utils.getAvatar(event));
+                    muteNoReason.setFooter("Quiver Unmute Report", Utils.getSelfAvatar(event));
 
                     event.getChannel().sendMessage(muteNoReason.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -76,7 +76,7 @@ public class Unmute extends ListenerAdapter {
                     muteWithReason.addField("Unmuted Member: ", memberToMute.getEffectiveName(), false);
                     muteWithReason.addField("Unmute Executor: ", event.getMember().getEffectiveName(), false);
                     muteWithReason.addField("Reason: ", muteReason, false);
-                    muteWithReason.setFooter("Quiver Unmute Report", Utils.getAvatar(event));
+                    muteWithReason.setFooter("Quiver Unmute Report", Utils.getSelfAvatar(event));
 
                     event.getChannel().sendMessage(muteWithReason.build()).queue((message) -> {
                         message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -90,7 +90,7 @@ public class Unmute extends ListenerAdapter {
                 nullPerms.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
                         + ", you don't have sufficient permissions. \n :white_medium_small_square: You require the permission to manage member's roles for this guild to use this command.");
                 nullPerms.setColor(Info.ERROR_RED);
-                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getAvatar(event));
+                nullPerms.setFooter("Quiver Insufficient Permissions", Utils.getSelfAvatar(event));
 
                 event.getChannel().sendMessage(nullPerms.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);
