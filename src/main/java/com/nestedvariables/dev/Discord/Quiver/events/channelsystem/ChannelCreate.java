@@ -21,7 +21,13 @@ public class ChannelCreate extends ListenerAdapter {
                 String[] args = event.getMessage().getContentRaw().split("\\s+");
                 if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "privatechannel")) {
                         if (Utils.isBlacklisted(event)) {
-                                event.getChannel().sendMessage(event.getMember().getAsMention() + " You can't use commands because you were blacklisted").queue();
+                                
+                                EmbedBuilder blacklist = new EmbedBuilder();
+                                blacklist.setDescription(Utils.getMessage(event.getGuild(), "blacklistEmbedDescription").replace("{user}", event.getMember().getAsMention()));
+                                blacklist.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "blacklistEmbedFooter"), Utils.getSelfAvatar(event));
+                                
+                                event.getChannel().sendMessage(blacklist.build()).queue();
+
                         } else {
                                 if (Utils.isChannelSystemEnabled(event)) {
                                         if(args.length < 2) {
