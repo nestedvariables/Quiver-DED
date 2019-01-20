@@ -51,6 +51,9 @@ public class Utils {
         loggerMessages.put("fatalErrorEmbedTitle", "❗ A major error occured.");
         loggerMessages.put("fatalErrorEmbedDescription", "Well, it seems like something isn't quite right.\nPlease submit a screenshot of this error over at our [Support Server](https://discord.gg/p9xj9UD \"support Discord server\").\n\nHere's the full error log:\n{error}");
         loggerMessages.put("fatalErrorEmbedFooter", "Logs");
+        loggerMessages.put("warningEmbedTitle", "⚠ An error occured.");
+        loggerMessages.put("warningEmbedDescripion","Well, that wasn't supposed to happen.\nWhile this can be pretty much ignored harmlessly, if \n you want some clarification on what this error means you can join our [Support Server](https://discord.gg/p9xj9UD \"support Discord server\") and send a screenshot in the quiver-help text channel.\n\nHere's the full error log:\n{error}");
+        loggerMessages.put("warningEmbedFooter", "Logs");
     }
 
     // Return prefix for guild
