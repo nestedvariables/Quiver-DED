@@ -16,13 +16,12 @@ public class List extends ListenerAdapter {
             if(args.length < 2) {
                 EmbedBuilder nullArgs = new EmbedBuilder();
 
-                nullArgs.setDescription(Utils.getMessage(event.getGuild(), "listNullArgsDescription"));
+                nullArgs.setDescription(Utils.getMessage(event.getGuild(), "listNullArgsEmbedDescription"));
                 nullArgs.setColor(Utils.embedColor("error"));
-                nullArgs.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "listNullArgsFooter"), event.getJDA().getSelfUser().getAvatarUrl());
+                nullArgs.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "listNullArgsEmbedFooter"), Utils.getSelfAvatar(event));
 
                 event.getChannel().sendMessage(nullArgs.build()).queue();
             }
         }
     }
-
 }

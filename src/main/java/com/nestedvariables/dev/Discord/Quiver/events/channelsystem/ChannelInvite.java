@@ -17,14 +17,15 @@ public class ChannelInvite extends ListenerAdapter {
             if(args.length < 2) {
                 EmbedBuilder nullUser = new EmbedBuilder();
 
-                nullUser.setDescription(":white_medium_small_square: " + event.getMember().getAsMention()
-                        + ", you didn't specify which member to invite!");
+                nullUser.setDescription(Utils.getMessage(event.getGuild(), "privateChannelNoInvite"));
                 nullUser.setColor(Info.ERROR_RED);
                 nullUser.setFooter("Quiver Undefined Member", Utils.getSelfAvatar(event));
 
                 event.getChannel().sendMessage(nullUser.build()).queue((message) -> {
                     message.delete().queueAfter(10, TimeUnit.SECONDS);
                 });
+            } else {
+
             }
         }
     }
