@@ -19,7 +19,8 @@ public class ChannelCreate extends ListenerAdapter {
 
         public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
                 String[] args = event.getMessage().getContentRaw().split("\\s+");
-                if (args[0].equalsIgnoreCase(Utils.getPrefix(event.getGuild()) + "privatechannel")) {
+                if (args[0].equalsIgnoreCase(
+                        Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "privateChannelCommand"))) {
                         if (Utils.isBlacklisted(event.getAuthor())) {
                                 
                                 EmbedBuilder blacklist = new EmbedBuilder();
@@ -35,7 +36,7 @@ public class ChannelCreate extends ListenerAdapter {
 
                                                 nullArgs.setTitle(Utils.getMessage(event.getGuild(), "invalidUsage"));
                                                 nullArgs.setColor(Info.ERROR_RED);
-                                                nullArgs.setDescription("Correct Usage: `" + Utils.getPrefix(event.getGuild()) + Utils.getMessage(event.getGuild(), "channelCreateNullArgsDescription"));
+                                                nullArgs.setDescription(Utils.getMessage(event.getGuild(), "channelCreateNullArgsDescription").replace("{prefix}", Utils.getPrefix(event.getGuild())));
                                                 nullArgs.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "invalidUsage"), Utils.getSelfAvatar(event));
 
                                                 event.getChannel().sendMessage(nullArgs.build()).queue((message) -> {
@@ -57,46 +58,46 @@ public class ChannelCreate extends ListenerAdapter {
                                         EnumSet<Permission> pDeny = EnumSet.of(Permission.BAN_MEMBERS, Permission.CREATE_INSTANT_INVITE, Permission.KICK_MEMBERS, Permission.MANAGE_CHANNEL, Permission.MANAGE_EMOTES, Permission.MANAGE_PERMISSIONS, Permission.MANAGE_ROLES, Permission.MANAGE_SERVER, Permission.MANAGE_WEBHOOKS);
                                         EnumSet<Permission> pTextDenyEveryone = EnumSet.of(Permission.MESSAGE_ADD_REACTION, Permission.MESSAGE_ATTACH_FILES, Permission.MESSAGE_EMBED_LINKS, Permission.MESSAGE_EXT_EMOJI, Permission.MESSAGE_HISTORY, Permission.MESSAGE_MANAGE, Permission.MESSAGE_MENTION_EVERYONE, Permission.MESSAGE_READ, Permission.MESSAGE_TTS, Permission.MESSAGE_WRITE);
                                         EnumSet<Permission> pVoiceDenyEveryone = EnumSet.of(Permission.PRIORITY_SPEAKER, Permission.VOICE_CONNECT);
-                                        List<Category> categoryPrivate = event.getGuild().getCategoriesByName("Private Channels", true);
+                                        List<Category> categoryPrivate = event.getGuild().getCategoriesByName(Utils.getMessage(event.getGuild(), "categoryPrivate"), true);
                                         if (categoryPrivate.size() < 1) {
-                                                event.getGuild().getController().createCategory("Private Channels").queue();
-                                                event.getGuild().getController().createTextChannel(event.getMember().getEffectiveName() + "s-private-text-channel").queue((channel) -> {
-                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName("Private Channels", true).get(0));
-                                                                        channel.getManager().setTopic(event.getMember().getEffectiveName().toString() + "'s Private Text Channel \n\nOwner: " + event.getMember().getAsMention() + "\nInvited: None \n\nTo invite users the owner of the channel must run the command " + Utils.getPrefix(event.getGuild())  + "privateinvite <mention a user>");
+                                                event.getGuild().getController().createCategory(Utils.getMessage(event.getGuild(), "categoryPrivate")).queue();
+                                                event.getGuild().getController().createTextChannel(Utils.getMessage(event.getGuild(), "privateTextChannelName").replace("{channelOwner}", event.getMember().getEffectiveName().toString())).queue((channel) -> {
+                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName(Utils.getMessage(event.getGuild(), "categoryPrivate"), true).get(0));
+                                                                        channel.getManager().setTopic(Utils.getMessage(event.getGuild(), "privateTextChannelTopic").replace("{channelOwner}", event.getMember().getEffectiveName().toString()).replace("{prefix}", Utils.getPrefix(event.getGuild())));
                                                                         channel.getManager().setSlowmode(slowmodeInt); 
                                                                         channel.getManager().setNSFW(nsfwBool);
                                                                         channel.getManager().putPermissionOverride(event.getMember(), pTextAllow, pDeny).queue();
                                                                         channel.getManager().putPermissionOverride(event.getGuild().getPublicRole(), null, pTextDenyEveryone).queue();
                                                                 });
-                                                event.getGuild().getController().createVoiceChannel(event.getMember().getEffectiveName() + "'s Private Voice Channel").queue((channel) -> {
-                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName("Private Channels", true).get(0));
+                                                event.getGuild().getController().createVoiceChannel(Utils.getMessage(event.getGuild(), "privateVoiceChannelName").replace("{channelOwner}", event.getMember().getEffectiveName().toString())).queue((channel) -> {
+                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName(Utils.getMessage(event.getGuild(), "categoryPrivate"), true).get(0));
                                                                         channel.getManager().setUserLimit(1);
                                                                         channel.getManager().putPermissionOverride(event.getMember(), pAllow, pDeny).queue();
                                                                         channel.getManager().putPermissionOverride(event.getGuild().getPublicRole(), null, pVoiceDenyEveryone).queue();
                                                                 });
                                         } else {
-                                                event.getGuild().getController().createTextChannel(event.getMember().getEffectiveName() + "'s-private-text-channel").queue((channel) -> {
-                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName("Private Channels", true).get(0));
-                                                                        channel.getManager().setTopic(event.getMember().getEffectiveName().toString() + "'s Private Text Channel \n\nOwner: " + event.getMember().getAsMention() + "\nInvited: None \n\nTo invite users the owner of the channel must run the command " + Utils.getPrefix(event.getGuild()) + "privateinvite <mention a user>");
-                                                                        channel.getManager().setSlowmode(slowmodeInt);
+                                                event.getGuild().getController().createTextChannel(Utils.getMessage(event.getGuild(), "privateTextChannelName").replace("{channelOwner}", event.getMember().getEffectiveName().toString())).queue((channel) -> {
+                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName(Utils.getMessage(event.getGuild(), "categoryPrivate"), true).get(0));
+                                                                        channel.getManager().setTopic(Utils.getMessage(event.getGuild(), "privateTextChannelTopic").replace("{channelOwner}", event.getMember().getEffectiveName().toString()).replace("{prefix}", Utils.getPrefix(event.getGuild())));
+                                                                        channel.getManager().setSlowmode(slowmodeInt); 
                                                                         channel.getManager().setNSFW(nsfwBool);
                                                                         channel.getManager().putPermissionOverride(event.getMember(), pTextAllow, pDeny).queue();
-                                                                        channel.getManager().putPermissionOverride(event.getGuild().getPublicRole(), null, pTextDenyEveryone);
-                                                                });
-                                                event.getGuild().getController().createVoiceChannel(event.getMember().getEffectiveName() + "'s Private Voice Channel").queue((channel) -> {
-                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName("Private Channels", true).get(0));
+                                                                        channel.getManager().putPermissionOverride(event.getGuild().getPublicRole(), null, pTextDenyEveryone).queue();
+                                                });
+                                                event.getGuild().getController().createVoiceChannel(Utils.getMessage(event.getGuild(), "privateVoiceChannelName").replace("{channelOwner}", event.getMember().getEffectiveName().toString())).queue((channel) -> {
+                                                                        channel.getManager().setParent(event.getGuild().getCategoriesByName(Utils.getMessage(event.getGuild(), "categoryPrivate"), true).get(0));
                                                                         channel.getManager().setUserLimit(1);
                                                                         channel.getManager().putPermissionOverride(event.getMember(), pAllow, pDeny).queue();
-                                                                        channel.getManager().putPermissionOverride(event.getGuild().getPublicRole(), null, pVoiceDenyEveryone);
-                                                                });
-                                        }
+                                                                        channel.getManager().putPermissionOverride(event.getGuild().getPublicRole(), null, pVoiceDenyEveryone).queue();
+                                                });
                                 }
-                                } else {
+                         }
+                } else {
                                         EmbedBuilder disSys = new EmbedBuilder();
                                         
-                                        disSys.setColor(Info.ERROR_RED);
-                                        disSys.setDescription(event.getMember().getAsMention() + " I can't create a private channel as " + event.getGuild().getOwner().getAsMention() + " has disabled the channel system.");
-                                        disSys.setFooter("Quiver Disabled System Error", Utils.getSelfAvatar(event));
+                                        disSys.setColor(Utils.embedColor("error"));
+                                        disSys.setDescription(Utils.getMessage(event.getGuild(), "disabledPrivateChannels").replace("{user}", event.getMember().getAsMention()));
+                                        disSys.setFooter(Utils.getMessage(event.getGuild(), "name") + " " + Utils.getMessage(event.getGuild(), "disableSystemErrorEmbedFooter"), Utils.getSelfAvatar(event));
 
                                         event.getChannel().sendMessage(disSys.build()).queue((message) -> {
                                                 message.delete().queueAfter(15, TimeUnit.SECONDS);
