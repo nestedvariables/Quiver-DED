@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class SQLDriver_Template {
-  // CHANGE THE CLASS NAME ^ TO WHAT YOU NAMED THE FILE WITHOUT THE ".java"
+public class SQLDriver {
     private static HikariDataSource ds;
     
     static{
