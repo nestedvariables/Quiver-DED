@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Random;
 
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
@@ -108,6 +109,10 @@ public class Utils {
                 return 0xff4032;
             case "info":
                 return 0x5eccff;
+            case "random" :
+                Random random = new Random();
+                Integer randomColor = random.nextInt(0xffffff + 1);
+                return randomColor;
             default:
                 return 0x45f442;
         }
