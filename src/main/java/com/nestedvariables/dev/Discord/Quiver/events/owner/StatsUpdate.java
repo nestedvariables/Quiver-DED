@@ -13,7 +13,6 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class StatsUpdate extends ListenerAdapter {
 
     public void onReady(ReadyEvent event) {
-
         try{
         Integer guildCount = Main.shardManager.getGuilds().size();
         Integer shardCount = Main.shardManager.getShardsTotal();

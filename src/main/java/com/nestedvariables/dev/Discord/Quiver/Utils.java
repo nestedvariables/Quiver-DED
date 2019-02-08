@@ -26,74 +26,9 @@ public class Utils {
     public static HashMap<String, String> logChannels = new HashMap<>();
     public static HashMap<String, String> loggerMessages = new HashMap<>();
 
-    // Fills up hashmaps on bot boot
-    public static void loadData() {
-        try {
-            Connection connection = SQLDriver.getConn();
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM `guild_options`");
-                   
-            if (!result.next()) {
-                Logger.log("warning", "No guilds in database.", null);
-            }
-            else {
-                while (result.next()) {
-                    locales.put(result.getString("guild"), result.getString("locale"));
-                    prefixes.put(result.getString("guild"), result.getString("prefix"));
-                    logChannels.put(result.getString("guild"), result.getString("log_channel"));
-                }
-            }
-            statement.close();
-        }
-        catch (Exception e) {
-            Logger.log("fatal", e.toString(), null);
-        }
-
-        // Load logger error messages into RAM
-        loggerMessages.put("fatalErrorEmbedTitle", "❗ A major error occured.");
-        loggerMessages.put("fatalErrorEmbedDescription", "Well, it seems like something isn't quite right.\nPlease submit a screenshot of this error over at our [Support Server](https://discord.gg/p9xj9UD \"support Discord server\").\n\nHere's the full error log:\n{error}");
-        loggerMessages.put("fatalErrorEmbedFooter", "Logs");
-        loggerMessages.put("warningEmbedTitle", "⚠ An error occured.");
-        loggerMessages.put("warningEmbedDescripion","Well, that wasn't supposed to happen.\nWhile this can be pretty much ignored harmlessly, if \n you want some clarification on what this error means you can join our [Support Server](https://discord.gg/p9xj9UD \"support Discord server\") and send a screenshot in the quiver-help text channel.\n\nHere's the full error log:\n{error}");
-        loggerMessages.put("warningEmbedFooter", "Logs");
-    }
-
-    // Return prefix for guild
-    public static String getPrefix(Guild guild) {
-        return prefixes.get(guild.getId());
-    }
-
-    // Set prefix for guild
-    public static void setPrefix(Guild guild, String prefix) {
-        try {
-            Connection connection = SQLDriver.getConn();
-            Statement statement = connection.createStatement();
-            statement.execute("UPDATE `guild_options` SET `prefix`='" + prefix + "' WHERE `guild`='" + guild.getId() + "'");
-            prefixes.put(guild.getId(), prefix);
-            statement.close();
-        }
-        catch (Exception e) {
-            Logger.log("fatal", e.toString(), guild);
-        }
-    }
-
     // Return log channel for guild
     public static String getLogChannel(Guild guild) {
         return logChannels.get(guild.getId());
-    }
-
-    // Set log channel for guild
-    public static void setLogChannel(Guild guild, String channelId) {
-        try {
-            Connection connection = SQLDriver.getConn();
-            Statement statement = connection.createStatement();
-            statement.execute("UPDATE `guild_options` SET `log_channel`='" + channelId + "' WHERE `guild`='" + guild.getId() + "'");
-            logChannels.put(guild.getId(), channelId);
-            statement.close();
-        }
-        catch (Exception e) {
-            Logger.log("fatal", e.toString(), guild);
-        }
     }
 
     // Return embed color 
@@ -117,96 +52,7 @@ public class Utils {
                 return 0x45f442;
         }
     }
-
-    // Get message with proper locale
-    public static String getMessage(Guild guild, String message) {
-        JSONParser parser = new JSONParser();
-        try {
-            InputStream in = Utils.class.getResourceAsStream("locale/" + Utils.getLocale(guild) + ".json");
-            Object object = parser.parse(IOUtils.toString(in, "UTF-8"));
-            JSONObject json = (JSONObject) object;
-            in.close();
-            return (String) json.get(message);
-        } 
-        catch (Exception e) {
-            Logger.log("fatal", String.valueOf(e), guild);
-            return null;
-        }
-    }
-
-    // Set locale
-    public static void setLocale(Guild guild, String locale) {
-        try {
-            Connection connection = SQLDriver.getConn();
-            Statement statement = connection.createStatement();
-            statement.execute("UPDATE `guild_options` SET `locale`='" + locale + "' WHERE `guild`='" + guild.getId() + "'");
-            locales.put(guild.getId(), locale);
-            statement.close();
-        }
-        catch (Exception e) {
-            Logger.log("fatal", e.toString(), guild);
-        }
-    } 
     
-    // Get locale for guild
-    public static String getLocale(Guild guild) {
-        return locales.get(guild.getId());
-    }
-
-    // Return default locale
-    public static String locale(String region) {
-        //switch (region) {
-            if (region.equals("us-central")) {
-                return "en_US";
-            }
-            else {
-                return null;
-            }
-            /*
-            case "us-east":
-                return "en_US";
-                break;
-            case "us-west":
-                return "en_US";
-                break;
-            case "us-central":
-                return "en_US";
-                break;
-            case "us-south":
-                return "en_US";
-                break;
-            case "brazil":
-                return "pt_BR";
-                break;
-            case "eu-central":
-                return "en_GB";
-                break;
-            case "hongkong":
-                return "en_HK";
-                break
-            case "japan":
-                return "ja_JP";
-                break;
-            case "russia":
-                return "ru_RU";
-                break;
-            case "singapore":
-                return "en_SG";
-                break;
-            case "southafrica":
-                return "en_ZA";
-                break;
-            case "sydney":
-                return "en_AU";
-                break;
-            case "eu-west":
-                return "en_GB";
-                break;
-            default:
-                return null;
-        } */
-    }
-
     public static boolean isChannelSystemEnabled(Guild guild) {
         String channelSystemEnabled = "true";        
 

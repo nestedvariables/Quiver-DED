@@ -1,8 +1,5 @@
 package com.nestedvariables.dev.Discord.Quiver.commands;
 
-import com.nestedvariables.dev.Discord.Quiver.Logger;
-import com.nestedvariables.dev.Discord.Quiver.Utils;
-
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
