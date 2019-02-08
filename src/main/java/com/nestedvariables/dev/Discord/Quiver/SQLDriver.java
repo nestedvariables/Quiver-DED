@@ -10,16 +10,15 @@ public class SQLDriver {
     private static HikariDataSource ds;
     
     static{
-
+        Credentials credentials = new Credentials();
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://<PUT YOUR MYSQL SERVER IP HERE>:<PUT YOUR MYSQL SERVER PORT HERE>/<PUT YOUR MYSQL DATABASE NAME HERE>");
-        config.setUsername("PUT YOUR MYSQL SERVER USERNAME HERE");
-        config.setPassword("PUT YOUR MYSQL SERVER PASSWORD HERE");  
-        config.setDriverClassName("com.mysql.jdbc.Driver");
+        config.setJdbcUrl(credentials.databaseURL);
+        config.setUsername(credentials.databaseUser);
+        config.setPassword(credentials.databasePassword);  
+        //config.setDriverClassName("com.mysql.jdbc.Driver");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-
         ds = new HikariDataSource(config);
     }
 

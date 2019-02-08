@@ -1,13 +1,28 @@
-package com.nestedvariables.dev.Discord.Quiver;
+package com.nestedvariables.dev.Discord.Quiver.util;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 
 public class Logger {
 
-    // Logger method
-    public static void log(String type, String info, Guild guild) {
-        if (guild != null) {
+    // Log the error (with guild provided)
+    public void log(int code, String error, Guild guild) {
+        EmbedBuilder fatal = new EmbedBuilder();
+        fatal.setDescription(error);
+        guild.getTextChannelById("491459187620970505").sendMessage(fatal.build()).queue();
+    }
+
+    // Log the error (no guild provided)
+    public void log(int code, String error) {
+        System.out.println(error);
+    }
+
+
+        // TODO port code
+        /*if (guild != null) {
             switch (type) {
             case "warning":
                 EmbedBuilder warning = new EmbedBuilder();
@@ -42,9 +57,9 @@ public class Logger {
                 EmbedBuilder warning = new EmbedBuilder();
                 warning.setTitle(Utils.loggerMessages.get("warningEmbedTitle"));
                 warning.setDescription(Utils.loggerMessages.get("warningEmbedDescription"));
-                warning.setFooter(Utils.loggerMessages.get("warningEmbedFooter"), Main.shardManager.getApplicationInfo().getJDA().getSelfUser().getAvatarUrl());
+                warning.setFooter(Utils.loggerMessages.get("warningEmbedFooter"), Quiver.shardManager.getApplicationInfo().getJDA().getSelfUser().getAvatarUrl());
                 warning.setColor(Utils.embedColor("warning"));
-                Main.shardManager.getGuildById("488137783127572491").getTextChannelById("517756124846358529").sendMessage(warning.build()).queue();
+                Quiver.shardManager.getGuildById("488137783127572491").getTextChannelById("517756124846358529").sendMessage(warning.build()).queue();
                 warning.clear();
                 System.out.println(info);
                 
@@ -52,12 +67,11 @@ public class Logger {
                 EmbedBuilder fatal = new EmbedBuilder();
                 fatal.setTitle(Utils.loggerMessages.get("fatalErrorEmbedTitle"));
                 fatal.setDescription(Utils.loggerMessages.get("fatalErrorEmbedDescription").replace("{error}", "```\n" + info + "\n```"));
-                fatal.setFooter(Utils.loggerMessages.get("fatalErrorEmbedFooter"),Main.shardManager.getApplicationInfo().getJDA().getSelfUser().getAvatarUrl());
+                fatal.setFooter(Utils.loggerMessages.get("fatalErrorEmbedFooter"),Quiver.shardManager.getApplicationInfo().getJDA().getSelfUser().getAvatarUrl());
                 fatal.setColor(Utils.embedColor("error"));
-                Main.shardManager.getGuildById("488137783127572491").getTextChannelById("517756124846358529").sendMessage(fatal.build()).queue();
+                Quiver.shardManager.getGuildById("488137783127572491").getTextChannelById("517756124846358529").sendMessage(fatal.build()).queue();
                 fatal.clear();
                 System.out.println(info);
             }
-        }
-    }
+        }*/
 }

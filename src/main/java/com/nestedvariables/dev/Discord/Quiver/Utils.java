@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Random;
 
+import com.nestedvariables.dev.Discord.Quiver.util.Logger;
+
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -25,6 +27,8 @@ public class Utils {
     public static HashMap<String, String> prefixes = new HashMap<>();
     public static HashMap<String, String> logChannels = new HashMap<>();
     public static HashMap<String, String> loggerMessages = new HashMap<>();
+
+    static Logger logger = new Logger();
 
     // Return log channel for guild
     public static String getLogChannel(Guild guild) {
@@ -66,7 +70,7 @@ public class Utils {
               channelSystemEnabled = rs.getString(3);
 
         } catch (SQLException sqle) {
-            Logger.log("fatal", sqle.toString(), null);
+            logger.log(1, sqle.toString());
         }
 
         if(channelSystemEnabled == "true") {
@@ -90,7 +94,7 @@ public class Utils {
                 blacklistID = rs.getString("discord_id");
 
         } catch (SQLException sqle) {
-            Logger.log("fatal", sqle.toString(), null);
+            logger.log(1, sqle.toString(), null);
         }
 
         if (blacklistID != null) {
@@ -132,7 +136,7 @@ public class Utils {
             ResultSet result = statement.executeQuery("SELECT * FROM `premium`");
                    
             if (!result.next()) {
-                Logger.log("warning", "No premium users in database.", null); 
+                logger.log(2, "No premium users in database.", null); 
                 return false;
             }
             else {
@@ -147,7 +151,7 @@ public class Utils {
             return false;
         }
         catch (Exception e) {
-            Logger.log("fatal", e.toString(), null);
+            logger.log(1, e.toString(), null);
             return false;
         }
     }
