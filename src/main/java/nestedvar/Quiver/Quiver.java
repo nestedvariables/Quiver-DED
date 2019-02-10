@@ -24,8 +24,6 @@ public class Quiver {
     public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 
     public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException {
-        Credentials credentials = new Credentials();
-
         // Load configuration
         Config config = new Config();
         config.load();
