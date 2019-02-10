@@ -1,6 +1,5 @@
-package com.nestedvariables.dev.Discord.Quiver;
+package nestedvar.Quiver;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,11 +7,8 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Random;
 
-import com.nestedvariables.dev.Discord.Quiver.util.Logger;
-
-import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import nestedvar.Quiver.util.Logger;
+import nestedvar.Quiver.util.SQL;
 
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
@@ -21,6 +17,7 @@ import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
+@Deprecated
 public class Utils {
 
     public static HashMap<String, String> locales = new HashMap<>();
@@ -61,7 +58,7 @@ public class Utils {
         String channelSystemEnabled = "true";        
 
         try{
-            Connection conn = SQLDriver.getConn();
+            Connection conn = SQL.getConn();
             Statement stmt = conn.createStatement();
 
             ResultSet rs = stmt.executeQuery("SELECT * FROM `guild_options` WHERE `guild_id`=" + guild.getId().toString());
@@ -85,7 +82,7 @@ public class Utils {
         String blacklistID = null;
 
         try {
-            Connection conn = SQLDriver.getConn();
+            Connection conn = SQL.getConn();
             Statement stmt = conn.createStatement();
 
             ResultSet rs = stmt.executeQuery(
@@ -131,7 +128,7 @@ public class Utils {
 
     public static boolean isPremium(Guild guild) {
         try {
-            Connection connection = SQLDriver.getConn();
+            Connection connection = SQL.getConn();
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM `premium`");
                    

@@ -1,12 +1,13 @@
-package com.nestedvariables.dev.Discord.Quiver;
+package nestedvar.Quiver.util;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import nestedvar.Quiver.Credentials;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class SQLDriver {
+public class SQL {
     private static HikariDataSource ds;
     
     static{
@@ -15,7 +16,6 @@ public class SQLDriver {
         config.setJdbcUrl(credentials.databaseURL);
         config.setUsername(credentials.databaseUser);
         config.setPassword(credentials.databasePassword);  
-        //config.setDriverClassName("com.mysql.jdbc.Driver");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");

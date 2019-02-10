@@ -1,4 +1,4 @@
-package com.nestedvariables.dev.Discord.Quiver.util;
+package nestedvar.Quiver.util;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

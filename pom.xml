@@ -57,6 +57,13 @@
       <scope>compile</scope>
     </dependency>
 
+    <!-- YAML library -->
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>1.23</version>
+  </dependency>
+
     <!-- Google Simple JSON API -->
     <dependency>
       <groupId>com.googlecode.json-simple</groupId>
@@ -69,23 +76,6 @@
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.8.5</version>
-    </dependency>
-
-    <!-- REST API Depends -->
-    <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-server</artifactId>
-      <version>1.19</version>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-servlet</artifactId>
-      <version>1.19</version>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-client</artifactId>
-      <version>1.19</version>
     </dependency>
 
     <!-- Google Voice API 
@@ -112,7 +102,7 @@
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>com.nestedvariables.dev.Discord.Quiver.Quiver</mainClass>
+                  <mainClass>nestedvar.Quiver.Quiver</mainClass>
                 </transformer>
               </transformers>
             </configuration>

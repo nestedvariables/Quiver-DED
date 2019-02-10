@@ -1,4 +1,4 @@
-package com.nestedvariables.dev.Discord.Quiver.API;
+package nestedvar.Quiver.arrow;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

@@ -1,4 +1,4 @@
-package com.nestedvariables.dev.Discord.Quiver;
+package nestedvar.Quiver;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -7,9 +7,9 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import com.google.gson.JsonParser;
-import com.nestedvariables.dev.Discord.Quiver.util.Embeds;
-import com.nestedvariables.dev.Discord.Quiver.util.Lang;
-import com.nestedvariables.dev.Discord.Quiver.util.Logger;
+import nestedvar.Quiver.util.Embeds;
+import nestedvar.Quiver.util.Lang;
+import nestedvar.Quiver.util.Logger;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
