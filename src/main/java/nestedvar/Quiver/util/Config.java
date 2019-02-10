@@ -62,6 +62,10 @@ public class Config {
         return getConfig().get("name").toString();
     }
 
+    public String token() {
+        return getConfig().get("token").toString();
+    }
+
     public int shards() {
         return Integer.parseInt(getConfig().get("shards").toString());
     }

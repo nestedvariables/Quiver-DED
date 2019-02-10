@@ -1,11 +1,12 @@
 .project
 .classpath
-.settings/
-.vscode/
-target/
-bin/
+.settings
+.vscode
+target
+bin
 docs/language_pull_request.md
 docs/code_pull_request.md
 My-Google-Assistant-f04dd100ade1.json
 start.sh
-src/main/java/com/nestedvariables/dev/Discord/Quiver/Credentials.java
+quiver.yml
+src/main/java/nestedvar/Quiver/Credentials.java

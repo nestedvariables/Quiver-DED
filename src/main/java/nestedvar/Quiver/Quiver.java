@@ -1,8 +1,5 @@
 package nestedvar.Quiver;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
-
 import javax.security.auth.login.LoginException;
 
 import nestedvar.Quiver.util.Config;
@@ -28,7 +25,7 @@ public class Quiver {
         Config config = new Config();
         config.load();
 
-        builder.setToken(credentials.token);
+        builder.setToken(config.token());
         builder.addEventListeners(
             new test(),
             new Reload()
