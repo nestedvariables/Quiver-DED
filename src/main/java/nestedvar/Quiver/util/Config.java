@@ -67,7 +67,7 @@ public class Config {
     }
 
     public int shards() {
-        return Integer.parseInt(getConfig().get("shars").toString());
+        return Integer.parseInt(getConfig().get("shards").toString());
     }
     
     public String status() {
