@@ -14,7 +14,6 @@ import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 public class Quiver {
     public static ShardManager shardManager;
@@ -54,5 +53,4 @@ public class Quiver {
         System.out.print("\n🎯 Bullseye! " + config.botName() + " is online. " + 
             "Using " + resources.getCPULoad() + "% of the CPU.\n\n");
     }
-
 }
