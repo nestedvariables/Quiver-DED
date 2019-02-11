@@ -1,42 +1,19 @@
 package nestedvar.Quiver.arrow;
 
-import java.util.ArrayList;
-
 import nestedvar.Quiver.Quiver;
 import nestedvar.Quiver.util.Logger;
 
 public class Arrow {  
     /**
-     * Sets the name of the Arrow 
-     * (displayed on arrows list)
+     * Arrow constructor
+     * Creates a new Arrow instance
      * @param name Name of Arrow
-     */
-    public void setName(String name) {
-
-    }
-    
-    /**
-     * Sets a description
-     * @param description Description for Arrow
-     */
-    public void setDescription(String description) {
-
-    }
-
-    /** 
-     * Sets the author of the Arrow
-     * @param author Name of author
-     */
-    public void setAuthor(String author) {
- 
-    }
-
-    /**
-     * Sets the version of the Arrow
+     * @param description A short description of the Arrow's functionality
+     * @param author Name of Arrow's author
      * @param version Version of Arrow
      */
-    public void setVersion(String version) {
-
+    public Arrow(String name, String description, String author, String version) {
+        System.out.println("🏹 Arrows: Loaded " + name + " " + version + " by " + author + ".");
     }
 
     /**
@@ -48,8 +25,7 @@ public class Arrow {
             Quiver.builder.addEventListeners(listener);
         }
         catch (Exception e) {
-            Logger logger = new Logger();
-            logger.log(1, String.valueOf(e));
+            new Logger(1, e);
         }
     }
 }

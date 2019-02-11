@@ -20,8 +20,7 @@ public class Data {
             ResultSet r = statement.executeQuery("SELECT * FROM `guild_options`");
                    
             if (!r.next()) {
-                Logger logger = new Logger();
-                logger.log(2, "No guilds in database.");
+                new Logger(2, "No guilds in database.");
             }
             else {
                 while (r.next()) {
@@ -35,10 +34,9 @@ public class Data {
             statement.close();
         }
         catch (Exception e) {
-            Logger logger = new Logger();
+            new Logger(1, e);
             StringWriter sw = new StringWriter();
             e.printStackTrace(new PrintWriter(sw));
-            logger.log(1, String.valueOf(e));
         }
     }
 
@@ -60,10 +58,9 @@ public class Data {
             statement.close();
         }
         catch (Exception e) {
-            Logger logger = new Logger();
+            new Logger(1, e);
             StringWriter sw = new StringWriter();
             e.printStackTrace(new PrintWriter(sw));
-            logger.log(1, String.valueOf(e));
         }
     }
 
@@ -103,8 +100,7 @@ public class Data {
             statement.close();
         }
         catch (Exception e) {
-            Logger logger = new Logger();
-            logger.log(1, String.valueOf(e), guild);
+            new Logger(1, e, guild);
         }
     }
 }

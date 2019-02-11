@@ -23,8 +23,7 @@ public class ArrowHandler {
                 arrowsDir.mkdir();
             }
             catch (Exception e) {
-                Logger logger = new Logger();
-                logger.log(1, String.valueOf(e));
+                new Logger(1, e);
             }
         }
     }
@@ -63,8 +62,7 @@ public class ArrowHandler {
                 jar.close();
             }
             catch (Exception e) {
-                Logger logger = new Logger();
-                logger.log(1, String.valueOf(e));
+                new Logger(1, e);
             }
         }
     }

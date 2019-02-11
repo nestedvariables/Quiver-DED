@@ -25,8 +25,6 @@ public class Utils {
     public static HashMap<String, String> logChannels = new HashMap<>();
     public static HashMap<String, String> loggerMessages = new HashMap<>();
 
-    static Logger logger = new Logger();
-
     // Return log channel for guild
     public static String getLogChannel(Guild guild) {
         return logChannels.get(guild.getId());
@@ -67,7 +65,7 @@ public class Utils {
               channelSystemEnabled = rs.getString(3);
 
         } catch (SQLException sqle) {
-            logger.log(1, sqle.toString());
+            new Logger(1, sqle.toString());
         }
 
         if(channelSystemEnabled == "true") {
@@ -91,7 +89,7 @@ public class Utils {
                 blacklistID = rs.getString("discord_id");
 
         } catch (SQLException sqle) {
-            logger.log(1, sqle.toString(), null);
+            new Logger(1, sqle.toString(), null);
         }
 
         if (blacklistID != null) {
@@ -133,7 +131,7 @@ public class Utils {
             ResultSet result = statement.executeQuery("SELECT * FROM `premium`");
                    
             if (!result.next()) {
-                logger.log(2, "No premium users in database.", null); 
+                new Logger(2, "No premium users in database.", null); 
                 return false;
             }
             else {
@@ -148,7 +146,7 @@ public class Utils {
             return false;
         }
         catch (Exception e) {
-            logger.log(1, e.toString(), null);
+            new Logger(1, e.toString(), null);
             return false;
         }
     }

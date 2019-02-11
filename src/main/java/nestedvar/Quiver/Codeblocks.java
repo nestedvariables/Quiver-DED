@@ -51,8 +51,7 @@ public class Codeblocks extends ListenerAdapter {
                 result = "";
             } 
             catch (Exception e) {
-                Logger logger = new Logger();
-                logger.log(1, e.toString(), event.getGuild());
+                new Logger(1, e, event.getGuild());
             }
         }
     }

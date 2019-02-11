@@ -52,8 +52,7 @@ public class Config {
             return json;
         }
         catch (Exception e) {
-            Logger logger = new Logger();
-            logger.log(1, "Cannot load configuration (there might be an error in the file).");
+            new Logger(1, "Cannot load configuration (there might be an error in the file).");
             return null;
         } 
     }
@@ -73,4 +72,8 @@ public class Config {
     public String status() {
         return getConfig().get("status").toString();
     }
+
+    public String webhook() {
+        return getConfig().get("webhook").toString();
+    } 
 }

@@ -9,7 +9,7 @@ import nestedvar.Quiver.util.Resources;
 import nestedvar.Quiver.arrow.ArrowHandler;
 import nestedvar.Quiver.commands.Reload;
 import nestedvar.Quiver.commands.test;
-
+import nestedvar.Quiver.events.Ready;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.OnlineStatus;
@@ -28,10 +28,11 @@ public class Quiver {
         builder.setToken(config.token());
         builder.addEventListeners(
             new test(),
-            new Reload()
+            new Reload(),
+            new Ready()
         );
         builder.setStatus(OnlineStatus.ONLINE);
-        builder.setGameProvider(shard -> Game.watching(config.status().replace("%shard%", String.valueOf(shard))));
+        builder.setGameProvider(shard -> Game.playing(config.status().replace("%shard%", String.valueOf(shard))));
         builder.setShardsTotal(config.shards());
 
         // Enable arrow modules
@@ -42,16 +43,16 @@ public class Quiver {
         Lang lang = new Lang();
         lang.load();
 
+        // Load guild data
+        Data data = new Data();
+        data.load();
+
         // Check Resource usage
         Resources resources = new Resources();
 
         shardManager = builder.build();
         System.out.print("\n🎯 Bullseye! " + config.botName() + " is online. " + 
             "Using " + resources.getCPULoad() + "% of the CPU.\n\n");
-
-        // Load guild data
-        Data data = new Data();
-        data.load();
     }
 
 }

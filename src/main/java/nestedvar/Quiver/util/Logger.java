@@ -7,21 +7,34 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 
 public class Logger {
+    public Logger(int code, Exception error, Guild guild) {
+        StringWriter sw = new StringWriter();
+        error.printStackTrace(new PrintWriter(sw));
+        String exception = sw.toString();
 
-    // Log the error (with guild provided)
-    public void log(int code, String error, Guild guild) {
         EmbedBuilder fatal = new EmbedBuilder();
-        fatal.setDescription(error);
+        fatal.setDescription(exception);
         guild.getTextChannelById("491459187620970505").sendMessage(fatal.build()).queue();
+        System.out.println(exception);
     }
 
-    // Log the error (no guild provided)
-    public void log(int code, String error) {
+    public Logger(int code, Exception error) {
+        StringWriter sw = new StringWriter();
+        error.printStackTrace(new PrintWriter(sw));
+        String exception = sw.toString();
+        System.out.println(exception);
+    }
+ 
+    public Logger(int code, String error, Guild guild) {
+        System.out.println(error);
+    }
+
+    public Logger(int code, String error) {
         System.out.println(error);
     }
 
 
-        // TODO port code
+        // TODO add this logger stuff back
         /*if (guild != null) {
             switch (type) {
             case "warning":
