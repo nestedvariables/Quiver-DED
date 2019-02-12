@@ -40,22 +40,19 @@ public class Quiver {
      * @throws LoginException
      */
     public Quiver() throws LoginException {
-        config.load();
-        lang.load();
-        data.load();
-        arrow.load();
-        builder.setToken(config.token());
-
+        config.load(); lang.load(); data.load(); arrow.load();
+        
         for (ArrowObject arrow : ArrowHandler.arrows) {
             builder.addEventListeners(arrow.listeners);
         }
 
+        builder.setToken(config.token());
         builder.addEventListeners(listeners);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGameProvider(shard -> Game.playing(config.status().replace("%shard%", String.valueOf(shard))));
         builder.setShardsTotal(config.shards());
         shardManager = builder.build();
-        new Logger(0, "🎯 Bullseye! " + config.botName() + " is online. " + "Using " + resources.getCPULoad() + "% of the CPU.");
+        new Logger(0, "🎯 Bullseye! " + config.botName() + " is online. " + "Using " + resources.getCPULoad() + "% of the CPU and " + resources.getRAMUsage() + " MB of memory.");
     }
 
     /**

@@ -15,9 +15,8 @@ public class Arrows extends ListenerAdapter {
         if (args[0].equalsIgnoreCase(data.getPrefix(event.getGuild()) + "arrows")) {
             EmbedBuilder embed = new EmbedBuilder();
 
-            String arrows = "";
             for (ArrowObject arrow : ArrowHandler.arrows) {;
-                arrows += arrow.description + "\n" + "Version " + arrow.version + " by " + arrow.author;
+                String arrows = arrow.description + "\n" + "Version " + arrow.version + " by " + arrow.author;
                 embed.addField(arrow.name, arrows, false);
             }
 
