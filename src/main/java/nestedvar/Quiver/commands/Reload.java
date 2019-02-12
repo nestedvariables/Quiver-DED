@@ -1,6 +1,7 @@
 package nestedvar.Quiver.commands;
 
 import nestedvar.Quiver.Launcher;
+import nestedvar.Quiver.arrow.ArrowHandler;
 import nestedvar.Quiver.util.Data;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -12,17 +13,14 @@ public class Reload extends ListenerAdapter {
         Data data = new Data();
         // TODO add command to locales
         if (args[0].equalsIgnoreCase(data.getPrefix(event.getGuild()) + "reload")) {
-            //if (!event.getMember().hasPermission(Permission.ADMINISTRATOR)) return;
-            Launcher.restart();
-            /*if (args.length < 2) {
-                // reload shit
-                event.getChannel().sendMessage("shit").queue();
-                handler.reload();
+            try {
+                event.getChannel().sendMessage("reloadiing you bitch").queue();
+                ArrowHandler.loader.close();
+                Launcher.restart();
             }
-            else {
-                handler.unload();
-                event.getChannel().sendMessage("unloaded").queue();
-            }*/
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -14,10 +14,11 @@ import nestedvar.Quiver.util.Logger;
 
 public class ArrowHandler {
     public static URLClassLoader loader;
-    public static ArrayList<String> arrows = new ArrayList<String>();
-    public static HashMap<String, HashMap<String, String>> arrowInfo = new HashMap<String, HashMap<String, String>>();
-    public static ArrayList<Object> arrowClasses = new ArrayList<Object>();
-    public static ArrayList<Object[]> listeners = new ArrayList<Object[]>();
+    public static ArrayList<ArrowObject> arrows = new ArrayList<ArrowObject>();
+
+    // TODO MAKE THIS IDIOTS FUCK OFF
+    public static HashMap<String, HashMap<String, String>> arrowArray = new HashMap<String, HashMap<String, String>>();
+    public static HashMap<String, ArrayList<JarEntry>> classes = new HashMap<String, ArrayList<JarEntry>>();
 
     /**
      * Checks if the Arrows 
@@ -42,7 +43,7 @@ public class ArrowHandler {
     /**
      * Loads all Arrows
      */
-    void load() {
+    public void load() {
         File dir = new File("arrows");
         File[] files = dir.listFiles((d, file) -> file.endsWith(".jar"));
 
@@ -54,10 +55,15 @@ public class ArrowHandler {
                 loader = URLClassLoader.newInstance(urls);
                 JarFile jar = new JarFile(file);
                 Enumeration<JarEntry> entries = jar.entries();
+                ArrayList<JarEntry> temp = new ArrayList<JarEntry>();
 
                 while (entries.hasMoreElements()) {
                     try {
                         JarEntry jarEntry = entries.nextElement();
+
+                        // Add class to JAR record
+                        temp.add(jarEntry);
+                        
                         if (jarEntry.isDirectory() || !jarEntry.getName().endsWith(".class")) {
                             continue;
                         }
@@ -75,6 +81,8 @@ public class ArrowHandler {
                         continue;
                     }
                 }
+                classes.put(jar.getName(), temp);
+                System.out.println(jar.getName().replace("arrows\\", "").replace(".jar", ""));
                 jar.close();
             }
             catch (Exception e) {new Logger(1, e);}
@@ -84,28 +92,23 @@ public class ArrowHandler {
     /**
      * Unloads all loaded Arrows
      */
-    void unload() {
+    public void unload() {
         try {
             loader.close();
-            for (Object[] obj : listeners) {
+            /*for (Object obj : listeners) {
                 Quiver.builder.removeEventListeners(obj);
-            }
+            }*/
         }
         catch (Exception e) {
             new Logger(1, e);
         }
     }
 
-    /** 
-     * Reloads the arrows that are currently 
-     * loaded and loads new arrows
+    /**
+     * Adds a new listener method to Quiver
+     * @param listener Instance of listener
      */
-    void reload() {
-        unload();
-        load();
-    }
-
-    public void addListeners(Object listener) {
-        System.out.println(listener);
+    public void addListener(Object... listener) {
+        Quiver.builder.addEventListeners(listener);
     }
 }

@@ -1,11 +1,8 @@
 package nestedvar.Quiver;
 
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
 import javax.security.auth.login.LoginException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 public class Launcher {
 

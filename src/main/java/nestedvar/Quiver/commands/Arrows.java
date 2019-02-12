@@ -1,9 +1,9 @@
 package nestedvar.Quiver.commands;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import nestedvar.Quiver.arrow.ArrowHandler;
+import nestedvar.Quiver.arrow.ArrowObject;
 import nestedvar.Quiver.util.Data;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -18,10 +18,9 @@ public class Arrows extends ListenerAdapter {
             EmbedBuilder embed = new EmbedBuilder();
 
             String arrows = "";
-            for (String arrow : ArrowHandler.arrows) {;
-                HashMap<String, String> temp = ArrowHandler.arrowInfo.get(arrow);
-                arrows += temp.get("description") + "\n" + "Version " + temp.get("version") + " by " + temp.get("author");
-                embed.addField(arrow, arrows, false);
+            for (ArrowObject arrow : ArrowHandler.arrows) {;
+                arrows += arrow.description + "\n" + "Version " + arrow.version + " by " + arrow.author;
+                embed.addField(arrow.name, arrows, false);
             }
 
             embed.setColor(0xf49242);
