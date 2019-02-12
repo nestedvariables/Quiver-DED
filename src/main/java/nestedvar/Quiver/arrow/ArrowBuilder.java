@@ -1,13 +1,15 @@
 package nestedvar.Quiver.arrow;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ArrowBuilder {
     private String name;
     private String description;
     private String author;
     private String version;
-    private ArrayList<Object> listeners = new ArrayList<Object>();
+    private List<Object> listeners = new ArrayList<Object>();
 
     /**
      * Create a new Arrow
@@ -28,9 +30,12 @@ public class ArrowBuilder {
      * @param listener Instance of listener
      */
     public void addListener(Object... listener) {
-        listeners.add(listener);
+        Collections.addAll(this.listeners, listener);
     }
 
+    /**
+     * Initializes arrow
+     */
     public void build() {
         ArrowObject arrow = new ArrowObject(name, description, author, version, listeners);
         ArrowHandler.arrows.add(arrow);

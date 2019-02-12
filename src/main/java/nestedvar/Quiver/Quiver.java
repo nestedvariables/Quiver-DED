@@ -13,6 +13,7 @@ import nestedvar.Quiver.util.Logger;
 import nestedvar.Quiver.util.Resources;
 import nestedvar.Quiver.arrow.Arrow;
 import nestedvar.Quiver.arrow.ArrowHandler;
+import nestedvar.Quiver.arrow.ArrowObject;
 import nestedvar.Quiver.commands.Arrows;
 import nestedvar.Quiver.commands.Reload;
 import nestedvar.Quiver.commands.test;
@@ -49,6 +50,11 @@ public class Quiver {
         data.load();
         arrow.load();
         builder.setToken(config.token());
+
+        for (ArrowObject arrow : ArrowHandler.arrows) {
+            builder.addEventListeners(arrow.listeners);
+        }
+
         builder.addEventListeners(listeners);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGameProvider(shard -> Game.playing(config.status().replace("%shard%", String.valueOf(shard))));

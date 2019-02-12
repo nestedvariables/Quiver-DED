@@ -1,6 +1,6 @@
 package nestedvar.Quiver.arrow;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ArrowObject {
     public String name;
@@ -8,14 +8,14 @@ public class ArrowObject {
     public String author;
     public String version;
 
-    Object[] listeners;
+    public Object[] listeners;
 
-    public ArrowObject(String name, String description, String author, String version, ArrayList<Object> listeners) {
+    public ArrowObject(String name, String description, String author, String version, List<Object> listeners) {
         this.name = name;
         this.description = description;
         this.author = author;
         this.version = version;
-        this.listeners = listeners.toArray();
+        this.listeners = listeners.toArray(new Object[listeners.size()]);
         System.out.println("🏹 Arrows: Loaded " + name + " " + version + " by " + author + ".");
     }
 }
