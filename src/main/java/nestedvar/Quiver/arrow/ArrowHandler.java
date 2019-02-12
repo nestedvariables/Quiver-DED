@@ -103,12 +103,4 @@ public class ArrowHandler {
             new Logger(1, e);
         }
     }
-
-    /**
-     * Adds a new listener method to Quiver
-     * @param listener Instance of listener
-     */
-    public void addListener(Object... listener) {
-        Quiver.builder.addEventListeners(listener);
-    }
 }
