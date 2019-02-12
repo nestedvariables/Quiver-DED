@@ -1,7 +1,5 @@
 package nestedvar.Quiver.commands;
 
-import java.util.HashMap;
-
 import nestedvar.Quiver.arrow.ArrowHandler;
 import nestedvar.Quiver.arrow.ArrowObject;
 import nestedvar.Quiver.util.Data;

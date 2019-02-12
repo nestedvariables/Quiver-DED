@@ -89,7 +89,7 @@ public class Utils {
                 blacklistID = rs.getString("discord_id");
 
         } catch (SQLException sqle) {
-            new Logger(1, sqle.toString(), null);
+            new Logger(1, sqle.toString());
         }
 
         if (blacklistID != null) {
@@ -131,7 +131,7 @@ public class Utils {
             ResultSet result = statement.executeQuery("SELECT * FROM `premium`");
                    
             if (!result.next()) {
-                new Logger(2, "No premium users in database.", null); 
+                new Logger(2, "No premium users in database."); 
                 return false;
             }
             else {
@@ -146,7 +146,7 @@ public class Utils {
             return false;
         }
         catch (Exception e) {
-            new Logger(1, e.toString(), null);
+            new Logger(1, e.toString());
             return false;
         }
     }

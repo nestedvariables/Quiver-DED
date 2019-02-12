@@ -1,9 +1,5 @@
 package nestedvar.Quiver;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.security.auth.login.LoginException;
 
 import nestedvar.Quiver.util.Config;
@@ -11,7 +7,6 @@ import nestedvar.Quiver.util.Data;
 import nestedvar.Quiver.util.Lang;
 import nestedvar.Quiver.util.Logger;
 import nestedvar.Quiver.util.Resources;
-import nestedvar.Quiver.arrow.Arrow;
 import nestedvar.Quiver.arrow.ArrowHandler;
 import nestedvar.Quiver.arrow.ArrowObject;
 import nestedvar.Quiver.commands.Arrows;
@@ -28,7 +23,7 @@ public class Quiver {
     public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 
     Config config = new Config();
-    ArrowHandler arrow = new ArrowHandler() {};
+    ArrowHandler arrow = new ArrowHandler();
     Resources resources = new Resources();
     Lang lang = new Lang();
     Data data = new Data();
@@ -37,7 +32,7 @@ public class Quiver {
         new test(),
         new Reload(),
         new Arrows(),
-        new Ready(),
+        new Ready()
     };
 
     /**

@@ -1,16 +1,10 @@
 package nestedvar.Quiver;
 
-import java.awt.event.ActionEvent;
-
 import javax.security.auth.login.LoginException;
 
 public class Launcher {
 
     static Quiver quiver;
-
-    public void actionPerformed(ActionEvent e) {
-         System.out.println("thing");  
-    }
 
     public static void main(String[] args) {
         try {

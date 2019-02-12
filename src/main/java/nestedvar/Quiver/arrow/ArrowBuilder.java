@@ -36,8 +36,9 @@ public class ArrowBuilder {
     /**
      * Initializes arrow
      */
-    public void build() {
+    public ArrowObject build() {
         ArrowObject arrow = new ArrowObject(name, description, author, version, listeners);
         ArrowHandler.arrows.add(arrow);
+        return arrow;
     }
 }

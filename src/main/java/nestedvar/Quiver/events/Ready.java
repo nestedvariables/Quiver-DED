@@ -1,13 +1,5 @@
 package nestedvar.Quiver.events;
 
-import java.awt.Color;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-
 import nestedvar.Quiver.Quiver;
 import nestedvar.Quiver.util.Config;
 import nestedvar.Quiver.util.Logger;
