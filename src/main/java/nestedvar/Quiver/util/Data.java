@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.HashMap;
 
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
+import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
 public class Data {
     public static HashMap<String, HashMap<String, String>> settings = new HashMap<String, HashMap<String, String>>();
@@ -102,5 +105,15 @@ public class Data {
         catch (Exception e) {
             new Logger(1, e, guild);
         }
+    }
+
+    public String getSelfAvatar(GuildMessageReceivedEvent event) {
+        return event.getJDA().getSelfUser().getAvatarUrl();
+    }
+    public String getSelfAvatar(MessageReceivedEvent event) {
+        return event.getJDA().getSelfUser().getAvatarUrl();
+    }
+    public String getSelfAvatar(GuildJoinEvent event) {
+        return event.getJDA().getSelfUser().getAvatarUrl();
     }
 }
