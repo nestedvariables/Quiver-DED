@@ -32,7 +32,7 @@ public class Quiver {
     public static Map<Arrow, String> arrows;
 
     Config config = new Config();
-    ArrowHandler arrow = new ArrowHandler();
+    ArrowHandler arrow = new ArrowHandler() {};
     Resources resources = new Resources();
     Lang lang = new Lang();
     Data data = new Data();
@@ -52,7 +52,6 @@ public class Quiver {
         config.load();
         lang.load();
         data.load();
-        arrow.load();
         
         arrows = new HashMap<Arrow, String>();
 

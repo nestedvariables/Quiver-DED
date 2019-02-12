@@ -1,13 +1,11 @@
 package nestedvar.Quiver.arrow;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -25,7 +23,7 @@ public class ArrowHandler {
      * Checks if the Arrows 
      * folder is empty
      */
-    public void createFolder() {
+    void createFolder() {
         File file = new File("arrows");
         if (file.isDirectory()) {
             if (file.list().length > 0) load();
@@ -44,7 +42,7 @@ public class ArrowHandler {
     /**
      * Loads all Arrows
      */
-    public void load() {
+    void load() {
         File dir = new File("arrows");
         File[] files = dir.listFiles((d, file) -> file.endsWith(".jar"));
 
@@ -63,26 +61,14 @@ public class ArrowHandler {
                         if (jarEntry.isDirectory() || !jarEntry.getName().endsWith(".class")) {
                             continue;
                         }
-                        String className = jarEntry.getName().substring(0, jarEntry.getName().length() - 6);
-                        className = className.replace('/', '.');
-                        Class<?> c = loader.loadClass(className);
-                        Object classObj = c.newInstance();
-                        // TODO figure this crap out
-                        Map<String,String> testmap = new HashMap<String,String>();
-                        testmap.put("test", "test");
+                        String className = jarEntry.getName().substring(0, jarEntry.getName().length() - 6).replace('/', '.');
+                        Class<?> clazz = loader.loadClass(className);
+                        Object obj = clazz.newInstance();
                     
-
-                            Arrow arrow = (Arrow) classObj;
+                        if (obj instanceof Arrow) {
+                            Arrow arrow = (Arrow) obj;
                             arrow.load();
-                        
-
-                        //Method method = c.getMethod("onLoad");
-
-
-
-                        // Add class to external class list (for unloading)
-                        arrowClasses.add(classObj);
-                        //method.invoke(classObj);
+                        }
                     }
                     catch (Exception e) {
                         e.printStackTrace();
@@ -91,16 +77,14 @@ public class ArrowHandler {
                 }
                 jar.close();
             }
-            catch (Exception e) {
-                new Logger(1, e);
-            }
+            catch (Exception e) {new Logger(1, e);}
         }
     }
 
     /**
      * Unloads all loaded Arrows
      */
-    public void unload() {
+    void unload() {
         try {
             loader.close();
             for (Object[] obj : listeners) {
@@ -116,8 +100,12 @@ public class ArrowHandler {
      * Reloads the arrows that are currently 
      * loaded and loads new arrows
      */
-    public void reload() {
+    void reload() {
         unload();
         load();
+    }
+
+    public void addListeners(Object listener) {
+        System.out.println(listener);
     }
 }
