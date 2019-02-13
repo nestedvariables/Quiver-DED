@@ -11,7 +11,7 @@ public class Ready extends ListenerAdapter {
     public void onReady(ReadyEvent event) {
         try {
             Config config = new Config();
-            Webhooks webhook = new Webhooks(config.webhook());
+            Webhooks webhook = new Webhooks(config.get("webhookURL"));
             webhook.addEmbed(new Webhooks.EmbedObject()
                 .setTitle("🏹 Quiver Shard Spawned")
                 .setDescription("💥 Shard ID: **" + String.valueOf(event.getJDA().getShardInfo().getShardId()) + "**" +

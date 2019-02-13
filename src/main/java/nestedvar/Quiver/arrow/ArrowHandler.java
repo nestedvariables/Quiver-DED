@@ -83,12 +83,17 @@ public class ArrowHandler {
     /**
      * Unloads all loaded Arrows
      */
-    public static void unload() {
+    public void unload() {
         try {
-            loader.close();
+            try {
+                loader.close();
+            }
+            catch (NullPointerException ex) {return;}
+
             for (ArrowObject arrow : arrows) {
                 Quiver.builder.removeEventListeners(Arrays.asList(arrow.listeners));
             }
+            arrows.clear();
         }
         catch (Exception e) {
             new Logger(1, e);

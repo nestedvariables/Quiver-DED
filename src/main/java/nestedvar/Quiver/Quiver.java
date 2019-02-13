@@ -1,7 +1,6 @@
 package nestedvar.Quiver;
 
 import javax.security.auth.login.LoginException;
-
 import nestedvar.Quiver.util.Config;
 import nestedvar.Quiver.util.Data;
 import nestedvar.Quiver.util.Lang;
@@ -12,6 +11,7 @@ import nestedvar.Quiver.arrow.ArrowObject;
 import nestedvar.Quiver.commands.Arrows;
 import nestedvar.Quiver.commands.Reload;
 import nestedvar.Quiver.commands.test;
+import nestedvar.Quiver.events.GuildMessageReceived;
 import nestedvar.Quiver.events.Ready;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
@@ -22,7 +22,6 @@ public class Quiver {
     public static ShardManager shardManager;
     public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 
-    Config config = new Config();
     ArrowHandler arrow = new ArrowHandler();
     Resources resources = new Resources();
     Lang lang = new Lang();
@@ -32,27 +31,38 @@ public class Quiver {
         new test(),
         new Reload(),
         new Arrows(),
-        new Ready()
+        new Ready(),
+        new GuildMessageReceived()
     };
+
+    /**
+     * Registers all external listeners
+     */
+    Thread thread = new Thread(new Runnable(){
+        @Override
+        public void run() {
+            for (ArrowObject arrow : ArrowHandler.arrows) {
+                builder.addEventListeners(arrow.listeners);
+            }
+        }
+    });
 
     /**
      * Starts Quiver with settings from configuration
      * @throws LoginException
      */
     public Quiver() throws LoginException {
-        config.load(); lang.load(); data.load(); arrow.load();
-        
-        for (ArrowObject arrow : ArrowHandler.arrows) {
-            builder.addEventListeners(arrow.listeners);
-        }
+        thread.run();
+        Config config = new Config();
+        lang.load(); data.load(); arrow.load();
 
-        builder.setToken(config.token());
+        builder.setToken(config.get("token"));
         builder.addEventListeners(listeners);
-        builder.setStatus(OnlineStatus.ONLINE);
-        builder.setGameProvider(shard -> Game.playing(config.status().replace("%shard%", String.valueOf(shard))));
-        builder.setShardsTotal(config.shards());
+        builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
+        builder.setGameProvider(shard -> Game.playing(config.get("status").replace("%shard%", String.valueOf(shard))));
+        builder.setShardsTotal(Integer.parseInt(config.get("shards")));
         shardManager = builder.build();
-        new Logger(0, "🎯 Bullseye! " + config.botName() + " is online. " + "Using " + resources.getCPULoad() + "% of the CPU and " + resources.getRAMUsage() + " MB of memory.");
+        new Logger(0, "🎯 Bullseye! " + config.get("name") + " is online. " + "Using " + resources.getCPULoad() + "% of the CPU and " + resources.getRAMUsage() + " MB of memory.");
     }
 
     /**

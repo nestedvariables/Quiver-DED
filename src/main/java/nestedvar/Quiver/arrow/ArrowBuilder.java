@@ -37,8 +37,14 @@ public class ArrowBuilder {
      * Initializes arrow
      */
     public ArrowObject build() {
-        ArrowObject arrow = new ArrowObject(name, description, author, version, listeners);
-        ArrowHandler.arrows.add(arrow);
-        return arrow;
+        try {
+            ArrowObject arrow = new ArrowObject(name, description, author, version, listeners);
+            ArrowHandler.arrows.add(arrow);
+            return arrow;
+        }
+        catch (Exception e) {
+            System.out.println("Error loading an Arrow.");
+            return null;
+        }
     }
 }

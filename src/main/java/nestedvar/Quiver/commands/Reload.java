@@ -1,5 +1,6 @@
 package nestedvar.Quiver.commands;
 
+import nestedvar.Quiver.Launcher;
 import nestedvar.Quiver.arrow.ArrowHandler;
 import nestedvar.Quiver.util.Data;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
@@ -14,8 +15,9 @@ public class Reload extends ListenerAdapter {
         if (args[0].equalsIgnoreCase(data.getPrefix(event.getGuild()) + "reload")) {
             try {
                 event.getChannel().sendMessage("reloadiing you blin").queue();
-                ArrowHandler.unload();
-                //Launcher.restart();
+                ArrowHandler handler = new ArrowHandler();
+                handler.unload();
+                Launcher.restart();
             }
             catch (Exception e) {
                 e.printStackTrace();

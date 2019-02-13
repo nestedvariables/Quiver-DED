@@ -8,5 +8,5 @@ docs/language_pull_request.md
 docs/code_pull_request.md
 My-Google-Assistant-f04dd100ade1.json
 start.sh
-quiver.yml
+quiver.json
 src/main/java/nestedvar/Quiver/Credentials.java
