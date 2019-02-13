@@ -52,6 +52,7 @@ public class Quiver {
      * @throws LoginException
      */
     public Quiver() throws LoginException {
+        new Logger(0, "⚡ Starting Quiver processes...");
         thread.run();
         Config config = new Config();
         lang.load(); data.load(); arrow.load();

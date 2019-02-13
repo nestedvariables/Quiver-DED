@@ -2,7 +2,6 @@ package nestedvar.Quiver.util;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 import nestedvar.Quiver.arrow.ArrowObject;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;

@@ -15,7 +15,6 @@ public class Config {
         try {
             JSONParser parser = new JSONParser();
             json = (JSONObject) parser.parse(new FileReader("quiver.json"));
-            System.out.println(json.toString());
         }
         catch (Exception e) {new Logger(1, "Cannot load configuration (there might be an error in the file).");} 
     }
