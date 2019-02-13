@@ -18,12 +18,17 @@
 </a>
 </div>
 
- # Introduction
- 
- Hi I'm Quiver, an all around Discord Bot. I have a lot of [features](#features "Click me to be teleported to the features list!").  I'm open source so if you have code improvements and/or a [translation](#languages "Will be posting the English locale file in a couple days") to be added or fixed open a pull request. 
+# 👋 Hey there!
+So you may be wondering, what is this fancy... "Quiver" thing? Well, to put it simply, Quiver is the only Discord bot you'll ever need! It's the Swiss Army knife of Discord bots that's easily scalable and extendable! Quiver is completely open source, so go ahead and do what you wish with the code :)
 
- ## Features
+# 🏹 Arrows make it come alive!
+Quiver is pretty unique. We developed an addon system that allows anyone to code their own features into Quiver- we like to call them **Arrows**. So yea, pretty fancy. Since Quiver is written in [Discord JDA](https://github.com/DV8FromTheWorld/JDA), all Arrows get access to the full JDA library as well as Quiver's own library to seamlessly integrate features into the bot! That way, developers can come along and code any feature they would like to improve the bot!
 
+# ⚡ Geee, this sounds great. How do I get it?
+Well, fellow human, Quiver is in an alpha stage right now! If you want to try it out as we develop it, you can simply visit this super cool link (coming soon) and invite Quiver into your server. We'll give development updates as we add new things. We hope you give it a shot and enjoy all of our hard work!
+
+# 📚 So what can it do?
+Here's 
 <table width="100%" align="center">
 <tr>
   <th>Command</th>
@@ -40,7 +45,8 @@ Command | Description | Usage
 |:------------:|-------------|------------|
 [set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | Changes settings for the whole guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
 
-## Languages
+# 🏳 Languages!
+We want to make Quiver accessible to anyone, so we aim to integrate as many languages as we can! Quiver has an _extremely super ultra simple_ translation system that supports any language! If you would like to contribute and translate Quiver to another language, we'd really appreciate it! Here's a cheeky link to some translation instructions: (coming soooooon, I swear).
 
 <table width="100%" align="center" text-align="center">
   <tr>
@@ -60,3 +66,6 @@ Command | Description | Usage
     <td>ar_SA</td> 
   </tr>
 </table>
+
+# 🎯 So what now?
+Well, Quiver is in Alpha and we are working around the clock to make imporvements to it! Your support is greatly appreciated! 
