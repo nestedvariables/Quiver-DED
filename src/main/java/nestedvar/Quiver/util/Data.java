@@ -96,7 +96,7 @@ public class Data {
             case "us-central": return "en_US";
             case "brazil": return "pt_BR";
             case "eu-central": return "en_GB";
-            case: "eu-west": return "en_GB";
+            case "eu-west": return "en_GB";
             case "hongkong": return "en_HK";
             case "japan": return "ja_JP";
             case "russia": return "ru_RU";
