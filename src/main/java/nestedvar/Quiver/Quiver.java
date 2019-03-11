@@ -1,5 +1,9 @@
 package nestedvar.Quiver;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import javax.security.auth.login.LoginException;
 import nestedvar.Quiver.util.Config;
 import nestedvar.Quiver.util.Data;
@@ -27,18 +31,12 @@ public class Quiver {
     Lang lang = new Lang();
     Data data = new Data();
 
-    public Object[] listeners = {
-        new test(),
-        new Reload(),
-        new Arrows(),
-        new Ready(),
-        new GuildMessageReceived()
-    };
+    public Object[] listeners = { new test(), new Reload(), new Arrows(), new Ready(), new GuildMessageReceived() };
 
     /**
      * Registers all external listeners
      */
-    Thread thread = new Thread(new Runnable(){
+    Thread thread = new Thread(new Runnable() {
         @Override
         public void run() {
             for (ArrowObject arrow : ArrowHandler.arrows) {
@@ -49,13 +47,25 @@ public class Quiver {
 
     /**
      * Starts Quiver with settings from configuration
+     * 
      * @throws LoginException
      */
     public Quiver() throws LoginException {
+
+        ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
+        ses.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+             //("Using " + resources.getCPULoad() + "% of the CPU and " + resources.getRAMUsage() + " MB of memory.");
+            }
+        }, 0, 5, TimeUnit.SECONDS);
+
         new Logger(0, "⚡ Starting Quiver processes...");
         thread.run();
         Config config = new Config();
-        lang.load(); data.load(); arrow.load();
+        lang.load();
+        data.load();
+        arrow.load();
 
         builder.setToken(config.get("token"));
         builder.addEventListeners(listeners);

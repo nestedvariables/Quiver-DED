@@ -13,10 +13,10 @@ public class Ready extends ListenerAdapter {
             Config config = new Config();
             Webhooks webhook = new Webhooks(config.get("webhookURL"));
             webhook.addEmbed(new Webhooks.EmbedObject()
-                .setTitle("🏹 Quiver Shard Spawned")
-                .setDescription("💥 Shard ID: **" + String.valueOf(event.getJDA().getShardInfo().getShardId()) + "**" +
-                    "      📦 Guild Count: **" + String.valueOf(Quiver.shardManager.getGuilds().size()) + "**" +
-                    "      👥 User Count: **" + String.valueOf(Quiver.shardManager.getUsers().size()) + "**")            
+                .setTitle(":bow_and_arrow: Quiver Shard Spawned")
+                .setDescription(":boom: Shard ID: **" + String.valueOf(event.getJDA().getShardInfo().getShardId()) + "**" +
+                    "      :package: Guild Count: **" + String.valueOf(Quiver.shardManager.getGuilds().size()) + "**" +
+                    "      :busts_in_silhouette: User Count: **" + String.valueOf(Quiver.shardManager.getUsers().size()) + "**")            
             );
             webhook.execute();
         }

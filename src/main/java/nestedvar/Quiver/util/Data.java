@@ -75,7 +75,7 @@ public class Data {
 
     // Return default locale
     public String getDefaultLocale(Guild guild) {
-        if (guild.getRegionRaw().equals("us-east")) return "en_US";
+        /*if (guild.getRegionRaw().equals("us-east")) return "en_US";
         else if (guild.getRegionRaw().equals("us-west")) return "en_US";
         else if (guild.getRegionRaw().equals("us-central")) return "en_US";
         else if (guild.getRegionRaw().equals("us-south")) return "en_US";
@@ -88,7 +88,25 @@ public class Data {
         else if (guild.getRegionRaw().equals("southafrica")) return "en_ZA";
         else if (guild.getRegionRaw().equals("sydney")) return "en_AU";
         else if (guild.getRegionRaw().equals("eu-west")) return "en_GB";
-        else return "en_US";
+        else return "en_US";*/
+        switch(guild.getRegionRaw()) {
+            case "us-east": return "en_US";
+            case "us-west": return "en_US";
+            case "us-south": return "en_US";
+            case "us-central": return "en_US";
+            case "brazil": return "pt_BR";
+            case "eu-central": return "en_GB";
+            case: "eu-west": return "en_GB";
+            case "hongkong": return "en_HK";
+            case "japan": return "ja_JP";
+            case "russia": return "ru_RU";
+            case "singapore": return "en_SG";
+            case "southafrica": return "en_ZA";
+            case "sydney": return "en_AU";
+            default: return "en_US";
+
+            
+         }
     }
 
     // Set locale for guild

@@ -1,24 +1,26 @@
 package nestedvar.Quiver.util;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
+
 public class Resources {
-    public double getCPULoad()  {
+    public double getCPULoad() {
         try {
-            // TODO fix this
-            return 9000.0;
-        }
-        catch (Exception e) {
+            OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
+            return osBean.getSystemLoadAverage();
+        } catch (Exception e) {
             return 0.0;
         }
     }
 
     public String getRAMUsage() {
         try {
-            double freeRAM = Runtime.getRuntime().freeMemory() / 1024 / 1024 / 1024;
-            double totalRAM = Runtime.getRuntime().totalMemory() / 1024 / 1024 / 1024;
-            return freeRAM + "/" + totalRAM;
-        } 
-        catch (Exception e) {
-            return "0.0";
+            Runtime runtime = Runtime.getRuntime();
+            long allocatedMemory = runtime.totalMemory();
+            long freeMemory = runtime.freeMemory();
+            return String.valueOf((allocatedMemory - freeMemory) / 1000 / 1000);
+        } catch (Exception e) {
+            return "There was an error while attempting to collect ram usage!";
         }
     }
 }
