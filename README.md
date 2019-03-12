@@ -39,7 +39,7 @@ Here's a short list! Of course, the more Arrows you add to Quiver, the more feat
   <tr>
     <td><a href="https://nestedvariables.tk/quiver/commands/set">set</a></td>
     <td>Changes settings for the whole guild</td>
-    <td>set prefix {prefix} <br/> set locale {<a href="#languages">locale</a>}
+    <td>set prefix {prefix} <br/> set locale {<a href="#-languages">locale</a>}
   </tr>
 </table>
 
