@@ -37,9 +37,19 @@ Here's a short list! Of course, the more Arrows you add to Quiver, the more feat
     <th>Usage</th>
   </tr>
   <tr>
-    <td><a href="https://nestedvariables.tk/quiver/commands/set">set</a></td>
+    <td><a href="https://nestedvariables.tk/quiver/commands?cmd=set">set</a></td>
     <td>Changes settings for the whole guild</td>
-    <td>set prefix {prefix} <br/> set locale {<a href="#-languages">locale</a>}
+    <td>[prefix]set prefix {prefix} <br/> set locale {<a href="#-languages">locale</a>}
+  </tr>
+  <tr>
+    <td><a href="https://nestedvariables.tk/quiver/commands?cmd=arrows">arrows</td>
+    <td>Displays a list of arrows that are currently loaded and enabled</td>
+    <td>[prefix]arrows</td>
+  </tr>
+  <tr>
+    <td><a href="https://nestedvariables.tk/quiver/commands?cmd=reload">reload</a></td>
+    <td>Reloads Quiver to integrate new changes</td>
+    <td>[prefix]reload</td>
   </tr>
 </table>
 
