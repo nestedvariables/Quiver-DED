@@ -30,9 +30,18 @@ Well, fellow human, Quiver is in an alpha stage right now! If you want to try it
 
 # 📚 So what can it do?
 Here's a short list! Of course, the more Arrows you add to Quiver, the more features you can add to it (that's the whole point)!
-Command | Description | Usage 
-|:------------:|-------------|------------|
-[set](https://nestedvariables.tk/quiver/commands/set "Click to get more information on the set command") | Changes settings for the whole guild | set prefix {prefix} <br/> set locale {[locale](#languages "Click me to be teleported to the languages section")}
+<table width="100%" align="center" text-align="center">
+  <tr>
+    <th>Command</th>
+    <th>Short Description</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td><a href="https://nestedvariables.tk/quiver/commands/set">set</a></td>
+    <td>Changes settings for the whole guild</td>
+    <td>set prefix {prefix} <br/> set locale {<a href="#languages">locale</a>}
+  </tr>
+</table>
 
 # 🏳 Languages!
 We want to make Quiver accessible to anyone, so we aim to integrate as many languages as we can! Quiver has an _extremely super ultra simple_ translation system that supports any language! If you would like to contribute and translate Quiver to another language, we'd really appreciate it! Here's a cheeky link to some translation instructions: (coming soooooon, I swear).
