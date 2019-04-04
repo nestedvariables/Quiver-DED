@@ -17,6 +17,7 @@ public class GuildMessageReceived extends ListenerAdapter {
                 if (attachment.getFileName().endsWith(".jar")) {
                     System.out.println("uploaded a jar");
                     
+                    // TODO check if jar is an arrow/scan for wiruses
                     Thread thread = new Thread() {
                     @Override
                         public void run() {

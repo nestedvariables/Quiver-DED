@@ -3,7 +3,6 @@ package nestedvar.Quiver.commands;
 import nestedvar.Quiver.util.Data;
 import nestedvar.Quiver.util.Embeds;
 import nestedvar.Quiver.util.Lang;
-
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 

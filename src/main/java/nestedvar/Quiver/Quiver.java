@@ -1,15 +1,17 @@
 package nestedvar.Quiver;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.io.File;
+import java.net.URI;
+import java.util.List;
 
 import javax.security.auth.login.LoginException;
+
 import nestedvar.Quiver.util.Config;
 import nestedvar.Quiver.util.Data;
 import nestedvar.Quiver.util.Lang;
 import nestedvar.Quiver.util.Logger;
 import nestedvar.Quiver.util.Resources;
+import nestedvar.Quiver.arrow.Arrow;
 import nestedvar.Quiver.arrow.ArrowHandler;
 import nestedvar.Quiver.arrow.ArrowObject;
 import nestedvar.Quiver.commands.Arrows;
@@ -26,12 +28,18 @@ public class Quiver {
     public static ShardManager shardManager;
     public static DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
 
-    ArrowHandler arrow = new ArrowHandler();
+    //ArrowHandler arrow = new ArrowHandler();
     Resources resources = new Resources();
     Lang lang = new Lang();
     Data data = new Data();
 
-    public Object[] listeners = { new test(), new Reload(), new Arrows(), new Ready(), new GuildMessageReceived() };
+    public Object[] listeners = { 
+        new test(), 
+        new Reload(), 
+        new Arrows(), 
+        new Ready(), 
+        new GuildMessageReceived()
+    };
 
     /**
      * Registers all external listeners
@@ -39,7 +47,7 @@ public class Quiver {
     Thread thread = new Thread(new Runnable() {
         @Override
         public void run() {
-            for (ArrowObject arrow : ArrowHandler.arrows) {
+            for (ArrowObject arrow : ArrowHandler.arrows) { 
                 builder.addEventListeners(arrow.listeners);
             }
         }
@@ -51,12 +59,30 @@ public class Quiver {
      * @throws LoginException
      */
     public Quiver() throws LoginException {
-        new Logger(0, "⚡ Starting Quiver processes...");
+        new Logger(0, "⚡ Starting Quiver processes.");
+        try {
+            /*File dir = new File("arrows");
+            URI loc = dir.toURI();
+            ArrowHandler ah = new ArrowHandler();
+            ah.load(loc);*/
+            /*PluginManager manager = PluginManagers.defaultPluginManager();
+            manager.loadPlugins(PluginSources.jarSource(loc));
+            Arrow plugin = manager.getPlugin(Arrow.class);
+            plugin.load();*/
+            File dir = new File("arrows/DependsTest.jar");
+            URI loc = dir.toURI();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        //arrow.load();
         thread.run();
         Config config = new Config();
         lang.load();
         data.load();
-        arrow.load();
+        ArrowHandler ah = new ArrowHandler();
+        ah.load();
 
         builder.setToken(config.get("token"));
         builder.addEventListeners(listeners);

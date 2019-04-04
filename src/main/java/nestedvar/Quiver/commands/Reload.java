@@ -15,8 +15,8 @@ public class Reload extends ListenerAdapter {
         if (args[0].equalsIgnoreCase(data.getPrefix(event.getGuild()) + "reload")) {
             try {
                 event.getChannel().sendMessage("reloadiing you blin").queue();
-                ArrowHandler handler = new ArrowHandler();
-                handler.unload();
+                //ArrowHandler handler = new ArrowHandler();
+                // FIXME handler.unload();
                 Launcher.restart();
             }
             catch (Exception e) {

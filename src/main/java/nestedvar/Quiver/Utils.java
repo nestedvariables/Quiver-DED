@@ -9,7 +9,6 @@ import java.util.Random;
 
 import nestedvar.Quiver.util.Logger;
 import nestedvar.Quiver.util.SQL;
-
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.User;
