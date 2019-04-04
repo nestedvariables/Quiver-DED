@@ -51,15 +51,6 @@ public class Quiver {
      * @throws LoginException
      */
     public Quiver() throws LoginException {
-
-        ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
-        ses.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-             //("Using " + resources.getCPULoad() + "% of the CPU and " + resources.getRAMUsage() + " MB of memory.");
-            }
-        }, 0, 5, TimeUnit.SECONDS);
-
         new Logger(0, "⚡ Starting Quiver processes...");
         thread.run();
         Config config = new Config();
