@@ -1,4 +1,4 @@
-<img src="https://nestedvariables.tk/quiver/assets/Quiver-Banner.png" height="100">
+<img src="https://entity.nestedvar.dev/quiver/assets/Quiver-Banner.png" height="100">
 
 <div align="center">
 <a href="https://nestedvariables.tk/quiver">
