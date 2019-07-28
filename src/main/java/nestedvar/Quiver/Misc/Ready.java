@@ -25,7 +25,7 @@ public class Ready extends ListenerAdapter {
             webhook.execute();
             System.out.println("[Shard " + event.getJDA().getShardInfo().getShardId() + "] 🎯 Loaded! Servicing " + counter.getGuildsServiced(event) + " guilds and " + counter.getMemberCount(event) + " members");
         } catch(Exception e){
-
+            e.printStackTrace();
         }
         event.getJDA().getPresence().setStatus(OnlineStatus.ONLINE);
 
