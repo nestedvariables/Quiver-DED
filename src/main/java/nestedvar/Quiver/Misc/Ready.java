@@ -17,7 +17,7 @@ public class Ready extends ListenerAdapter {
     public void onReady(ReadyEvent event) {
         Count counter = new Count();
         try {
-            Webhooks webhook = new Webhooks("https://canary.discordapp.com/api/webhooks/531608886109667328/Ynfb9FDGMikJz3QE-RqUaj4nirTHnCZ-PrI4IoxIgQNkk1AJVUxCwT5PW6W0PfmaAjH8");
+            Webhooks webhook = new Webhooks(System.getenv("QUIVERWEBHOOK"));
             webhook.addEmbed(new Webhooks.EmbedObject()
             .setTitle("Quiver Shard " + event.getJDA().getShardInfo().getShardId() + " is ready")
             .setDescription("This shard is servicing \n\n```\n" + counter.getGuildsServiced(event) + " guilds\n" + counter.getMemberCount(event) + " members\n```")
