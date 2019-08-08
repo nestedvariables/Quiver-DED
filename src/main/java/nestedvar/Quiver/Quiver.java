@@ -13,7 +13,7 @@ public class Quiver {
     static ShardManager manager;
     static final DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
     public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException{
-        builder.setToken(System.getenv("QUIVER"));
+        builder.setToken(System.getenv("QUIVERTOKEN"));
         builder.addEventListeners(
             new Ready()
         );
