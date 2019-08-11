@@ -1,4 +1,4 @@
-package nestedvar.Quiver.Misc;
+package nestedvar.Quiver.Listeners.Misc;
 
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;

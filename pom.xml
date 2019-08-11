@@ -4,7 +4,7 @@
 
     <name>Quiver</name>
     <url>https://nestedvar.dev/quiver</url>
-    ]
+    
     <groupId>nestedvar.Quiver</groupId>
     <artifactId>Quiver</artifactId>
     <version>0.1-SNAPSHOT</version>
