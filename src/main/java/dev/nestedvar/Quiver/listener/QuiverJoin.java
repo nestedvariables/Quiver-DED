@@ -1,11 +1,11 @@
-package nestedvar.Quiver.Listeners.Misc;
+package dev.nestedvar.Quiver.listener;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-import nestedvar.Quiver.Utilities.SQLDriver;
-import nestedvar.Quiver.Utilities.SQLUtils;
-import nestedvar.Quiver.Utilities.Webhooks;
+import dev.nestedvar.Quiver.util.SQLDriver;
+import dev.nestedvar.Quiver.util.SQLUtils;
+import dev.nestedvar.Quiver.util.Webhooks;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 

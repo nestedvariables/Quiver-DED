@@ -1,4 +1,4 @@
-package nestedvar.Quiver.Utilities;
+package dev.nestedvar.Quiver.util;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;

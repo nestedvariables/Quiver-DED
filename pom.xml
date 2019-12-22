@@ -61,11 +61,15 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- SLF4J SHUSHHH THINGY -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.22</version>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.29</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.12.1</version>
         </dependency>
 
         <!-- JDBC Java Database Connector -->
@@ -90,6 +94,18 @@
             <version>1.1</version>
         </dependency>
 
+        <!-- minecraft text component library -->
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>text</artifactId>
+            <version>1.12-1.6.5</version>
+        </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>text-serializer-gson</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
         <!-- Google GSON Library -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -97,6 +113,11 @@
             <version>2.8.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.1-jre</version>
+        </dependency>
         <!-- Google Voice API 
         <dependency>
             <groupId>com.google.cloud</groupId>
@@ -120,7 +141,7 @@
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>nestedvar.Quiver.Quiver</mainClass>
+                  <mainClass>dev.nestedvar.Quiver.Quiver</mainClass>
                 </transformer>
               </transformers>
             </configuration>

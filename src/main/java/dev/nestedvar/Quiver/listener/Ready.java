@@ -1,13 +1,13 @@
-package nestedvar.Quiver.Listeners.Misc;
+package dev.nestedvar.Quiver.listener;
 
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import nestedvar.Quiver.Utilities.Count;
-import nestedvar.Quiver.Utilities.Utils;
-import nestedvar.Quiver.Utilities.Webhooks;
+import dev.nestedvar.Quiver.util.Count;
+import dev.nestedvar.Quiver.util.Utils;
+import dev.nestedvar.Quiver.util.Webhooks;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.events.ReadyEvent;
@@ -19,8 +19,8 @@ public class Ready extends ListenerAdapter {
         Count counter = new Count();
         Utils utils = new Utils();
         try {
-            Webhooks webhook = new Webhooks(System.getenv("QUIVERWEBHOOK"));
-            System.out.println(System.getenv("QUIVERWEBHOOK"));
+            Webhooks webhook = new Webhooks(System.getenv("QUIVER_WEBHOOK"));
+            System.out.println(System.getenv("QUIVER_WEBHOOK"));
             webhook.addEmbed(new Webhooks.EmbedObject()
                 .setTitle("Quiver Shard " + event.getJDA().getShardInfo().getShardId() + " is ready")
                 .setDescription("This shard is servicing \n\n```\n" + counter.getGuildsServiced(event) + " guilds\n" + counter.getMemberCount(event) + " members\n```")

@@ -1,4 +1,4 @@
-package nestedvar.Quiver.Utilities;
+package dev.nestedvar.Quiver.util;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.awt.Color;

@@ -1,4 +1,4 @@
-package nestedvar.Quiver.Utilities;
+package dev.nestedvar.Quiver.util;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

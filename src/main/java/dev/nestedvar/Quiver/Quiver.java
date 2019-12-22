@@ -1,21 +1,26 @@
-package nestedvar.Quiver;
+package dev.nestedvar.Quiver;
 
 import javax.security.auth.login.LoginException;
 
-import nestedvar.Quiver.Listeners.Misc.*;
-import nestedvar.Quiver.Utilities.Resources;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import dev.nestedvar.Quiver.listener.Ready;
+import dev.nestedvar.Quiver.util.Resources;
 import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.bot.sharding.ShardManager;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
+import net.kyori.text.serializer.gson.GsonComponentSerializer;
 
 public class Quiver {
     static ShardManager manager;
     static Resources res = new Resources();
     static final DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder();
-    public static void main(String[] args) throws LoginException, RateLimitedException, InterruptedException{
-        builder.setToken(System.getenv("QUIVERTOKEN"));
+
+    public static final Gson GSON = GsonComponentSerializer.populate(new GsonBuilder()).create();
+
+    public static void main(String[] args) throws LoginException {
+        builder.setToken(System.getenv("QUIVER_TOKEN"));
         builder.addEventListeners(
             new Ready()
         );
