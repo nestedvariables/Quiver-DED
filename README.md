@@ -1,4 +1,4 @@
-<img src="https://entity.nestedvar.dev/quiver/assets/Quiver-Banner-1800x200.png">
+<img src="https://cdn.discordapp.com/attachments/239612258492088321/1441877034107142344/Quiver-Banner.png?ex=69f6fce1&is=69f5ab61&hm=dd84220b163c12011e2ac4d35ba9d4438cc09b35d8ea4883a18a83b2601cf48e&">
 
 <div align="center">
 <a href="https://nestedvariables.tk/quiver">
